@@ -148,7 +148,7 @@
     <child
       link="wheel_front_left_link" />
     <axis
-      xyz="-0.023287 -0.99973 0" />
+      xyz="-0.023287 0.99973 0" />
     <limit
       effort="20"
       velocity="100" />
@@ -325,7 +325,7 @@
     <child
       link="wheel_back_left_link" />
     <axis
-      xyz="0 -1 0" />
+      xyz="0 1 0" />
     <limit
       effort="20"
       velocity="100" />

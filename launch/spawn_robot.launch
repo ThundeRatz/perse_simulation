@@ -9,7 +9,7 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
   <arg name="robot_name" default="thunderwaze" />
   <arg name="x" default="0"/>
   <arg name="y" default="0"/>
-  <arg name="z" default="0.04"/>
+  <arg name="z" default="0.4"/>
   <arg name="row" default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
@@ -34,11 +34,15 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
               file="$(find thunderwaze)/config/joints.yaml" />
 
     <!-- Load configs to control robot motors -->
+    <!-- <rosparam command="load"
+              file="$(find thunderwaze)/config/motor_drive.yaml" /> -->
+
+    <!-- Load configs to control robot motors -->
     <rosparam command="load"
-              file="$(find thunderwaze)/config/motor_drive.yaml" />
+              file="$(find thunderwaze)/config/diff_drive.yaml" />
 
     <node name="robot_controller" pkg="controller_manager" type="spawner"
-      args="robot_motor_controller
+      args="robot_drive_controller
             robot_joint_state_controller"/>
 
   </group>

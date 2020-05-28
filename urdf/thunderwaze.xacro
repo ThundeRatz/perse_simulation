@@ -24,5 +24,8 @@
   <xacro:include filename="$(find thunderwaze)/urdf/colors.xacro"/>
 
   <xacro:motor joint_name="wheel_back_left" gear_rate="1"/>
+  <xacro:motor joint_name="wheel_back_right" gear_rate="1"/>
+  <xacro:motor joint_name="wheel_front_left" gear_rate="1"/>
+  <xacro:motor joint_name="wheel_front_right" gear_rate="1"/>
 
 </robot>
