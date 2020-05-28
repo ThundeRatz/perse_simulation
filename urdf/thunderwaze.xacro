@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="thunderwaze" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <link name="corpo"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="corpo"/>
+    <child link="base_link"/>
+  </joint>
+
+  <!-- Import all Gazebo-customization elements, including Gazebo colors -->
+  <xacro:include filename="$(find thunderwaze)/urdf/thunderwaze.gazebo" />
+
+  <!-- Import Rviz colors -->
+  <xacro:include filename="$(find thunderwaze)/urdf/materials.xacro" />
+
+  <!-- Code exported from SolidWorks -->
+  <xacro:include filename="$(find thunderwaze)/urdf/thunderwaze.urdf" />
+
+  <!-- Definition of motor -->
+  <xacro:include filename="$(find thunderwaze)/urdf/motor.xacro"/>
+
+  <xacro:include filename="$(find thunderwaze)/urdf/colors.xacro"/>
+
+  <xacro:motor joint_name="wheel_back_left" gear_rate="1"/>
+
+</robot>

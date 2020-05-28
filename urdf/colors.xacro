@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="base_link">
+        <material>Waze/Base</material>
+    </gazebo>
+
+    <gazebo reference="chasis_link">
+        <material>Waze/Chasis</material>
+    </gazebo>
+
+    <gazebo reference="wheel_front_left_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="wheel_front_right_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="wheel_back_right_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="wheel_back_right_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="wheel_back_left_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
+    <gazebo reference="bumper_link">
+        <material>Waze/Bumper</material>
+    </gazebo>
+
+    <gazebo reference="cover_link">
+        <material>Waze/Cover</material>
+    </gazebo>
+
+    <gazebo reference="batt_holder_link">
+        <material>Waze/BattHolder</material>
+    </gazebo>
+
+    <gazebo reference="batt_link">
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+    <gazebo reference="cam_holder_link">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <gazebo reference="cam_link">
+        <material>Gazebo/Black</material>
+    </gazebo>
+
+</robot>

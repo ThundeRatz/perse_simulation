@@ -1,0 +1,76 @@
+import * from "grid.material"
+
+// Ref: http://wiki.ogre3d.org/Materials
+
+material Waze/Base
+{
+  technique
+  {
+    pass ambient
+    {
+      ambient 0.80 0.80 0.80 1.00
+      diffuse 0.80 0.80 0.80 1.00
+      specular 0.21 0.21 0.21 1.00 1
+    }
+  }
+}
+
+material Waze/Chasis
+{
+  technique
+  {
+    pass ambient
+    {
+      ambient 0.20 0.20 0.20 1.00
+      diffuse 0.20 0.20 0.20 1.00
+      specular 0.21 0.21 0.21 1.00 1
+    }
+  }
+}
+
+material Waze/Bumper
+{
+  technique
+  {
+    pass ambient
+    {
+      ambient 0.70 0.70 0.70 1.00
+      diffuse 0.70 0.70 0.70 1.00
+      specular 0.21 0.21 0.21 1.00 1
+    }
+  }
+}
+
+material Waze/BattHolder
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        colour_op_ex source1 src_manual src_current 0.77 0.00 0.80
+        alpha_op_ex source1 src_manual src_current 0.4
+      }
+    }
+  }
+}
+
+material Waze/Cover
+{
+  technique
+  {
+    pass
+    {
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        colour_op_ex source1 src_manual src_current 0.50 0.00 0.00
+        alpha_op_ex source1 src_manual src_current 0.4
+      }
+    }
+  }
+}
