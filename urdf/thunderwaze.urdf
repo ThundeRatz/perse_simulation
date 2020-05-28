@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="thunderwaze">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.0508331510042985 -0.000423190257476113 -0.00978701566321744"
+        rpy="0 0 0" />
+      <mass
+        value="0.441656288542662" />
+      <inertia
+        ixx="0.00072640876800129"
+        ixy="2.11765672191287E-08"
+        ixz="1.24858920002716E-05"
+        iyy="0.00423864047015624"
+        iyz="9.42360680512192E-13"
+        izz="0.0049473583439408" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="chasis_link">
+    <inertial>
+      <origin
+        xyz="0.00702305804386702 -9.45281789597513E-05 -0.0789092537330444"
+        rpy="0 0 0" />
+      <mass
+        value="0.611375344023216" />
+      <inertia
+        ixx="0.000247510684584482"
+        ixy="-4.26210645451504E-07"
+        ixz="2.7480522424542E-05"
+        iyy="0.00084489825341074"
+        iyz="4.34000021162191E-07"
+        izz="0.000960872997545865" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/chasis_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.776470588235294 0.756862745098039 0.737254901960784 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/chasis_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="chasis_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="chasis_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="wheel_front_left_link">
+    <inertial>
+      <origin
+        xyz="-0.0288288078303191 -7.11127125241351E-09 -1.19346065807768E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.373173199443523" />
+      <inertia
+        ixx="0.0008437759483909"
+        ixy="-3.26392624407958E-11"
+        ixz="-5.07237889411837E-11"
+        iyy="0.000527003189288182"
+        iyz="-9.38802830766529E-11"
+        izz="0.000527003059490119" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_front_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_front_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_front_left_joint"
+    type="continuous">
+    <origin
+      xyz="0.12923 0.14061 -0.073983"
+      rpy="1.5738 -0.12811 1.5473" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="wheel_front_left_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="20"
+      velocity="100" />
+    <dynamics
+      damping="0.2"
+      friction="0.01" />
+  </joint>
+  <link
+    name="wheel_front_right_link">
+    <inertial>
+      <origin
+        xyz="0.0288284362779084 -3.77309794519221E-09 2.6019224552698E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.373163146114827" />
+      <inertia
+        ixx="0.000843759114907051"
+        ixy="-1.04672313026334E-11"
+        ixz="2.43291188620719E-11"
+        iyy="0.000526995529869217"
+        iyz="4.62906874308624E-11"
+        izz="0.000526995454258773" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_front_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_front_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_front_right_joint"
+    type="continuous">
+    <origin
+      xyz="0.12924 -0.14061 -0.073979"
+      rpy="1.5738 0.12823 1.5946" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="wheel_front_right_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      effort="20"
+      velocity="100" />
+    <dynamics
+      damping="0.2"
+      friction="0.01" />
+  </joint>
+  <link
+    name="wheel_back_right_link">
+    <inertial>
+      <origin
+        xyz="0.0288209097699878 6.88829437933691E-10 -1.44777266650881E-09"
+        rpy="0 0 0" />
+      <mass
+        value="0.370782867805825" />
+      <inertia
+        ixx="0.000834749191365896"
+        ixy="1.45848586232864E-12"
+        ixz="-8.81595863254362E-13"
+        iyy="0.000522238105887973"
+        iyz="1.76333366537802E-11"
+        izz="0.000522238083101541" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_back_right_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_back_right_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_back_right_joint"
+    type="continuous">
+    <origin
+      xyz="-0.12465 -0.15522 -0.075807"
+      rpy="1.5708 0.077826 1.5708" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="wheel_back_right_link" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      effort="20"
+      velocity="100" />
+    <dynamics
+      damping="0.2"
+      friction="0.01" />
+    <mimic
+      joint="wheel_back_left_joint"
+      multiplier="1"
+      offset="0" />
+  </joint>
+  <link
+    name="wheel_back_left_link">
+    <inertial>
+      <origin
+        xyz="-0.028821268942146 -1.7233436899744E-12 8.13903217392054E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.370792467159689" />
+      <inertia
+        ixx="0.000834765041922997"
+        ixy="-6.83913473406962E-13"
+        ixz="-3.20214528575868E-12"
+        iyy="0.000522245040856247"
+        iyz="-2.03592202976396E-12"
+        izz="0.000522245059638975" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_back_left_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/wheel_back_left_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wheel_back_left_joint"
+    type="continuous">
+    <origin
+      xyz="-0.12391 0.15579 -0.075449"
+      rpy="1.5708 -0.099822 1.5708" />
+    <parent
+      link="chasis_link" />
+    <child
+      link="wheel_back_left_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      effort="20"
+      velocity="100" />
+    <dynamics
+      damping="0.2"
+      friction="0.01" />
+  </joint>
+  <link
+    name="bumper_link">
+    <inertial>
+      <origin
+        xyz="-0.0197983251755963 -0.00205538293640049 -0.0030788567492823"
+        rpy="0 0 0" />
+      <mass
+        value="0.0928247512879303" />
+      <inertia
+        ixx="0.000792898400131579"
+        ixy="1.26071724825318E-10"
+        ixz="7.24253301373343E-07"
+        iyy="3.8879170876043E-05"
+        iyz="5.16459216923265E-12"
+        izz="0.000831171039558352" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/bumper_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/bumper_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="bumper_joint"
+    type="prismatic">
+    <origin
+      xyz="0.2485 0.0045747 -0.0138"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="bumper_link" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="0"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="cover_link">
+    <inertial>
+      <origin
+        xyz="-0.017493227671945 -1.15666213570451E-07 0.0503519559153484"
+        rpy="0 0 0" />
+      <mass
+        value="0.254541750747645" />
+      <inertia
+        ixx="0.00131517561706886"
+        ixy="1.38374202279705E-09"
+        ixz="-2.97409136902315E-06"
+        iyy="0.00233699684094469"
+        iyz="6.97683035316031E-10"
+        izz="0.00333584236151001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cover_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.909803921568627 0.443137254901961 0.0313725490196078 0.1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cover_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cover_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="cover_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="cover_support_link">
+    <inertial>
+      <origin
+        xyz="0.0494770025848749 -2.5695683434397E-08 0.0434325279039828"
+        rpy="0 0 0" />
+      <mass
+        value="0.0387475026399447" />
+      <inertia
+        ixx="1.10683437057839E-05"
+        ixy="-7.40334336982541E-13"
+        ixz="1.53970244009773E-05"
+        iyy="0.000114964202382002"
+        iyz="-2.32012115115621E-13"
+        izz="0.000104314593615966" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cover_support_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cover_support_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cover_support_link"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="cover_link" />
+    <child
+      link="cover_support_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="batt_holder_link">
+    <inertial>
+      <origin
+        xyz="-0.00577932627356427 1.94236733424385E-08 -0.0261493476257638"
+        rpy="0 0 0" />
+      <mass
+        value="0.150117988435018" />
+      <inertia
+        ixx="0.000124193410935435"
+        ixy="8.22934028491511E-11"
+        ixz="-1.39099029357051E-05"
+        iyy="0.000499743783563097"
+        iyz="-7.22361650215567E-12"
+        izz="0.000505512212908162" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/batt_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 0 1 0.1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/batt_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="batt_holder_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="batt_holder_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="batt_link">
+    <inertial>
+      <origin
+        xyz="-0.0133518675095092 0.0277219436805416 -0.0218779904778291"
+        rpy="0 0 0" />
+      <mass
+        value="0.47107946087679" />
+      <inertia
+        ixx="0.000172274436488619"
+        ixy="3.25322944579888E-11"
+        ixz="8.73426976232699E-07"
+        iyy="0.000947790680112583"
+        iyz="2.97280586664827E-11"
+        izz="0.000872623171096971" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/batt_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/batt_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="batt_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="batt_holder_link" />
+    <child
+      link="batt_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="cam_holder_link">
+    <inertial>
+      <origin
+        xyz="0.0916407456961935 0.000134197552875978 0.0222842739273468"
+        rpy="0 0 0" />
+      <mass
+        value="0.0150462204221491" />
+      <inertia
+        ixx="4.95861721943095E-06"
+        ixy="-1.44112832892195E-11"
+        ixz="4.06217292348507E-07"
+        iyy="5.48096714293346E-06"
+        iyz="-2.61532062604273E-08"
+        izz="5.9515926687423E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cam_holder_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cam_holder_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cam_holder_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="cam_holder_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="cam_link">
+    <inertial>
+      <origin
+        xyz="0.00483096666160773 6.86111208687619E-05 -0.00132631622858004"
+        rpy="0 0 0" />
+      <mass
+        value="0.00131256033286903" />
+      <inertia
+        ixx="9.28193457877313E-08"
+        ixy="1.86311867135424E-24"
+        ixz="1.35798968231464E-24"
+        iyy="2.95812418066543E-08"
+        iyz="-6.83499253625376E-10"
+        izz="6.55571822863201E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cam_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://thunderwaze/meshes/cam_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cam_joint"
+    type="fixed">
+    <origin
+      xyz="0.0673562763621052 0 0.0709889192905058"
+      rpy="0 0 0" />
+    <parent
+      link="cam_holder_link" />
+    <child
+      link="cam_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
