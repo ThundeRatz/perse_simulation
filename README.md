@@ -14,7 +14,7 @@ roslaunch thunderwaze gazebo.launch
 
 ## 🕹 Control
 
-The simulation receives a [geometry_msgs/Twist](http://docs.ros.org/melodic/api/geometry_msgs/html/msg/Twist.html) describing the robot movement
+The simulation receives a [geometry_msgs/Twist](http://docs.ros.org/noetic/api/geometry_msgs/html/msg/Twist.html) describing the robot movement
 
 ```c
 # This expresses velocity in free space broken into its linear and angular parts.
@@ -29,13 +29,13 @@ Future versions should reveice 2 std_msgs/Float64 messages for the motor speed a
 To install ROS and Gazebo, use the command:
 
 ```bash
-sudo apt install ros-melodic-desktop-full
+sudo apt install ros-noetic-desktop-full
 ```
 
 The project requires the libraries velocity_controllers and position_controllers inside [ros_controllers](https://github.com/ros-controls/ros_controllers) and the python library [pygame](https://github.com/pygame/pygame). It is possible to install with ```apt-get```
 
 ```bash
-sudo apt install ros-melodic-position-controllers ros-melodic-velocity-controllers python-pygame
+sudo apt install ros-noetic-position-controllers ros-noetic-velocity-controllers python-pygame
 ```
 
 Or with ```rosdep```
