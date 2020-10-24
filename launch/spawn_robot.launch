@@ -15,8 +15,6 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
   <arg name="yaw" default="0"/>
   <arg name="model" default="$(find thunderwaze)/urdf/thunderwaze.xacro"/>
 
-  <node name="keyboard_controller" pkg="thunderwaze" type="keyboard_node.py"/>
-
   <group ns="thunderwaze">
 
     <param name="robot_description"
@@ -36,6 +34,10 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
     <!-- Load configs to control robot motors -->
     <!-- <rosparam command="load"
               file="$(find thunderwaze)/config/motor_drive.yaml" /> -->
+
+    <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
+      <param name="default_topic" value="/thunderwaze/robot_drive_controller/cmd_vel"/>
+    </node>
 
     <!-- Load configs to control robot motors -->
     <rosparam command="load"
