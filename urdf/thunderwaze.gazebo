@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Ref:
-    http://gazebosim.org/tutorials/?tut=ros_urdf
+<!-- Ref: http://gazebosim.org/tutorials/?tut=ros_urdf
     http://answers.gazebosim.org/question/13506/preventing-bouncing-of-object/
     -->
 
@@ -20,8 +19,8 @@
         <gazebo reference="${link_name}_link">
             <mu1 value="10.0"/>
             <mu2 value="10.0"/>
-            <kp  value="1e12" />
-            <kd  value="1.0" />
+            <kp value="1e12" />
+            <kd value="1.0" />
             <minDepth value="1e-6" />
         </gazebo>
     </xacro:macro>
