@@ -17,11 +17,11 @@
     <!-- Wheels -->
     <xacro:macro name="wheel" params="link_name">
         <gazebo reference="${link_name}_link">
-            <mu1 value="10.0"/>
-            <mu2 value="10.0"/>
+            <mu1 value="2.0"/>
+            <mu2 value="2.0"/>
             <kp value="1e12" />
             <kd value="1.0" />
-            <minDepth value="1e-6" />
+            <minDepth value="1e-1" />
         </gazebo>
     </xacro:macro>
 
