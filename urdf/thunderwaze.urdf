@@ -57,11 +57,12 @@
     <inertial>
       <origin xyz="-0.000671354037465849 -0.0288209896245741 -7.0635324950219E-09" rpy="0 0 0" />
       <mass value="0.373173198586738" />
-      <inertia ixx="0.000527174840623392" ixy="7.37470275307517E-06" ixz="-9.3905229053194E-11" iyy="0.000843604164931264" iyz="-3.02505473063564E-11" izz="0.00052700318761651" />
+      <inertia ixx="5.271e-4" ixy="7.37E-06" ixz="-9.39E-11" iyy="8.436e-4" iyz="-3.0E-11" izz="5.271e-4" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
+        <!-- <sphere radius="0.06"/> -->
         <mesh filename="package://thunderwaze/meshes/wheel_front_left_link.STL" />
       </geometry>
       <material name="">
@@ -71,12 +72,14 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/wheel_front_left_link.STL" />
+        <sphere radius="0.06"/>
+        <!-- <cylinder length="0.06" radius="0.06"/> -->
+        <!-- <mesh filename="package://thunderwaze/meshes/wheel_front_left_link.STL" /> -->
       </geometry>
     </collision>
   </link>
   <joint name="wheel_front_left_joint" type="continuous">
-    <origin xyz="0.12923 0.14061 -0.073983" rpy="0.12815 0 0" />
+    <origin xyz="0.12923 0.14061 -0.073983" rpy="0 0 0" />
     <parent link="chasis_link" />
     <child link="wheel_front_left_link" />
     <axis xyz="-0.023287 0.99973 0" />
@@ -87,11 +90,12 @@
     <inertial>
       <origin xyz="-0.000680674768011202 0.0288203993742683 -3.77309268551063E-09" rpy="0 0 0" />
       <mass value="0.373163146114833" />
-      <inertia ixx="0.000527172047052592" ixy="-7.47709803925625E-06" ixz="4.65249023491171E-11" iyy="0.000843582522112326" iyz="-9.37031612783905E-12" izz="0.000526995529868303" />
+      <inertia ixx="5.271e-4" ixy="7.37E-06" ixz="-9.39E-11" iyy="8.436e-4" iyz="-3.0E-11" izz="5.271e-4" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
+        <!-- <sphere radius="0.06"/> -->
         <mesh filename="package://thunderwaze/meshes/wheel_front_right_link.STL" />
       </geometry>
       <material name="">
@@ -101,12 +105,13 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/wheel_front_right_link.STL" />
+        <sphere radius="0.06"/>
+        <!-- <mesh filename="package://thunderwaze/meshes/wheel_front_right_link.STL" /> -->
       </geometry>
     </collision>
   </link>
   <joint name="wheel_front_right_joint" type="continuous">
-    <origin xyz="0.12924 -0.14061 -0.073979" rpy="-0.12826 0 0" />
+    <origin xyz="0.12924 -0.14061 -0.073979" rpy="0 0 0" />
     <parent link="chasis_link" />
     <child link="wheel_front_right_link" />
     <axis xyz="-0.023611 0.99972 0" />
@@ -117,11 +122,12 @@
     <inertial>
       <origin xyz="-1.01586713260188E-09 0.0288209096412485 -2.07344974523238E-11" rpy="0 0 0" />
       <mass value="0.370782867805825" />
-      <inertia ixx="0.00052223808310134" ixy="-8.81594180518502E-13" ixz="1.76333385744564E-11" iyy="0.000834749191365903" iyz="1.77520679905084E-12" izz="0.000522238105887773" />
+      <inertia ixx="5.271e-4" ixy="7.37E-06" ixz="-9.39E-11" iyy="8.436e-4" iyz="-3.0E-11" izz="5.271e-4" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
+        <!-- <sphere radius="0.06"/> -->
         <mesh filename="package://thunderwaze/meshes/wheel_back_right_link.STL" />
       </geometry>
       <material name="">
@@ -131,12 +137,13 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/wheel_back_right_link.STL" />
+        <sphere radius="0.06"/>
+        <!-- <mesh filename="package://thunderwaze/meshes/wheel_back_right_link.STL" /> -->
       </geometry>
     </collision>
   </link>
   <joint name="wheel_back_right_joint" type="continuous">
-    <origin xyz="-0.12465 -0.15522 -0.075807" rpy="-0.077826 0 0" />
+    <origin xyz="-0.12465 -0.15522 -0.075807" rpy="0 0 0" />
     <parent link="chasis_link" />
     <child link="wheel_back_right_link" />
     <axis xyz="0 1 0" />
@@ -147,11 +154,12 @@
     <inertial>
       <origin xyz="8.13761188642181E-10 -0.0288212689411408 -4.82949791269505E-12" rpy="0 0 0" />
       <mass value="0.370792467159688" />
-      <inertia ixx="0.000522245059639793" ixy="-3.20214632253509E-12" ixz="-2.03592406976511E-12" iyy="0.000834765041923002" iyz="-6.85634539323698E-13" izz="0.000522245040857072" />
+      <inertia ixx="5.271e-4" ixy="7.37E-06" ixz="-9.39E-11" iyy="8.436e-4" iyz="-3.0E-11" izz="5.271e-4" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
+        <!-- <sphere radius="0.06"/> -->
         <mesh filename="package://thunderwaze/meshes/wheel_back_left_link.STL" />
       </geometry>
       <material name="">
@@ -161,12 +169,13 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/wheel_back_left_link.STL" />
+        <sphere radius="0.06"/>
+        <!-- <mesh filename="package://thunderwaze/meshes/wheel_back_left_link.STL" /> -->
       </geometry>
     </collision>
   </link>
   <joint name="wheel_back_left_joint" type="continuous">
-    <origin xyz="-0.12391 0.15579 -0.075449" rpy="0.099822 0 0" />
+    <origin xyz="-0.12391 0.15579 -0.075449" rpy="0 0 0" />
     <parent link="chasis_link" />
     <child link="wheel_back_left_link" />
     <axis xyz="0 1 0" />
