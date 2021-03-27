@@ -57,7 +57,8 @@
     <inertial>
       <origin xyz="-0.000671354037465849 -0.0288209896245741 -7.0635324950219E-09" rpy="0 0 0" />
       <mass value="0.373173198586738" />
-      <inertia ixx="5.271e-4" ixy="7.37E-06" ixz="-9.39E-11" iyy="8.436e-4" iyz="-3.0E-11" izz="5.271e-4" />
+      <!-- Inertia values in scientific notation -->
+      <inertia ixx="5.271e-4" ixy="7.37E-06" ixz="-9.39E-11" iyy="8.436e-4" iyz="-3.0E-11" izz="5.271e-4" /> 
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
@@ -69,7 +70,7 @@
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
-    <collision>
+    <collision> <!--Changes colision blocks to a 0.06m sphere-->
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <sphere radius="0.06"/>
@@ -79,7 +80,7 @@
     </collision>
   </link>
   <joint name="wheel_front_left_joint" type="continuous">
-    <origin xyz="0.12923 0.14061 -0.073983" rpy="0 0 0" />
+    <origin xyz="0.12923 0.14061 -0.073983" rpy="0 0 0" /> <!-- Wheel with no inclination -->
     <parent link="chasis_link" />
     <child link="wheel_front_left_link" />
     <axis xyz="-0.023287 0.99973 0" />
