@@ -38,4 +38,8 @@ https://github.com/ros/urdf_sim_tutorial -->
     <arg name="yaw" value="$(arg yaw)" />
   </include>
 
+  <!-- Add our project workspace to Gazebo index to load custom models -->
+  <env name="GAZEBO_RESOURCE_PATH" value="$(find thunderwaze_simulation)"/>
+  <env name="GAZEBO_MODEL_PATH" value="$(find thunderwaze_simulation)/models"/>
+
 </launch>
