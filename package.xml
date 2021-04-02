@@ -21,6 +21,7 @@ for ThunderWaze robot</p>
   <depend>position_controllers</depend>
   <depend>velocity_controllers</depend>
   <depend>diff_drive_controller</depend>
+  <depend>ackermann_steering_controller</depend>
   <depend>rviz</depend>
   <depend>joint_state_publisher</depend>
   <depend>gazebo</depend>

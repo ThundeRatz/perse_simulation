@@ -1,0 +1,40 @@
+# Ref: http://wiki.ros.org/ackermann_steering_controller
+
+robot_drive_controller:
+  type        : "ackermann_steering_controller/AckermannSteeringController"
+  publish_rate: 50.0               # default: 50
+
+  rear_wheel : [wheel_front_left_joint, wheel_back_left_joint]
+  front_steer: [wheel_front_right_joint, wheel_back_right_joint]
+  
+  # Odometry covariances for the encoder output of the robot. These values should
+  # be tuned to your robot's sample odometry data, but these values are a good place
+  # to start
+  pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+  twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+
+  wheel_separation: 0.28122
+  wheel_radius: 0.06
+
+  # Velocity commands timeout [s], default 0.5
+  cmd_vel_timeout: 0.25
+
+  # Base frame_id
+  base_frame_id: base_link #default: base_link
+
+  # Odom frame_id
+  #odom_frame_id: odom
+
+  # Velocity and acceleration limits
+  linear:
+    x:
+      has_velocity_limits    : true
+      max_velocity           : 100.0   # m/s
+      has_acceleration_limits: true
+      max_acceleration       : 500.0   # m/s^2
+  angular:
+    z:
+      has_velocity_limits    : true
+      max_velocity           : 200.0   # rad/s
+      has_acceleration_limits: true
+      max_acceleration       : 600.0   # rad/s^2
