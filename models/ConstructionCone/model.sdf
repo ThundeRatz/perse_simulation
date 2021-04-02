@@ -5,7 +5,7 @@
       <collision name="collision">
         <geometry>
           <mesh>
-            <scale>7 7 7</scale>
+            <scale>7 7 7</scale> <!-- Decrease in relation to the original scale (10 10 10) -->
             <uri>model://construction_cone/meshes/construction_cone.dae</uri>
           </mesh>
         </geometry>
@@ -13,7 +13,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <scale>7 7 7</scale>
+            <scale>7 7 7</scale> <!-- Decrease in relation to the original scale (10 10 10) -->
             <uri>model://construction_cone/meshes/construction_cone.dae</uri>
           </mesh>
         </geometry>
