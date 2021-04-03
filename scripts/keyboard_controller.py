@@ -32,8 +32,9 @@ DEFAULT_NAMESPACE = "/thunderwaze"
 DEFAULT_DEBUG = False
 
 # A vel máxima do robô é 2 m/s
-MAX_LIN_VEL = 4.5  # m/s
-MAX_ROT_VEL = 9  # rad/s
+# Deixando a velocidade máxima abaixo disso para evitar que ele empine
+MAX_LIN_VEL = 1  # m/s
+MAX_ROT_VEL = 3 # rad/s
 
 # Os comandos vão de -126 até 126 de modo que os bytes 0xFE e 0xFF
 # nunca são utilizados
@@ -169,11 +170,11 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 console.append(img)
                 console = console[-13:]
 
-            vel_cmd_twist = Twist()
-            vel_cmd_twist.linear.x = axis[1]*MAX_LIN_VEL
-            vel_cmd_twist.angular.z = axis[0]*MAX_ROT_VEL
+            vel_msg = Twist()
+            vel_msg.linear.x = axis[1]*MAX_LIN_VEL
+            vel_msg.angular.z = axis[0]*MAX_ROT_VEL
 
-            vel_pub.publish(vel_cmd_twist)
+            vel_pub.publish(vel_msg)
 
         else:
             vel_x = 0.0
@@ -195,11 +196,11 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 console.append(img)
                 console = console[-13:]
 
-            vel_cmd_twist = Twist()
-            vel_cmd_twist.linear.x = vel_x*MAX_LIN_VEL
-            vel_cmd_twist.angular.z = vel_y*MAX_ROT_VEL
+            vel_msg = Twist()
+            vel_msg.linear.x = vel_x*MAX_LIN_VEL
+            vel_msg.angular.z = vel_y*MAX_ROT_VEL
 
-            vel_pub.publish(vel_cmd_twist)
+            vel_pub.publish(vel_msg)
 
         rate.sleep()
 
