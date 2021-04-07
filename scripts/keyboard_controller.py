@@ -7,7 +7,7 @@
     Description:
         Simple python routine to watch the keyboard or a joystick
     to send velocity commands to a Gazebo simulation
-        Adapted from https://github.com/ThundeRatz/vss_simulation/blob/main/scripts/keyboard_node.py
+        Adapted from https://github.com/ThundeRatz/travesim/blob/main/scripts/keyboard_node.py
 """
 
 import pygame
