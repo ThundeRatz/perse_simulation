@@ -700,7 +700,7 @@
     name="cam_joint"
     type="fixed">
     <origin
-      xyz="0.0673562763621052 0 0.0709889192905058"
+      xyz="0.077562763621052 0 0.0709889192905058"
       rpy="0 0 0" />
     <parent
       link="cam_holder_link" />
