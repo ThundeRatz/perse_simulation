@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Ref:
-    http://gazebosim.org/tutorials/?tut=ros_urdf
+<!-- Ref: http://gazebosim.org/tutorials/?tut=ros_urdf
     http://answers.gazebosim.org/question/13506/preventing-bouncing-of-object/
     -->
 
@@ -18,11 +17,11 @@
     <!-- Wheels -->
     <xacro:macro name="wheel" params="link_name">
         <gazebo reference="${link_name}_link">
-            <mu1 value="10.0"/>
-            <mu2 value="10.0"/>
-            <kp  value="1e12" />
-            <kd  value="1.0" />
-            <minDepth value="1e-6" />
+            <mu1 value="2.0"/> <!-- Coulomb friction coefficient -->
+            <mu2 value="2.0"/> <!-- Coulomb friction coefficient -->
+            <kp value="1e12" /> <!-- Contact stiffness  -->
+            <kd value="1.0" /> <!-- Contact damping  -->
+            <minDepth value="1e-1" /> <!-- Minimum allowable depth before contact correction -->
         </gazebo>
     </xacro:macro>
 
