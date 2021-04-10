@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 
-<!-- Ref:
-    http://gazebosim.org/tutorials/?tut=ros_urdf
+<!-- Ref: http://gazebosim.org/tutorials/?tut=ros_urdf
     http://answers.gazebosim.org/question/13506/preventing-bouncing-of-object/
     -->
 
@@ -18,11 +17,11 @@
     <!-- Wheels -->
     <xacro:macro name="wheel" params="link_name">
         <gazebo reference="${link_name}_link">
-            <mu1 value="10.0"/>
-            <mu2 value="10.0"/>
-            <kp  value="1e12" />
-            <kd  value="1.0" />
-            <minDepth value="1e-6" />
+            <mu1 value="2.0"/> <!-- Coulomb friction coefficient -->
+            <mu2 value="2.0"/> <!-- Coulomb friction coefficient -->
+            <kp value="1e12" /> <!-- Contact stiffness  -->
+            <kd value="1.0" /> <!-- Contact damping  -->
+            <minDepth value="1e-1" /> <!-- Minimum allowable depth before contact correction -->
         </gazebo>
     </xacro:macro>
 
@@ -35,6 +34,57 @@
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
             <robotNamespace>/thunderwaze</robotNamespace>
+        </plugin>
+    </gazebo>
+
+     <!-- camera -->
+    <gazebo reference="cam_link">
+        <sensor type="camera" name="camera1">
+        <visualize>true</visualize>
+        <update_rate>60.0</update_rate>
+        <camera name="head">
+            <horizontal_fov>1.3962634</horizontal_fov>
+            <image>
+                <width>800</width>
+                <height>800</height>
+                <format>R8G8B8</format>
+            </image>
+            <clip>
+                <near>0.02</near>
+                <far>300</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.007</stddev>
+            </noise>
+        </camera>
+        <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+            <alwaysOn>true</alwaysOn>
+            <updateRate>60.0</updateRate>
+            <cameraName>camera</cameraName>
+            <imageTopicName>image_raw</imageTopicName>
+            <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+            <frameName>camera_link</frameName>
+            <hackBaseline>0.07</hackBaseline>
+            <distortionK1>0.0</distortionK1>
+            <distortionK2>0.0</distortionK2>
+            <distortionK3>0.0</distortionK3>
+            <distortionT1>0.0</distortionT1>
+            <distortionT2>0.0</distortionT2>
+        </plugin>
+        </sensor>
+    </gazebo>
+
+    <!-- IMU  -->
+    <gazebo>
+        <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+            <alwaysOn>true</alwaysOn>
+            <bodyName>base_link</bodyName>
+            <topicName>imu</topicName>
+            <serviceName>imu_service</serviceName>
+            <gaussianNoise>0.0</gaussianNoise>
+            <updateRate>200.0</updateRate>
         </plugin>
     </gazebo>
 </robot>
