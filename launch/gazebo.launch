@@ -10,7 +10,6 @@ https://github.com/ros/urdf_sim_tutorial -->
   <arg name="recording" default="false"/>
   <arg name="single" default="false"/>
   <arg name="match" default="false"/>
-  <!-- <arg name="world_name" default="vss_field.world"/> -->
   <arg name="model" default="$(find thunderwaze)/urdf/thunderwaze.xacro"/>
   <arg name="z" default="0.12"/> <!-- Initial position on Z axis -->
   <arg name="x" default="-0.25" />
@@ -22,7 +21,8 @@ https://github.com/ros/urdf_sim_tutorial -->
   <env name="GAZEBO_MODEL_PATH" value="$(find thunderwaze)/models"/>
 
   <!-- Load world model -->
-  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="world_name" default="$(find thunderwaze)/worlds/trekking_map.world"/>
     <arg name="debug" value="$(arg debug)" />
     <arg name="gui" value="$(arg gui)" />
     <arg name="paused" value="$(arg paused)"/>
