@@ -27,7 +27,7 @@ INVERT_X_AXIS = False
 INVERT_Y_AXIS = True
 
 # Namespace dos tópicos que iremos publicar
-DEFAULT_NAMESPACE = "/thunderwaze"
+DEFAULT_NAMESPACE = "/thunderwaze_sim"
 
 DEFAULT_DEBUG = False
 
