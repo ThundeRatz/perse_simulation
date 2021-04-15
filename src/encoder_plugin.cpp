@@ -3,26 +3,32 @@
 #include "ros/ros.h"
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
-#include "std_msgs/Float32.h"
+#include "std_msgs/String.h"
 #include "sensor_msgs/JointState.h"
+
+#define radius 0.06
+#define resolution 2
+
 
 namespace gazebo
 {
 	class EncoderPlugin : public WorldPlugin
 	{
-		/// \brief A node use for ROS transport
-	private: std::unique_ptr<ros::NodeHandle> rosNode;
 
-	/// \brief A ROS subscriber
+	/// A node use for ROS transport
+	private: ros::NodeHandle* rosNode;
+
+	/// A ROS subscriber
 	private: ros::Subscriber rosSub;
 
-	/// \brief A ROS callbackqueue that helps process messages
+	/// A ROS callbackqueue that helps process messages
 	private: ros::CallbackQueue rosQueue;
 
-	/// \brief A thread the keeps running the rosQueue
+	/// A thread the keeps running the rosQueue
 	private: std::thread rosQueueThread;
 
-
+	/// A ROS publisher
+	private: ros::Publisher rosPub;
 		public:
 			
 
@@ -43,7 +49,8 @@ namespace gazebo
 
 				// Create our ROS node. This acts in a similar manner to
 				// the Gazebo node
-				this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
+				//this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
+				this->rosNode = new ros::NodeHandle("gazebo_client");
 
 				// Create a named topic, and subscribe to it.
 				ros::SubscribeOptions so =
@@ -53,15 +60,25 @@ namespace gazebo
 							boost::bind(&EncoderPlugin::OnRosMsg, this, _1),
 							ros::VoidPtr(), &this->rosQueue);
 				this->rosSub = this->rosNode->subscribe(so);
+				//this->rosSub = this->rosNode->subscribe("thunderwaze/joint_states", 10 ,&EncoderPlugin::OnRosMsg, this);
+
+
 
 				// Spin up the queue helper thread.
 				this->rosQueueThread =
 					std::thread(std::bind(&EncoderPlugin::QueueThread, this));
+
+				this->rosPub = this->rosNode->advertise<std_msgs::String>("teste", 1000);
 			}
 
 			public: void OnRosMsg(const sensor_msgs::JointStateConstPtr &_msg)
 			{
-				ROS_INFO("oi");
+				ROS_INFO("ois");
+				std_msgs::String msg;
+				
+				msg.data = "oi";
+				this->rosPub.publish(msg);
+
 			}
 
 			/// \brief ROS helper function that processes messages
