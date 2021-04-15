@@ -19,9 +19,9 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.12 0 0.01" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/base_link.STL" />
+        <box size="0.34 0.21 0.19" />
       </geometry>
     </collision>
   </link>
@@ -40,12 +40,6 @@
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://thunderwaze/meshes/chasis_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="chasis_link" type="fixed">
     <origin xyz="0.11815 0 0.0167" rpy="0 0 0" />
@@ -70,12 +64,10 @@
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
-    <collision> <!--Changes colision blocks to a 0.06m sphere-->
-      <origin xyz="0 0 0" rpy="0 0 0" />
+    <collision> <!--Changes colision blocks to a 0.06m cylinder-->
+      <origin xyz="0 -0.03 0" rpy="1.5708 0 0" />
       <geometry>
-        <sphere radius="0.06"/>
-        <!-- <cylinder length="0.06" radius="0.06"/> -->
-        <!-- <mesh filename="package://thunderwaze/meshes/wheel_front_left_link.STL" /> -->
+        <cylinder length="0.06" radius="0.06"/>
       </geometry>
     </collision>
   </link>
@@ -103,11 +95,10 @@
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+    <collision> <!--Changes colision blocks to a 0.06m cylinder-->
+      <origin xyz="0 0.03 0" rpy="1.5708 0 0" />
       <geometry>
-        <sphere radius="0.06"/>
-        <!-- <mesh filename="package://thunderwaze/meshes/wheel_front_right_link.STL" /> -->
+        <cylinder length="0.06" radius="0.06"/>
       </geometry>
     </collision>
   </link>
@@ -135,11 +126,10 @@
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+        <collision> <!--Changes colision blocks to a 0.06m cylinder-->
+      <origin xyz="0 0.03 0" rpy="1.5708 0 0" />
       <geometry>
-        <sphere radius="0.06"/>
-        <!-- <mesh filename="package://thunderwaze/meshes/wheel_back_right_link.STL" /> -->
+        <cylinder length="0.06" radius="0.06"/>
       </geometry>
     </collision>
   </link>
@@ -167,11 +157,10 @@
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+    <collision> <!--Changes colision blocks to a 0.06m cylinder-->
+      <origin xyz="0 -0.03 0" rpy="1.5708 0 0" />
       <geometry>
-        <sphere radius="0.06"/>
-        <!-- <mesh filename="package://thunderwaze/meshes/wheel_back_left_link.STL" /> -->
+        <cylinder length="0.06" radius="0.06"/>
       </geometry>
     </collision>
   </link>
@@ -199,9 +188,9 @@
       </material>
     </visual>
     <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
+      <origin xyz="0.005 0 -0.002" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/bumper_link.STL" />
+        <box size="0.015 0.46 0.0038" />
       </geometry>
     </collision>
   </link>
@@ -255,12 +244,6 @@
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://thunderwaze/meshes/cover_support_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="cover_support_link" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -283,12 +266,6 @@
         <color rgba="1 0 1 0.1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://thunderwaze/meshes/batt_holder_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="batt_holder_joint" type="fixed">
     <origin xyz="0.11815 0 0.0167" rpy="0 0 0" />
@@ -311,12 +288,6 @@
         <color rgba="1 1 1 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://thunderwaze/meshes/batt_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="batt_joint" type="fixed">
     <origin xyz="0 0 0" rpy="0 0 0" />
@@ -339,12 +310,6 @@
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://thunderwaze/meshes/cam_holder_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="cam_holder_link" type="fixed">
     <origin xyz="0.11815 0 0.0167" rpy="0 0 0" />
@@ -367,12 +332,6 @@
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
       </material>
     </visual>
-    <collision>
-      <origin xyz="0 0 0" rpy="0 0 0" />
-      <geometry>
-        <mesh filename="package://thunderwaze/meshes/cam_link.STL" />
-      </geometry>
-    </collision>
   </link>
   <joint name="cam_joint" type="fixed">
     <origin xyz="0.0673562763621052 0 0.0709889192905058" rpy="0 0 0" />
