@@ -42,6 +42,7 @@
         </constraints>
       </ode>
     </physics>
+    <plugin name="thunderwaze" filename="libthunderwaze.so"/>
   </world>
 
 </sdf>
