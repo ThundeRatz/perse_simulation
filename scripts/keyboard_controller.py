@@ -54,13 +54,13 @@ def drawConsole(win, font, console):
     """
     img = font.render("Event console Area", 1, (155, 155, 155), (0, 0, 0))
     win.blit(img, (2, 132))
-    ypos = 450
-    h = list(console)
-    h.reverse()
-    for line in h:
-        r = win.blit(line, (10, ypos))
+    y_pos = 450
+    text = list(console)
+    text.reverse()
+    for line in text:
+        r = win.blit(line, (10, y_pos))
         win.fill(0, (r.right, r.top, 620, r.height))
-        ypos -= font.get_height()
+        y_pos -= font.get_height()
 
 
 def main(namespace, debug=DEFAULT_DEBUG):
@@ -96,10 +96,10 @@ def main(namespace, debug=DEFAULT_DEBUG):
     # Vamos detectar os Joysticks conectados ao computador
     axis = [0.0, 0.0]
     using_joystick = True
-    for x in range(pygame.joystick.get_count()):
-        j = pygame.joystick.Joystick(x)
-        j.init()
-        txt = "Enabled joystick: " + j.get_name()
+    for n in range(pygame.joystick.get_count()):
+        joystick = pygame.joystick.Joystick(n)
+        joystick.init()
+        txt = "Enabled joystick: " + joystick.get_name()
         print(txt)
         img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
         console.append(img)
@@ -114,49 +114,49 @@ def main(namespace, debug=DEFAULT_DEBUG):
     running = True
     while running:
 
-        for e in pygame.event.get():
+        for event in pygame.event.get():
 
             # Movimento dos botões do teclado
-            if e.type == pygame.KEYDOWN:
-                if e.key == pygame.K_ESCAPE:
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
                     running = False
-                if e.key in KEYS:
+                if event.key in KEYS:
                     state[e.key] = True
-            elif e.type == pygame.KEYUP:
-                if e.key in KEYS:
+            elif event.type == pygame.KEYUP:
+                if event.key in KEYS:
                     state[e.key] = False
 
             # Movimento dos direcionais do joystick
-            if e.type == pygame.JOYAXISMOTION:
-                if e.dict['axis'] in (X_AXIS, Y_AXIS):
-                    if e.dict['axis'] == X_AXIS:
+            if event.type == pygame.JOYAXISMOTION:
+                if event.dict['axis'] in (X_AXIS, Y_AXIS):
+                    if event.dict['axis'] == X_AXIS:
                         if INVERT_X_AXIS:
-                            axis[0] = -e.value
+                            axis[0] = -event.value
                         else:
-                            axis[0] = e.value
+                            axis[0] = event.value
 
-                    elif e.dict['axis'] == Y_AXIS:
+                    elif event.dict['axis'] == Y_AXIS:
                         if INVERT_Y_AXIS:
-                            axis[1] = -e.value
+                            axis[1] = -event.value
                         else:
-                            axis[1] = e.value
+                            axis[1] = event.value
 
             # Caso algum botão do joystick seja apertado
-            if e.type == pygame.JOYBUTTONDOWN \
-                or e.type == pygame.JOYBUTTONUP \
-                    or e.type == pygame.JOYHATMOTION:
+            if event.type == pygame.JOYBUTTONDOWN \
+                or event.type == pygame.JOYBUTTONUP \
+                    or event.type == pygame.JOYHATMOTION:
 
-                txt = "%s: %s" % (pygame.event.event_name(e.type), e.dict)
+                txt = "%s: %s" % (pygame.event.event_name(event.type), event.dict)
                 print(txt)
                 img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
                 console.append(img)
                 console = console[-13:]
 
             # L1 pressionado
-            if e.type == pygame.VIDEORESIZE:
+            if event.type == pygame.VIDEORESIZE:
                 win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
 
-            elif e.type == pygame.QUIT:
+            elif event.type == pygame.QUIT:
                 running = False
 
         drawConsole(win, font, console)
@@ -210,15 +210,7 @@ if __name__ == "__main__":
 
     # Clean ROS parameters from command line
     myargv = rospy.myargv(argv=sys.argv)
-
-    # parser = argparse.ArgumentParser()
-    # parser.add_argument("-n", "--namespace", type=str,
-    #                     default=DEFAULT_NAMESPACE)
-    # parser.add_argument("-d", "--debug", action="store_true")
-
     print(myargv)
     rospy.loginfo(myargv)
-
-    # args = parser.parse_args(myargv)
 
     main(DEFAULT_NAMESPACE)
