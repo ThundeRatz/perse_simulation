@@ -17,29 +17,27 @@ import sys
 import rospy
 from geometry_msgs.msg import Twist
 
-# Vamos acompanhar o estado dessas teclas
+# Keep Track of these keyboard Keys (W A S D)
 KEYS = [pygame.K_w, pygame.K_a, pygame.K_s, pygame.K_d]
 
-# Indice dos eixos x e y do joystick
+# Joystick X and Y axis indexes
 X_AXIS = 0
 Y_AXIS = 4
 INVERT_X_AXIS = False
 INVERT_Y_AXIS = True
 
-# Namespace dos tópicos que iremos publicar
+# Namespace we are going to publish, used in the simulation
 DEFAULT_NAMESPACE = "/thunderwaze"
 
 DEFAULT_DEBUG = False
 
-# A vel máxima do robô é 2 m/s
-# Deixando a velocidade máxima abaixo disso para evitar que ele empine
-MAX_LIN_VEL = 1  # m/s
+# Robot max speed is 2 m/s
+# Keep it lower so he doesnt capote
+MAX_LIN_VEL = 1 # m/s
 MAX_ROT_VEL = 3 # rad/s
 
-# Os comandos vão de -126 até 126 de modo que os bytes 0xFE e 0xFF
-# nunca são utilizados
+# Commands go from -126 to 126 in a way that bytes 0xFE e 0xFF aren't used
 SCALE = 126
-
 
 def getNamespace():
     return DEFAULT_NAMESPACE
@@ -69,31 +67,31 @@ def main(namespace, debug=DEFAULT_DEBUG):
     vel_msg = None
     rate = None
 
-    # Inicia configs do ROS
+    # Start ROS configs
     rospy.init_node('thunderwaze_human_controller')
 
     vel_pub = rospy.Publisher(
             getNamespace() + '/robot_drive_controller/cmd_vel',
             Twist, queue_size=2)
 
-    rate = rospy.Rate(60)  # 60hz
+    rate = rospy.Rate(60) # 60hz
 
     pygame.init()
 
-    # Cria a janela
+    # Create the window
     win = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
     pygame.display.set_caption("nRFDongle Comunication Interface")
 
-    # Lista de frases a serem mostradas no console
+    # List of sentences to be displayed
     console = []
     font = pygame.font.Font(None, 26)
 
-    # Dicionário para guardar o estado de algumas teclas
+    # Dictionarys to hold the current state of some keys
     state = {}
     for key in KEYS:
         state[key] = False
 
-    # Vamos detectar os Joysticks conectados ao computador
+    # Detect Joysticks connected to the computer
     axis = [0.0, 0.0]
     using_joystick = True
     for n in range(pygame.joystick.get_count()):
@@ -104,6 +102,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
         img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
         console.append(img)
 
+    # There's not a joystick to be used
     if not pygame.joystick.get_count():
         using_joystick = False
         print("No Joysticks to Initialize")
@@ -116,7 +115,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
 
         for event in pygame.event.get():
 
-            # Movimento dos botões do teclado
+            # Keyboard key movement
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     running = False
@@ -126,7 +125,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 if event.key in KEYS:
                     state[e.key] = False
 
-            # Movimento dos direcionais do joystick
+            # Joystick directional movements
             if event.type == pygame.JOYAXISMOTION:
                 if event.dict['axis'] in (X_AXIS, Y_AXIS):
                     if event.dict['axis'] == X_AXIS:
@@ -141,7 +140,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
                         else:
                             axis[1] = event.value
 
-            # Caso algum botão do joystick seja apertado
+            # If a joystick button is pressed
             if event.type == pygame.JOYBUTTONDOWN \
                 or event.type == pygame.JOYBUTTONUP \
                     or event.type == pygame.JOYHATMOTION:
@@ -152,7 +151,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 console.append(img)
                 console = console[-13:]
 
-            # L1 pressionado
+            # L1 pressed
             if event.type == pygame.VIDEORESIZE:
                 win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
 
