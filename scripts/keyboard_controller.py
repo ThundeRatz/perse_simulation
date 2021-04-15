@@ -161,6 +161,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
         drawConsole(win, font, console)
         pygame.display.flip()
 
+        # Joystick control
         if using_joystick:
             txt = "X: {} Y: {}".format(int(axis[0]*SCALE), int(axis[1]*SCALE))
             if debug:
@@ -169,19 +170,24 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 console.append(img)
                 console = console[-13:]
 
+            # Message created and published
+            # Velocity obtained using axis variable
             vel_msg = Twist()
             vel_msg.linear.x = axis[1]*MAX_LIN_VEL
             vel_msg.angular.z = axis[0]*MAX_ROT_VEL
 
             vel_pub.publish(vel_msg)
 
+        # Keyboard control
         else:
+            # Linear velocity (W and S)
             vel_x = 0.0
             if state[pygame.K_w]:
                 vel_x += 0.35
             if state[pygame.K_s]:
                 vel_x -= 0.35
 
+            # Angular velocity (A and D)
             vel_y = 0.0
             if state[pygame.K_a]:
                 vel_y += 0.35
@@ -195,6 +201,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 console.append(img)
                 console = console[-13:]
 
+            # Message created and published
             vel_msg = Twist()
             vel_msg.linear.x = vel_x*MAX_LIN_VEL
             vel_msg.angular.z = vel_y*MAX_ROT_VEL
@@ -205,7 +212,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
 
 
 if __name__ == "__main__":
-    rospy.loginfo("Começando a brincadeira!")
+    rospy.loginfo("Starting manual controller!")
 
     # Clean ROS parameters from command line
     myargv = rospy.myargv(argv=sys.argv)
