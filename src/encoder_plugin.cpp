@@ -3,8 +3,9 @@
 #include "ros/ros.h"
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
-#include "std_msgs/String.h"
+#include "std_msgs/Float64MultiArray.h"
 #include "sensor_msgs/JointState.h"
+#include <cmath>
 
 #define radius 0.06
 #define resolution 2
@@ -50,14 +51,14 @@ namespace gazebo
 				// Create our ROS node. This acts in a similar manner to
 				// the Gazebo node
 				//this->rosNode.reset(new ros::NodeHandle("gazebo_client"));
-				this->rosNode = new ros::NodeHandle("gazebo_client");
+				this->rosNode = new ros::NodeHandle("gazebo_client"); //node name
 
 				// Create a named topic, and subscribe to it.
 				ros::SubscribeOptions so =
 					ros::SubscribeOptions::create<sensor_msgs::JointState>(
 							"/thunderwaze/joint_states",
 							1,
-							boost::bind(&EncoderPlugin::OnRosMsg, this, _1),
+							boost::bind(&EncoderPlugin::callback, this, _1),
 							ros::VoidPtr(), &this->rosQueue);
 				this->rosSub = this->rosNode->subscribe(so);
 				//this->rosSub = this->rosNode->subscribe("thunderwaze/joint_states", 10 ,&EncoderPlugin::OnRosMsg, this);
@@ -68,20 +69,37 @@ namespace gazebo
 				this->rosQueueThread =
 					std::thread(std::bind(&EncoderPlugin::QueueThread, this));
 
-				this->rosPub = this->rosNode->advertise<std_msgs::String>("teste", 1000);
+				this->rosPub = this->rosNode->advertise<std_msgs::Float64MultiArray>("distance", 1000);
 			}
 
-			public: void OnRosMsg(const sensor_msgs::JointStateConstPtr &_msg)
+			public: void callback(const sensor_msgs::JointStateConstPtr &_msg)
 			{
-				ROS_INFO("ois");
-				std_msgs::String msg;
+
+				/**
+				 *  sensor_msgs::JointState.position[i] returns the rotation angle of some wheel joints in radians
+				 * 
+				 *  msg.position[0] -> wheel_back_left_joint
+				 *  msg.position[1] -> wheel_back_right_joint
+				 *  msg.position[2] -> wheel_front_left_joint
+				 *  msg.position[3] -> wheel_front_right_joint
+				 */
 				
-				msg.data = "oi";
-				this->rosPub.publish(msg);
+				const double right_angle = *(&_msg->position[3]);
+				const double left_angle = *(&_msg->position[2]);
+				
+				float angle_division = 2*M_PI/resolution;
+
+				float right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
+				float left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
+				
+
+				std_msgs::Float64MultiArray pubMsg;
+				pubMsg.data = {right_distance, left_distance};
+				this->rosPub.publish(pubMsg);
 
 			}
 
-			/// \brief ROS helper function that processes messages
+			// ROS helper function that processes messages
 			private: void QueueThread()
 			{
 				static const double timeout = 0.01;
@@ -90,9 +108,6 @@ namespace gazebo
 					this->rosQueue.callAvailable(ros::WallDuration(timeout));
 				}
 			}
-
-
-
 	};
 GZ_REGISTER_WORLD_PLUGIN(EncoderPlugin)
 }
