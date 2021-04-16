@@ -86,7 +86,7 @@
       <longitude_deg>0</longitude_deg>
       <elevation>0</elevation>
       <heading_deg>0</heading_deg>
-    </spherical_coordinates>git
+    </spherical_coordinates>
     <model name='Construction Cone'>
       <link name='link'>
         <collision name='collision'>
