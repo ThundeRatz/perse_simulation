@@ -51,7 +51,7 @@ namespace gazebo {
 		this->rosQueueThread = std::thread(std::bind(&EncoderPlugin::QueueThread, this));
 
 		// Create the publishser
-		this->rosPub = this->rosNode->advertise<std_msgs::Float64MultiArray>("distance", 1000);
+		this->rosPub = this->rosNode->advertise<std_msgs::Float64MultiArray>("encoder", 1000);
 	}
 		
 	/**
