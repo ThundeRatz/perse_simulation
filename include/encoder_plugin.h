@@ -24,8 +24,8 @@
 #include "sensor_msgs/JointState.h"
 #include <cmath>
 
-#define wheel_radius 0.06
-#define resolution 2
+#define wheel_radius 0.06   //robot wheel radius
+#define resolution 2		//number of encoder updates at each turn of the wheel
 
 
 namespace gazebo {
@@ -34,18 +34,19 @@ namespace gazebo {
 
 	private: 
 	 
-		ros::NodeHandle* rosNode;           /*!< A node use for ROS transport */
-		ros::Subscriber rosSub;             /*!< ROS subscriber */
-		ros::CallbackQueue rosQueue;        /*!< ROS callbackqueue that helps process messages */
-		std::thread rosQueueThread;         /*!< A thread the keeps running the rosQueue */
-		ros::Publisher rosPub;              /*!< ROS publisher */
-        std_msgs::Float64MultiArray pubMsg; /*!< ROS message */
+		ros::NodeHandle* ros_node;           /*!< A node use for ROS transport */
+		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /thunderwaze/joint_states */
+		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
+		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
+		ros::Callbackqueue ros_queue;        /*!< ROS callbackqueue that helps process messages */
+		std::thread ros_queue_thread;        /*!< A thread the keeps running the rosQueue */
+
+		void callback(const sensor_msgs::JointStateConstPtr &_msg);
 
 	public:
 	
 		void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
-		public: void callback(const sensor_msgs::JointStateConstPtr &_msg);
-		private: void QueueThread();
+		void QueueThread();
 	};
 };
 

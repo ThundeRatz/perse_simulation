@@ -35,7 +35,7 @@ namespace gazebo {
 		ROS_INFO("Encoder plugin: Starting!");
 
 		// Create a ROS node.
-		this->rosNode = new ros::NodeHandle("gazebo_client");
+		this->ros_node = new ros::NodeHandle("gazebo_client");
 
 		// Create a named topic, and subscribe to it.
 		ros::SubscribeOptions so =
@@ -43,15 +43,15 @@ namespace gazebo {
 					"/thunderwaze/joint_states",
 						1,
 					boost::bind(&EncoderPlugin::callback, this, _1),
-					ros::VoidPtr(), &this->rosQueue);
+					ros::VoidPtr(), &this->ros_queue);
 
-		this->rosSub = this->rosNode->subscribe(so);
+		this->ros_sub = this->ros_node->subscribe(so);
 
 		// Spin up the queue helper thread.
-		this->rosQueueThread = std::thread(std::bind(&EncoderPlugin::QueueThread, this));
+		this->ros_queue_thread = std::thread(std::bind(&EncoderPlugin::QueueThread, this));
 
 		// Create the publishser
-		this->rosPub = this->rosNode->advertise<std_msgs::Float64MultiArray>("encoder", 1000);
+		this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("encoder", 1000);
 	}
 		
 	/**
@@ -64,13 +64,17 @@ namespace gazebo {
 		const double right_angle = msg->position[3]; //front_right wheel 
 		const double left_angle = msg->position[2];  //front_left wheel
 		
+		// Value of the increasing noticed by the encoder
 		float angle_division = 2*M_PI/resolution;
 
+		// The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
+		// Multiplying by "angle_distance" we can obtain the angle variation noticed by the encoder
+		// Multiplying now by "wheel_radius" the result is the distance traveled 
 		float right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
 		float left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
 		
-		pubMsg.data = {left_distance, right_distance};
-		this->rosPub.publish(pubMsg);
+		pub_msg.data = {left_distance, right_distance};
+		this->ros_pub.publish(pub_msg);
 	}
 
 	/**
@@ -78,8 +82,8 @@ namespace gazebo {
 	*/
 	void EncoderPlugin::QueueThread() {
 		static const double timeout = 0.01;
-		while (this->rosNode->ok()) {
-			this->rosQueue.callAvailable(ros::WallDuration(timeout));
+		while (this->ros_node->ok()) {
+			this->ros_queue.callAvailable(ros::WallDuration(timeout));
 		}
 	}
 };
