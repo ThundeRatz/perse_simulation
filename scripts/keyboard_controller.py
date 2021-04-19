@@ -27,7 +27,7 @@ INVERT_X_AXIS = False
 INVERT_Y_AXIS = True
 
 # Namespace we are going to publish, used in the simulation
-DEFAULT_NAMESPACE = "/perse_simulation"
+DEFAULT_NAMESPACE = "/perse"
 
 DEFAULT_DEBUG = False
 

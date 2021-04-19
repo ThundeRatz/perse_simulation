@@ -15,7 +15,7 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
   <arg name="yaw" default="0"/>
   <arg name="model" default="$(find perse_simulation)/urdf/perse.xacro"/>
 
-  <group ns="perse_simulation">
+  <group ns="perse">
 
     <param name="robot_description"
       command="$(find xacro)/xacro $(arg model)" />
@@ -36,7 +36,7 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
               file="$(find perse_simulation)/config/motor_drive.yaml" /> -->
 
     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-      <param name="default_topic" value="/perse_simulation/robot_drive_controller/cmd_vel"/>
+      <param name="default_topic" value="/perse/robot_drive_controller/cmd_vel"/>
     </node>
 
     <!-- Load configs to control robot motors -->

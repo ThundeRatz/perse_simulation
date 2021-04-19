@@ -33,7 +33,7 @@ namespace gazebo {
 	private: 
 	 
 		ros::NodeHandle* ros_node;           /*!< A node use for ROS transport */
-		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /perse_simulation/joint_states */
+		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /perse/joint_states */
 		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
 		ros::CallbackQueue ros_queue;        /*!< ROS callbackqueue that helps process messages */

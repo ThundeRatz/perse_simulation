@@ -390,6 +390,6 @@
       </link>
       <pose>17.1292 8.44986 0 0 -0 0</pose>
     </model>
-    <plugin name="perse_simulation" filename="libperse_simulation.so"/>
+    <plugin name="encoder" filename="libperse_simulation.so"/>
   </world>
 </sdf>

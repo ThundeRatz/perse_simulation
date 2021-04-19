@@ -35,12 +35,12 @@ namespace gazebo {
 		ROS_INFO("Encoder plugin: Starting!");
 
 		// Create a ROS node.
-		this->ros_node = new ros::NodeHandle("gazebo_client");
+		this->ros_node = new ros::NodeHandle();
 
 		// Create a named topic, and subscribe to it.
 		ros::SubscribeOptions so =
 			ros::SubscribeOptions::create<sensor_msgs::JointState>(
-					"/perse_simulation/joint_states",
+					"/perse/joint_states",
 						1,
 					boost::bind(&EncoderPlugin::callback, this, _1),
 					ros::VoidPtr(), &this->ros_queue);
@@ -51,7 +51,7 @@ namespace gazebo {
 		this->ros_queue_thread = std::thread(std::bind(&EncoderPlugin::QueueThread, this));
 
 		// Create the publishser
-		this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("encoder", 1000);
+		this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("perse/encoder", 1000);
 	}
 		
 	/**

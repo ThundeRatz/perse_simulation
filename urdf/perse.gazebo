@@ -33,7 +33,7 @@
     <!-- Load gazebo plugin to control the robot -->
     <gazebo>
         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/perse_simulation</robotNamespace>
+            <robotNamespace>/perse</robotNamespace>
         </plugin>
     </gazebo>
 
