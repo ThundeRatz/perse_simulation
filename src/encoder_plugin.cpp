@@ -83,7 +83,7 @@ namespace gazebo {
 	void EncoderPlugin::QueueThread() {
 		static const double timeout = 0.01;
 		while (this->ros_node->ok()) {
-			this->ros_queue.callAvailable(ros::Duration(timeout));
+			this->ros_queue.callAvailable(ros::WallDuration(timeout));
 		}
 	}
 };
