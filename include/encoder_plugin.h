@@ -42,11 +42,11 @@ namespace gazebo {
 		std::thread ros_queue_thread;        /*!< A thread the keeps running the rosQueue */
 
 		void callback(const sensor_msgs::JointStateConstPtr &_msg);
+		void QueueThread();
 
 	public:
 	
 		void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
-		void QueueThread();
 	};
 };
 
