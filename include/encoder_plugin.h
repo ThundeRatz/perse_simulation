@@ -1,7 +1,7 @@
 /**
  * @file encoder_plugin.h
  * 
- * @author Lucas Guedes dos Santos (lucas.guedes@thunderatz.org)
+ * @author Lucas Guedes dos Santos <lucas.guedes@thunderatz.org>
  * 
  * @brief Plugin that simulates a Encoder, publishing (in a ROS topic) the travelled distance with a limited resolution   
  *
