@@ -1,6 +1,6 @@
 # 🧭 Perse simulation with Gazebo
 
-Simulation package for Thunderatz's Trekking robot Perse, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
+Simulation package for Thunderatz's Trekking robot Perse v.1.0, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
 
 ## ⏯ Intro
 
