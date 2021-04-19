@@ -38,7 +38,7 @@ namespace gazebo {
 		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /thunderwaze/joint_states */
 		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
-		ros::Callbackqueue ros_queue;        /*!< ROS callbackqueue that helps process messages */
+		ros::CallbackQueue ros_queue;        /*!< ROS callbackqueue that helps process messages */
 		std::thread ros_queue_thread;        /*!< A thread the keeps running the rosQueue */
 
 		void callback(const sensor_msgs::JointStateConstPtr &_msg);
@@ -49,6 +49,5 @@ namespace gazebo {
 		void QueueThread();
 	};
 };
-
 
 #endif // __SENSOR_PLUGIN_H__
