@@ -390,5 +390,6 @@
       </link>
       <pose>17.1292 8.44986 0 0 -0 0</pose>
     </model>
+    <plugin name="thunderwaze" filename="libthunderwaze.so"/>
   </world>
 </sdf>
