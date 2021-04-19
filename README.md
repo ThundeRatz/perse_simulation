@@ -1,6 +1,6 @@
-# 🧭 ThunderWaze simulation with Gazebo
+# 🧭 Perse simulation with Gazebo
 
-Simulation package for Thunderatz's robot ThunderWaze v.4.0, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
+Simulation package for Thunderatz's Trekking robot Perse, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
 
 ## ⏯ Intro
 
@@ -9,7 +9,7 @@ Fork of [vss_simulation](https://github.com/ThundeRatz/vss_simulation)
 To run the simulation:
 
 ```bash
-roslaunch thunderwaze gazebo.launch
+roslaunch perse_simulation gazebo.launch
 ```
 
 ## 🕹 Control
@@ -41,7 +41,7 @@ sudo apt install ros-noetic-position-controllers ros-noetic-velocity-controllers
 Or with ```rosdep```
 
 ```bash
-rosdep install thunderwaze
+rosdep install perse_simulation
 ```
 
 ## 🎨 Gazebo colors
@@ -52,8 +52,8 @@ To create new colors, check the OGRE script inside ./media/materials/scripts
 
 ## 📷 Screenshots
 
-![foto1](./docs/thunderwaze-1.png)
+![foto1](./docs/perse-1.png)
 
-![foto2](./docs/thunderwaze-2.png)
+![foto2](./docs/perse-2.png)
 
-![foto3](./docs/thunderwaze-3.png)
+![foto3](./docs/perse-3.png)

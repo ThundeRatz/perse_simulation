@@ -40,7 +40,7 @@ namespace gazebo {
 		// Create a named topic, and subscribe to it.
 		ros::SubscribeOptions so =
 			ros::SubscribeOptions::create<sensor_msgs::JointState>(
-					"/thunderwaze/joint_states",
+					"/perse_simulation/joint_states",
 						1,
 					boost::bind(&EncoderPlugin::callback, this, _1),
 					ros::VoidPtr(), &this->ros_queue);

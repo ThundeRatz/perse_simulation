@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<robot name="thunderwaze" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="perse" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <link name="corpo"/>
 
@@ -10,18 +10,18 @@
   </joint>
 
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
-  <xacro:include filename="$(find thunderwaze)/urdf/thunderwaze.gazebo" />
+  <xacro:include filename="$(find perse_simulation)/urdf/perse.gazebo" />
 
   <!-- Import Rviz colors -->
-  <xacro:include filename="$(find thunderwaze)/urdf/materials.xacro" />
+  <xacro:include filename="$(find perse_simulation)/urdf/materials.xacro" />
 
   <!-- Code exported from SolidWorks -->
-  <xacro:include filename="$(find thunderwaze)/urdf/thunderwaze.urdf" />
+  <xacro:include filename="$(find perse_simulation)/urdf/perse.urdf" />
 
   <!-- Definition of motor -->
-  <xacro:include filename="$(find thunderwaze)/urdf/motor.xacro"/>
+  <xacro:include filename="$(find perse_simulation)/urdf/motor.xacro"/>
 
-  <xacro:include filename="$(find thunderwaze)/urdf/colors.xacro"/>
+  <xacro:include filename="$(find perse_simulation)/urdf/colors.xacro"/>
 
   <xacro:motor joint_name="wheel_back_left" gear_rate="1"/>
   <xacro:motor joint_name="wheel_back_right" gear_rate="1"/>
