@@ -14,19 +14,17 @@
 #ifndef __SENSOR_PLUGIN_H__
 #define __SENSOR_PLUGIN_H__
 
-
-#include <gazebo/common/Plugin.hh>
+#include <cmath>
 #include <thread>
+#include <gazebo/common/Plugin.hh>
 #include "ros/ros.h"
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
 #include "std_msgs/Float64MultiArray.h"
 #include "sensor_msgs/JointState.h"
-#include <cmath>
 
 #define wheel_radius 0.06   //robot wheel radius
 #define resolution 2		//number of encoder updates at each turn of the wheel
-
 
 namespace gazebo {
 
@@ -35,7 +33,7 @@ namespace gazebo {
 	private: 
 	 
 		ros::NodeHandle* ros_node;           /*!< A node use for ROS transport */
-		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /thunderwaze/joint_states */
+		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /perse/joint_states */
 		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
 		ros::CallbackQueue ros_queue;        /*!< ROS callbackqueue that helps process messages */

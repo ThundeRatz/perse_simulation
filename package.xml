@@ -1,10 +1,10 @@
 <package format="2">
-  <name>thunderwaze</name>
+  <name>perse_simulation</name>
   <version>1.0.0</version>
   <description>
-    <p>URDF Description package for ThunderWaze</p>
+    <p>URDF Description package for Perse</p>
     <p>This package contains configuration data, 3D models and launch files
-for ThunderWaze robot</p>
+for Perse robot</p>
   </description>
 
   <author email="felipe.gomes@thunderatz.org">Felipe Gomes de Melo</author>

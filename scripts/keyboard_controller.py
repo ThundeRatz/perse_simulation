@@ -27,7 +27,7 @@ INVERT_X_AXIS = False
 INVERT_Y_AXIS = True
 
 # Namespace we are going to publish, used in the simulation
-DEFAULT_NAMESPACE = "/thunderwaze"
+DEFAULT_NAMESPACE = "/perse"
 
 DEFAULT_DEBUG = False
 
@@ -68,7 +68,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
     rate = None
 
     # Start ROS configs
-    rospy.init_node('thunderwaze_human_controller')
+    rospy.init_node('perse_human_controller')
 
     vel_pub = rospy.Publisher(
             getNamespace() + '/robot_drive_controller/cmd_vel',

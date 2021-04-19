@@ -2,7 +2,7 @@ import * from "grid.material"
 
 // Ref: http://wiki.ogre3d.org/Materials
 
-material Waze/Base
+material Perse/Base
 {
   technique
   {
@@ -15,7 +15,7 @@ material Waze/Base
   }
 }
 
-material Waze/Chasis
+material Perse/Chasis
 {
   technique
   {
@@ -28,7 +28,7 @@ material Waze/Chasis
   }
 }
 
-material Waze/Bumper
+material Perse/Bumper
 {
   technique
   {
@@ -41,7 +41,7 @@ material Waze/Bumper
   }
 }
 
-material Waze/BattHolder
+material Perse/BattHolder
 {
   technique
   {
@@ -58,7 +58,7 @@ material Waze/BattHolder
   }
 }
 
-material Waze/Cover
+material Perse/Cover
 {
   technique
   {

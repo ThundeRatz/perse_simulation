@@ -289,7 +289,7 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='thunderwaze'>
+      <model name='perse'>
         <pose>-0.25 0 0.4 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='bumper_link'>
@@ -390,6 +390,6 @@
       </link>
       <pose>17.1292 8.44986 0 0 -0 0</pose>
     </model>
-    <plugin name="thunderwaze" filename="libthunderwaze.so"/>
+    <plugin name="encoder" filename="libperse_simulation.so"/>
   </world>
 </sdf>

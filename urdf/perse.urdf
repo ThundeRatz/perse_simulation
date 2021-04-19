@@ -2,7 +2,7 @@
 <!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
      Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
      For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
-<robot name="thunderwaze">
+<robot name="perse">
   <link name="base_link">
     <inertial>
       <origin xyz="0.168983151004299 0.00691298433678258 0.000423190257476187" rpy="0 0 0" />
@@ -12,7 +12,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/base_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -34,7 +34,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/chasis_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/chasis_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -58,7 +58,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://thunderwaze/meshes/wheel_front_left_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/wheel_front_left_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
@@ -89,7 +89,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://thunderwaze/meshes/wheel_front_right_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/wheel_front_right_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -120,7 +120,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://thunderwaze/meshes/wheel_back_right_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/wheel_back_right_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -151,7 +151,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://thunderwaze/meshes/wheel_back_left_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/wheel_back_left_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -181,7 +181,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/bumper_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/bumper_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -210,7 +210,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/cover_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/cover_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.909803921568627 0.443137254901961 0.0313725490196078 0.1" />
@@ -219,7 +219,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/cover_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/cover_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -238,7 +238,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/cover_support_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/cover_support_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
@@ -260,7 +260,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/batt_holder_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/batt_holder_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 0 1 0.1" />
@@ -282,7 +282,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/batt_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/batt_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -304,7 +304,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/cam_holder_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/cam_holder_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
@@ -326,7 +326,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://thunderwaze/meshes/cam_link.STL" />
+        <mesh filename="package://perse_simulation/meshes/cam_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
