@@ -1,6 +1,6 @@
 # 🧭 ThunderWaze simulation with Gazebo
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Simulation package for Thunderatz's robot ThunderWaze v.4.0, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
@@ -75,6 +75,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/mariarezende07"><img src="https://avatars.githubusercontent.com/u/54939351?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maria Fernanda Rezende</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=mariarezende07" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=mariarezende07" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Amariarezende07" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/guedeslucas1"><img src="https://avatars.githubusercontent.com/u/49926722?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guedeslucas1</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Aguedeslucas1" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/FelipeGdM"><img src="https://avatars.githubusercontent.com/u/1054087?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Gomes de Melo</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3AFelipeGdM" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/febagni"><img src="https://avatars.githubusercontent.com/u/39801091?v=4?s=100" width="100px;" alt=""/><br /><sub><b>febagni</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Afebagni" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
