@@ -20,6 +20,17 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "toquinho",
+      "name": "Toco Dev",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7384200?v=4",
+      "profile": "http://toco.computer/",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 6

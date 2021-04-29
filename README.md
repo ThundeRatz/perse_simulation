@@ -1,6 +1,6 @@
 # 🧭 ThunderWaze simulation with Gazebo
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Simulation package for Thunderatz's robot ThunderWaze v.4.0, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
@@ -71,6 +71,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://github.com/DamaralHenrique"><img src="https://avatars.githubusercontent.com/u/62445591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DamaralHenrique</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits?author=DamaralHenrique" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits?author=DamaralHenrique" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ADamaralHenrique" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://toco.computer/"><img src="https://avatars.githubusercontent.com/u/7384200?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Toco Dev</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits?author=toquinho" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits?author=toquinho" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Atoquinho" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
