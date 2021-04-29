@@ -3,48 +3,76 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Simulation package for Thunderatz's robot Perse, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
+  - [⏯ Intro](#-intro)
+  - [🕹 Control](#-control)
+  - [Dependencies](#dependencies)
+  - [🎨 Gazebo colors](#-gazebo-colors)
+  - [📷 Screenshots](#-screenshots)
+  - [Contributors ✨](#contributors-)
 
 ## ⏯ Intro
 
-Fork of [vss_simulation](https://github.com/ThundeRatz/vss_simulation)
+Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/perse/tree/develop), build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
+
+## 🎈 Getting started
+
+### 🔨 Compiling
+
+To compile the project, you can run the folowing command in the current catkin workspace root:
+
+```bash
+catkin build
+```
+
+It's a better version from the `catkin_make` because it builds different packages in parallel, making it faster; It also has a more colorful and easily-readable terminal when building; And it provides extra commands, such as `catkin clean`.
+
+To use it, you have to install python catkin packages:
+
+```bash
+sudo apt-get install python3-catkin-tools
+```
+
+Alternatively, you can use the default option:
+
+```bash
+catkin_make
+```
+
+### 🚀 Running
 
 To run the simulation:
 
 ```bash
-roslaunch thunderwaze gazebo.launch
+roslaunch perse_simulation gazebo.launch
 ```
 
 ## 🕹 Control
 
-The simulation receives a [geometry_msgs/Twist](http://docs.ros.org/noetic/api/geometry_msgs/html/msg/Twist.html) describing the robot movement
+You can control the robot though 3 ways:
 
-```c
-# This expresses velocity in free space broken into its linear and angular parts.
-Vector3  linear
-Vector3  angular
+### 🚀 Gazebo controls
+
+The gazebo simulation has it`s own controls which allows you to change the linear and angular velocity of the robot.
+
+### 🚀 Keyboard
+
+python3 scrips/controller.py
+
+### 🚀 Perse repository
+
+The [Perse](https://github.com/ThundeRatz/perse/tree/develop) repository has it`s own launcher that allows the robot to run by itself. To start the main control node, which uses odometry (IMU + Encoder) to reach the 3 points, run the folowing command:
+
+```bash
+roslaunch perse odometry.launch
 ```
+You can find more details [Here](https://github.com/ThundeRatz/perse/tree/develop#-running)
 
-Future versions should reveice 2 std_msgs/Float64 messages for the motor speed and the servo direction
-
-## Dependencies
+## Dependencies //emoji
 
 To install ROS and Gazebo, use the command:
 
 ```bash
 sudo apt install ros-noetic-desktop-full
-```
-
-The project requires the libraries velocity_controllers and position_controllers inside [ros_controllers](https://github.com/ros-controls/ros_controllers) and the python library [pygame](https://github.com/pygame/pygame). It is possible to install with ```apt-get```
-
-```bash
-sudo apt install ros-noetic-position-controllers ros-noetic-velocity-controllers python-pygame
-```
-
-Or with ```rosdep```
-
-```bash
-rosdep install thunderwaze
 ```
 
 ## 🎨 Gazebo colors
@@ -62,7 +90,7 @@ To create new colors, check the OGRE script inside ./media/materials/scripts
   <img height=200px src="./docs/perse-4.jpeg" />
 </p>
 
-## Contributors ✨
+## ✨ Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
@@ -88,5 +116,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Select the emoji to get more info on the member contribution!
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
