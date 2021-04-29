@@ -1,14 +1,34 @@
 # 🧭 Perse simulation with Gazebo
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+<p align="center">
+<img src="https://img.shields.io/badge/ROS%20version-noetic-informational?style=for-the-badge" href="http://wiki.ros.org/noetic"/>
+<img src="https://img.shields.io/badge/Gazebo%20version-11-important?style=for-the-badge" href="http://gazebosim.org/"/> 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<img src="https://img.shields.io/badge/all_contributors-8-orange.svg?style=for-the-badge" href="#-contributors"/>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+</p>
+
+<p align="center">
+<img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" href ="https://forthebadge.com"/>
+<img src="https://forthebadge.com/images/badges/built-with-love.svg" href ="https://forthebadge.com"/>
+<img src="https://forthebadge.com/images/badges/it-works-why.svg" href ="https://forthebadge.com"/>
+
+</p>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+- [🧭 Perse simulation with Gazebo](#-perse-simulation-with-gazebo)
   - [⏯ Intro](#-intro)
-  - [🕹 Control](#-control)
-  - [Dependencies](#dependencies)
+  - [🎈 Getting started](#-getting-started)
+    - [🔨 Compiling](#-compiling)
+    - [🚀 Running](#-running)
+  - [🕹️ Control](#️-control)
+    - [🎮 Gazebo controls](#-gazebo-controls)
+    - [⌨️ Keyboard](#️-keyboard)
+    - [💻 Perse repository](#-perse-repository)
+  - [🗃️ Dependencies](#️-dependencies)
   - [🎨 Gazebo colors](#-gazebo-colors)
   - [📷 Screenshots](#-screenshots)
-  - [Contributors ✨](#contributors-)
+  - [✨ Contributors](#-contributors)
 
 ## ⏯ Intro
 
@@ -40,39 +60,54 @@ catkin_make
 
 ### 🚀 Running
 
-To run the simulation:
+To start the simulation, run the following command:
 
 ```bash
 roslaunch perse_simulation gazebo.launch
 ```
 
-## 🕹 Control
+## 🕹️ Control
 
 You can control the robot though 3 ways:
 
-### 🚀 Gazebo controls
+### 🎮 Gazebo controls
 
-The gazebo simulation has it`s own controls which allows you to change the linear and angular velocity of the robot.
+The gazebo simulation has it`s own controls which allows you to change the linear and angular velocity of the robot. It starts along the simulation launch.
 
-### 🚀 Keyboard
+### ⌨️ Keyboard
 
-python3 scrips/controller.py
+You can control the robot by the keyboard running the following command:
+```bash
+python3 scrips/keyboard_controller.py
+```
 
-### 🚀 Perse repository
+### 💻 Perse repository
 
 The [Perse](https://github.com/ThundeRatz/perse/tree/develop) repository has it`s own launcher that allows the robot to run by itself. To start the main control node, which uses odometry (IMU + Encoder) to reach the 3 points, run the folowing command:
 
 ```bash
 roslaunch perse odometry.launch
 ```
-You can find more details [Here](https://github.com/ThundeRatz/perse/tree/develop#-running)
+You can find more details [here](https://github.com/ThundeRatz/perse/tree/develop#-running)
 
-## Dependencies //emoji
+## 🗃️ Dependencies
 
 To install ROS and Gazebo, use the command:
 
 ```bash
 sudo apt install ros-noetic-desktop-full
+```
+
+The project requires the libraries velocity_controllers and position_controllers inside [ros_controllers](https://github.com/ros-controls/ros_controllers) and the python library [pygame](https://github.com/pygame/pygame). It is possible to install with ```apt-get```
+
+```bash
+sudo apt install ros-noetic-position-controllers ros-noetic-velocity-controllers python-pygame
+```
+
+Or with ```rosdep```
+
+```bash
+rosdep install thunderwaze
 ```
 
 ## 🎨 Gazebo colors
