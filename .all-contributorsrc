@@ -31,6 +31,17 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "mariarezende07",
+      "name": "Maria Fernanda Rezende",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54939351?v=4",
+      "profile": "https://github.com/mariarezende07",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 6
