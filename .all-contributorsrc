@@ -83,6 +83,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "d-nery",
+      "name": "Daniel Nery",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12468184?v=4",
+      "profile": "https://github.com/d-nery",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 6
