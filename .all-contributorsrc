@@ -9,6 +9,18 @@
   "imageSize": 100,
   "commit": true,
   "commitConvention": "gitmoji",
+  "types": {
+    "code": {
+      "symbol": "💻",
+      "description": "Code",
+      "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/commits/develop?author=<%= contributor.login %>"
+    },
+    "doc": {
+      "symbol": "📖",
+      "description": "Documentation",
+      "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/commits/develop?author=<%= contributor.login %>"
+    }
+  },
   "contributors": [
     {
       "login": "DamaralHenrique",
@@ -51,6 +63,15 @@
       "contributions": [
         "code",
         "doc",
+        "review"
+      ]
+    },
+    {
+      "login": "FelipeGdM",
+      "name": "Felipe Gomes de Melo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1054087?v=4",
+      "profile": "https://github.com/FelipeGdM",
+      "contributions": [
         "review"
       ]
     }
