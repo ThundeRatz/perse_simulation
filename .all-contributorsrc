@@ -42,6 +42,17 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "guedeslucas1",
+      "name": "guedeslucas1",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49926722?v=4",
+      "profile": "https://github.com/guedeslucas1",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 6
