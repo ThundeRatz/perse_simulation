@@ -1,0 +1,26 @@
+{
+  "projectName": "perse_simulation",
+  "projectOwner": "ThundeRatz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
+  "contributors": [
+    {
+      "login": "DamaralHenrique",
+      "name": "DamaralHenrique",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62445591?v=4",
+      "profile": "https://github.com/DamaralHenrique",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 6
+}
