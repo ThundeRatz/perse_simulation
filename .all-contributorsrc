@@ -19,6 +19,11 @@
       "symbol": "📖",
       "description": "Documentation",
       "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/commits/develop?author=<%= contributor.login %>"
+    },
+    "mod": {
+      "symbol": "🎨",
+      "description": "Modeling",
+      "link": "https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes"
     }
   },
   "contributors": [
@@ -30,7 +35,8 @@
       "contributions": [
         "code",
         "doc",
-        "review"
+        "review",
+        "mod"
       ]
     },
     {
@@ -61,7 +67,10 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/1054087?v=4",
       "profile": "https://github.com/FelipeGdM",
       "contributions": [
-        "review"
+        "code",
+        "review",
+        "ideas",
+        "mod"
       ]
     },
     {
@@ -90,7 +99,17 @@
       "contributions": [
         "code",
         "doc",
-        "review"
+        "review",
+        "ideas"
+      ]
+    },
+    {
+      "login": "lucastrschneider",
+      "name": "Lucas Schneider",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50970346?v=4",
+      "profile": "https://github.com/lucastrschneider",
+      "contributions": [
+        "mod"
       ]
     }
   ],

@@ -1,9 +1,9 @@
-# 🧭 ThunderWaze simulation with Gazebo
+# 🧭 Perse simulation with Gazebo
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Simulation package for Thunderatz's robot ThunderWaze v.4.0, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
+Simulation package for Thunderatz's robot Perse, build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
 
 ## ⏯ Intro
 
@@ -55,11 +55,12 @@ To create new colors, check the OGRE script inside ./media/materials/scripts
 
 ## 📷 Screenshots
 
-![foto1](./docs/thunderwaze-1.png)
-
-![foto2](./docs/thunderwaze-2.png)
-
-![foto3](./docs/thunderwaze-3.png)
+<p align="center">
+  <img height=200px src="./docs/perse-1.jpeg" />
+  <img height=200px src="./docs/perse-2.jpeg" />
+  <img height=200px src="./docs/perse-3.jpeg" />
+  <img height=200px src="./docs/perse-4.jpeg" />
+</p>
 
 ## Contributors ✨
 
@@ -70,15 +71,16 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/DamaralHenrique"><img src="https://avatars.githubusercontent.com/u/62445591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DamaralHenrique</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ADamaralHenrique" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/DamaralHenrique"><img src="https://avatars.githubusercontent.com/u/62445591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DamaralHenrique</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ADamaralHenrique" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
     <td align="center"><a href="https://github.com/mariarezende07"><img src="https://avatars.githubusercontent.com/u/54939351?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maria Fernanda Rezende</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=mariarezende07" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=mariarezende07" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Amariarezende07" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/guedeslucas1"><img src="https://avatars.githubusercontent.com/u/49926722?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guedeslucas1</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Aguedeslucas1" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/FelipeGdM"><img src="https://avatars.githubusercontent.com/u/1054087?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Gomes de Melo</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3AFelipeGdM" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/FelipeGdM"><img src="https://avatars.githubusercontent.com/u/1054087?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Gomes de Melo</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=FelipeGdM" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3AFelipeGdM" title="Reviewed Pull Requests">👀</a> <a href="#ideas-FelipeGdM" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
     <td align="center"><a href="https://github.com/febagni"><img src="https://avatars.githubusercontent.com/u/39801091?v=4?s=100" width="100px;" alt=""/><br /><sub><b>febagni</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Afebagni" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/d-nery"><img src="https://avatars.githubusercontent.com/u/12468184?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Nery</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Ad-nery" title="Reviewed Pull Requests">👀</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/Tocoquinho"><img src="https://avatars.githubusercontent.com/u/37677881?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tocoquinho</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=Tocoquinho" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=Tocoquinho" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ATocoquinho" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/Tocoquinho"><img src="https://avatars.githubusercontent.com/u/37677881?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tocoquinho</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=Tocoquinho" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=Tocoquinho" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ATocoquinho" title="Reviewed Pull Requests">👀</a> <a href="#ideas-Tocoquinho" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://github.com/lucastrschneider"><img src="https://avatars.githubusercontent.com/u/50970346?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Schneider</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
   </tr>
 </table>
 
