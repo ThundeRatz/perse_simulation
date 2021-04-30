@@ -32,7 +32,7 @@
 
 ## ⏯ Intro
 
-Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/perse/tree/develop), build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1)
+Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/perse/tree/develop), build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1). This repository contains the robot and map models.
 
 ## 🎈 Getting started
 
@@ -68,7 +68,7 @@ roslaunch perse_simulation gazebo.launch
 
 ## 🕹️ Control
 
-You can control the robot though 3 ways:
+There are 3 ways for you to controll the robot.
 
 ### 🎮 Gazebo controls
 
