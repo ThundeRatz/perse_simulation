@@ -1,4 +1,6 @@
-# 🧭 Perse simulation with Gazebo
+<h1 align="center">
+    🧭 Perse simulation with Gazebo
+</h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 <p align="center">
 <img src="https://img.shields.io/badge/ROS%20version-noetic-informational?style=for-the-badge" href="http://wiki.ros.org/noetic"/>
