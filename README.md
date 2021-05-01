@@ -1,9 +1,20 @@
 <h1 align="center">
     🧭 Perse simulation with Gazebo
 </h1>
+<p align="center">
+<img src="https://img.shields.io/badge/ROS%20version-noetic-informational?style=for-the-badge" href="http://wiki.ros.org/noetic"/>
+<img src="https://img.shields.io/badge/Gazebo%20version-11-important?style=for-the-badge" href="http://gazebosim.org/"/> 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
+<img src="https://img.shields.io/badge/all_contributors-8-orange.svg?style=for-the-badge" href="#-contributors"/>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+</p>
+
+<p align="center">
+<img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" href ="https://forthebadge.com"/>
+<img src="https://forthebadge.com/images/badges/built-with-love.svg" href ="https://forthebadge.com"/>
+<img src="https://forthebadge.com/images/badges/it-works-why.svg" href ="https://forthebadge.com"/>
+
+</p>
 
 - [⏯ Intro](#-intro)
 - [📷 Screenshots](#-screenshots)
