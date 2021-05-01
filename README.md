@@ -2,17 +2,7 @@
     🧭 Perse simulation with Gazebo
 </h1>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<p align="center">
-<img src="https://img.shields.io/badge/ROS%20version-noetic-informational?style=for-the-badge" href="http://wiki.ros.org/noetic"/>
-<img src="https://img.shields.io/badge/Gazebo%20version-11-important?style=for-the-badge" href="http://gazebosim.org/"/> 
-<img src="https://img.shields.io/badge/all_contributors-8-orange.svg?style=for-the-badge" href="#-contributors"/>
-</p>
-<p align="center">
-<img src="https://forthebadge.com/images/badges/made-with-c-plus-plus.svg" href ="https://forthebadge.com"/>
-<img src="https://forthebadge.com/images/badges/built-with-love.svg" href ="https://forthebadge.com"/>
-<img src="https://forthebadge.com/images/badges/it-works-why.svg" href ="https://forthebadge.com"/>
-
-</p>
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 - [⏯ Intro](#-intro)
@@ -132,11 +122,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/DamaralHenrique"><img src="https://avatars.githubusercontent.com/u/62445591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>DamaralHenrique</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ADamaralHenrique" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
+    <td align="center"><a href="https://github.com/DamaralHenrique"><img src="https://avatars.githubusercontent.com/u/62445591?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Henrique D`Amaral</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=DamaralHenrique" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ADamaralHenrique" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
     <td align="center"><a href="https://github.com/mariarezende07"><img src="https://avatars.githubusercontent.com/u/54939351?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maria Fernanda Rezende</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=mariarezende07" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=mariarezende07" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Amariarezende07" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/guedeslucas1"><img src="https://avatars.githubusercontent.com/u/49926722?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guedeslucas1</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Aguedeslucas1" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/guedeslucas1"><img src="https://avatars.githubusercontent.com/u/49926722?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Guedes</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=guedeslucas1" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Aguedeslucas1" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/FelipeGdM"><img src="https://avatars.githubusercontent.com/u/1054087?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Gomes de Melo</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=FelipeGdM" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3AFelipeGdM" title="Reviewed Pull Requests">👀</a> <a href="#ideas-FelipeGdM" title="Ideas, Planning, & Feedback">🤔</a> <a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
-    <td align="center"><a href="https://github.com/febagni"><img src="https://avatars.githubusercontent.com/u/39801091?v=4?s=100" width="100px;" alt=""/><br /><sub><b>febagni</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Afebagni" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="https://github.com/febagni"><img src="https://avatars.githubusercontent.com/u/39801091?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Felipe Bagni</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Afebagni" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/d-nery"><img src="https://avatars.githubusercontent.com/u/12468184?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Daniel Nery</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3Ad-nery" title="Reviewed Pull Requests">👀</a></td>
   </tr>
   <tr>
@@ -150,6 +140,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Select the emoji to get more info on the member contribution!
+Click on the emoji to get more info on the member contribution!
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
