@@ -16,6 +16,7 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 - [⏯ Intro](#-intro)
+- [📷 Screenshots](#-screenshots)
 - [🎈 Getting started](#-getting-started)
   - [🔨 Compiling](#-compiling)
   - [🚀 Running](#-running)
@@ -25,12 +26,20 @@
   - [💻 Perse repository](#-perse-repository)
 - [🗃️ Dependencies](#️-dependencies)
 - [🎨 Gazebo colors](#-gazebo-colors)
-- [📷 Screenshots](#-screenshots)
 - [✨ Contributors](#-contributors)
 
 ## ⏯ Intro
 
 Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/perse/tree/develop), build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1). This repository contains the robot and map models.
+
+## 📷 Screenshots
+
+<p align="center">
+  <img height=200px src="./docs/perse-1.jpeg" />
+  <img height=200px src="./docs/perse-2.jpeg" />
+  <img height=200px src="./docs/perse-3.jpeg" />
+  <img height=200px src="./docs/perse-4.jpeg" />
+</p>
 
 ## 🎈 Getting started
 
@@ -113,15 +122,6 @@ rosdep install thunderwaze
 To a complete list of default Gazebo colors, see the oficial repo [material script](https://bitbucket.org/osrf/gazebo/src/gazebo11/media/materials/scripts/gazebo.material).
 
 To create new colors, check the OGRE script inside ./media/materials/scripts
-
-## 📷 Screenshots
-
-<p align="center">
-  <img height=200px src="./docs/perse-1.jpeg" />
-  <img height=200px src="./docs/perse-2.jpeg" />
-  <img height=200px src="./docs/perse-3.jpeg" />
-  <img height=200px src="./docs/perse-4.jpeg" />
-</p>
 
 ## ✨ Contributors
 
