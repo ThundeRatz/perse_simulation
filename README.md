@@ -115,7 +115,7 @@ sudo apt install ros-noetic-position-controllers ros-noetic-velocity-controllers
 Or with ```rosdep```
 
 ```bash
-rosdep install thunderwaze
+rosdep install perse_simulation
 ```
 
 ## 🎨 Gazebo colors
