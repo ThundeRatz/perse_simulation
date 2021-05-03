@@ -18,6 +18,7 @@
 
 - [⏯ Intro](#-intro)
 - [📷 Screenshots](#-screenshots)
+- [📁 Folder Structure](#-folder-structure)
 - [🎈 Getting started](#-getting-started)
   - [🔨 Compiling](#-compiling)
   - [🚀 Running](#-running)
@@ -41,6 +42,19 @@ Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/
   <img height=200px src="./docs/perse-3.jpeg" />
   <img height=200px src="./docs/perse-4.jpeg" />
 </p>
+
+## 📁 Folder Structure
+- **config/** - Rosparam variable files, stored in .yaml
+- **docs/** - Image files used in the README.
+- **include/** - Header files.
+- **launch/** - Launch files.
+- **media/materials/scripts/** - Perse`s material script files.
+- **meshes/** - .STL Perse files.
+- **models/** - Objects model folder.
+- **scripts/** - .py files.
+- **src/** - Executables source code.
+- **urdf/** - Perse`s model files.
+- **worlds/** - .world files.
 
 ## 🎈 Getting started
 
