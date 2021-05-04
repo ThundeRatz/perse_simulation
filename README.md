@@ -94,7 +94,7 @@ There are 3 ways for you to controll the robot.
 
 ### 🎮 Gazebo controls
 
-The gazebo simulation has it`s own controls which allows you to change the linear and angular velocity of the robot. It starts along the simulation launch.
+The gazebo simulation has it's own controls which allows you to change the linear and angular velocity of the robot. It starts along the simulation launch.
 
 ### ⌨️ Keyboard
 
@@ -105,7 +105,7 @@ python3 scrips/keyboard_controller.py
 
 ### 💻 Perse repository
 
-The [Perse](https://github.com/ThundeRatz/perse/tree/develop) repository has it`s own launcher that allows the robot to run by itself. To start the main control node, which uses odometry (IMU + Encoder) to reach the 3 points, run the folowing command:
+The [Perse](https://github.com/ThundeRatz/perse/tree/develop) repository has it's own launcher that allows the robot to run by itself. To start the main control node, which uses odometry (IMU + Encoder) to reach the 3 points, run the folowing command:
 
 ```bash
 roslaunch perse odometry.launch
