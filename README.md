@@ -48,12 +48,12 @@ Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/
 - **docs/** - Image files used in the README.
 - **include/** - Header files.
 - **launch/** - Launch files.
-- **media/materials/scripts/** - Perse`s material script files.
+- **media/materials/scripts/** - Perse's material script files.
 - **meshes/** - .STL Perse files.
 - **models/** - Objects model folder.
 - **scripts/** - .py files.
 - **src/** - Executables source code.
-- **urdf/** - Perse`s model files.
+- **urdf/** - Perse's model files.
 - **worlds/** - .world files.
 
 ## 🎈 Getting started
