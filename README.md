@@ -44,7 +44,7 @@ Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/
 </p>
 
 ## 📁 Folder Structure
-- **config/** - Rosparam variable files, stored in .yaml
+- **config/** - Simulation variable files, stored in .yaml
 - **docs/** - Image files used in the README.
 - **include/** - Header files.
 - **launch/** - Launch files.
