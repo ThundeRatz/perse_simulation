@@ -44,6 +44,7 @@ Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/
 </p>
 
 ## 📁 Folder Structure
+
 - **config/** - Simulation variable files, stored in .yaml
 - **docs/** - Image files used in the README.
 - **include/** - Header files.
@@ -97,6 +98,7 @@ There are 3 ways for you to controll the robot.
 The gazebo simulation has it's own controls which allows you to change the linear and angular velocity of the robot. It starts along the simulation launch.
 
 ### ⌨️ Keyboard
+
 
 You can control the robot by the keyboard running the following command:
 ```bash
