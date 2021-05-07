@@ -61,18 +61,18 @@ Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/
 
 ### 🔨 Compiling
 
-To compile the project, you can run the folowing command in the current catkin workspace root:
-
-```bash
-catkin build
-```
-
-It's a better version from the `catkin_make` because it builds different packages in parallel, making it faster; It also has a more colorful and easily-readable terminal when building; And it provides extra commands, such as `catkin clean`.
+To compile the project, you can use `catkin build` that It's a better version from the `catkin_make` because it builds different packages in parallel, making it faster; It also has a more colorful and easily-readable terminal when building; And it provides extra commands, such as `catkin clean`.
 
 To use it, you have to install python catkin packages:
 
 ```bash
 sudo apt-get install python3-catkin-tools
+```
+
+Now you can run the folowing command in the current catkin workspace root:
+
+```bash
+catkin build
 ```
 
 Alternatively, you can use the default option:
