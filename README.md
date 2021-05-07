@@ -5,7 +5,7 @@
 <img src="https://img.shields.io/badge/ROS%20version-noetic-informational?style=for-the-badge" href="http://wiki.ros.org/noetic"/>
 <img src="https://img.shields.io/badge/Gazebo%20version-11-important?style=for-the-badge" href="http://gazebosim.org/"/> 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img src="https://img.shields.io/badge/all_contributors-8-orange.svg?style=for-the-badge" href="#-contributors"/>
+<img src="https://img.shields.io/badge/all_contributors-9-orange.svg?style=for-the-badge" href="#-contributors"/>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -159,6 +159,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/Tocoquinho"><img src="https://avatars.githubusercontent.com/u/37677881?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tocoquinho</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=Tocoquinho" title="Code">💻</a> <a href="https://github.com/ThundeRatz/perse_simulation/commits/develop?author=Tocoquinho" title="Documentation">📖</a> <a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ATocoquinho" title="Reviewed Pull Requests">👀</a> <a href="#ideas-Tocoquinho" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://github.com/lucastrschneider"><img src="https://avatars.githubusercontent.com/u/50970346?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Schneider</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes" title="Modeling">🎨</a></td>
+    <td align="center"><a href="https://github.com/LucasHaug"><img src="https://avatars.githubusercontent.com/u/39196309?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Lucas Haug</b></sub></a><br /><a href="https://github.com/ThundeRatz/perse_simulation/pulls?q=is%3Apr+reviewed-by%3ALucasHaug" title="Reviewed Pull Requests">👀</a></td>
   </tr>
 </table>
 
