@@ -32,7 +32,7 @@
 
 ## ⏯ Intro
 
-Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/perse/tree/develop), build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1). This repository contains the robot and map models.
+Simulation package for Thunderatz's robot [Perse](https://github.com/ThundeRatz/perse/tree/master), build with [ROS](http://wiki.ros.org/ROS/Introduction) and [Gazebo](http://www.gazebosim.org/tutorials?tut=guided_b1). This repository contains the robot and map models.
 
 ## 📷 Screenshots
 
@@ -107,12 +107,12 @@ python3 scrips/keyboard_controller.py
 
 ### 💻 Perse repository
 
-The [Perse](https://github.com/ThundeRatz/perse/tree/develop) repository has it's own launcher that allows the robot to run by itself. To start the main control node, which uses odometry (IMU + Encoder) to reach the 3 points, run the folowing command:
+The [Perse](https://github.com/ThundeRatz/perse/tree/master) repository has it's own launcher that allows the robot to run by itself. To start the main control node, which uses odometry (IMU + Encoder) to reach the 3 points, run the folowing command:
 
 ```bash
 roslaunch perse odometry.launch
 ```
-You can find more details [here](https://github.com/ThundeRatz/perse/tree/develop#-running)
+You can find more details [here](https://github.com/ThundeRatz/perse/tree/master#-running)
 
 ## 🗃️ Dependencies
 
