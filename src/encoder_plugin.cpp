@@ -20,9 +20,6 @@ namespace gazebo {
 	//register the plugin as a world plugin
 	GZ_REGISTER_WORLD_PLUGIN(EncoderPlugin);
 
-	/**
-	* @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
-	*/
 	void EncoderPlugin::Load(physics::WorldPtr world, sdf::ElementPtr sdf) {
 
 		// Make sure the ROS node for Gazebo has already been initialized
@@ -54,11 +51,6 @@ namespace gazebo {
 		this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("perse/encoder", 1000);
 	}
 		
-	/**
-	* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
-	*
-	* @param msg pointer to a jointState message 
-	*/
 	void EncoderPlugin::callback(const sensor_msgs::JointStateConstPtr& msg) {		
 
 		const double right_angle = msg->position[3]; //front_right wheel 
@@ -77,9 +69,6 @@ namespace gazebo {
 		this->ros_pub.publish(pub_msg);
 	}
 
-	/**
-	* @brief ROS helper function that processes messages 
-	*/
 	void EncoderPlugin::QueueThread() {
 		static const double timeout = 0.01;
 		while (this->ros_node->ok()) {

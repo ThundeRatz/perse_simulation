@@ -39,11 +39,23 @@ namespace gazebo {
 		ros::CallbackQueue ros_queue;        /*!< ROS callbackqueue that helps process messages */
 		std::thread ros_queue_thread;        /*!< A thread the keeps running the rosQueue */
 
+		/**
+		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
+		*
+		* @param msg pointer to a jointState message 
+		*/
 		void callback(const sensor_msgs::JointStateConstPtr &_msg);
+		
+		/**
+		* @brief ROS helper function that processes messages 
+		*/
 		void QueueThread();
 
 	public:
-	
+
+		/**
+		* @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
+		*/
 		void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
 	};
 };
