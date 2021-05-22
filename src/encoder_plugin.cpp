@@ -15,6 +15,9 @@
 
 #include "encoder_plugin.h"
 
+#define wheel_radius 0.06   //robot wheel radius
+#define resolution 2		//number of encoder updates at each turn of the wheel
+
 namespace gazebo {
 
 	//register the plugin as a world plugin
