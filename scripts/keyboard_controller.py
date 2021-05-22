@@ -11,7 +11,6 @@
 """
 
 import pygame
-import argparse
 import sys
 
 import rospy
@@ -35,6 +34,13 @@ DEFAULT_DEBUG = False
 # Keep it lower so he doesnt capote
 MAX_LIN_VEL = 1 # m/s
 MAX_ROT_VEL = 3 # rad/s
+
+# Defines the acceleration's ramp when using keyboard
+KEYBOARD_LINEAR_STEP = 0.03 
+KEYBOARD_LINEAR_MAX = 1.0
+
+KEYBOARD_ANGULAR_STEP = 0.35
+KEYBOARD_ANGULAR_MAX = 0.6
 
 # Commands go from -126 to 126 in a way that bytes 0xFE e 0xFF aren't used
 SCALE = 126
@@ -63,16 +69,15 @@ def drawConsole(win, font, console):
 
 def main(namespace, debug=DEFAULT_DEBUG):
 
-    vel_pub = None
-    vel_msg = None
+    vel_pub = []
     rate = None
 
     # Start ROS configs
     rospy.init_node('perse_human_controller')
 
-    vel_pub = rospy.Publisher(
-            getNamespace() + '/robot_drive_controller/cmd_vel',
-            Twist, queue_size=2)
+    vel_pub.append(rospy.Publisher(
+            getNamespace() + '/diff_drive_controller/cmd_vel',
+            Twist, queue_size=2))
 
     rate = rospy.Rate(60) # 60hz
 
@@ -80,7 +85,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
 
     # Create the window
     win = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
-    pygame.display.set_caption("nRFDongle Comunication Interface")
+    pygame.display.set_caption("Keyboard Comunication Interface")
 
     # List of sentences to be displayed
     console = []
@@ -109,6 +114,9 @@ def main(namespace, debug=DEFAULT_DEBUG):
         img = font.render("No Joysticks to Initialize", 1,
                           (50, 200, 50), (0, 0, 0))
         console.append(img)
+    
+    vel_lin = 0.0
+    vel_ang = 0.0
 
     running = True
     while running:
@@ -163,12 +171,13 @@ def main(namespace, debug=DEFAULT_DEBUG):
 
         # Joystick control
         if using_joystick:
-            txt = "X: {} Y: {}".format(int(axis[0]*SCALE), int(axis[1]*SCALE))
+            txt = f"Linear: {int(axis[1]*SCALE)} Angular: {int(axis[0]*SCALE)}"
+            img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
+            console.append(img)
+            console = console[-13:]
+
             if debug:
                 print(txt)
-                img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
-                console.append(img)
-                console = console[-13:]
 
             # Message created and published
             # Velocity obtained using axis variable
@@ -180,31 +189,36 @@ def main(namespace, debug=DEFAULT_DEBUG):
 
         # Keyboard control
         else:
-            # Linear velocity (W and S)
-            vel_x = 0.0
-            if state[pygame.K_w]:
-                vel_x += 0.35
-            if state[pygame.K_s]:
-                vel_x -= 0.35
+            if state[pygame.K_w] and not state[pygame.K_s]:
+                vel_lin += KEYBOARD_LINEAR_STEP
+                vel_lin = min(vel_lin, KEYBOARD_LINEAR_MAX)
+            elif state[pygame.K_s] and not state[pygame.K_w]:
+                vel_lin -= KEYBOARD_LINEAR_STEP
+                vel_lin = max(vel_lin, -KEYBOARD_LINEAR_MAX)
+            else:
+                vel_lin = 0.0
 
-            # Angular velocity (A and D)
-            vel_y = 0.0
-            if state[pygame.K_a]:
-                vel_y += 0.35
-            if state[pygame.K_d]:
-                vel_y -= 0.35
+            if state[pygame.K_a] and not state[pygame.K_d]:
+                vel_ang += KEYBOARD_ANGULAR_STEP
+                vel_ang = min(vel_ang, KEYBOARD_ANGULAR_MAX)
+            elif state[pygame.K_d] and not state[pygame.K_a]:
+                vel_ang -= KEYBOARD_ANGULAR_STEP
+                vel_ang = max(vel_ang, -KEYBOARD_ANGULAR_MAX)
+            else:
+                vel_ang = 0.0
 
-            txt = "X: {} Y: {}".format(int(vel_x*SCALE), int(vel_y*SCALE))
+            txt = f"Linear: {int(vel_lin*SCALE)} Angular: {int(vel_ang*SCALE)}"
+            img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
+            console.append(img)
+            console = console[-13:]
+
             if debug:
                 print(txt)
-                img = font.render(txt, 1, (50, 200, 50), (0, 0, 0))
-                console.append(img)
-                console = console[-13:]
 
             # Message created and published
             vel_msg = Twist()
-            vel_msg.linear.x = vel_x*MAX_LIN_VEL
-            vel_msg.angular.z = vel_y*MAX_ROT_VEL
+            vel_msg.linear.x = vel_lin*MAX_LIN_VEL
+            vel_msg.angular.z = vel_ang*MAX_ROT_VEL
 
             vel_pub.publish(vel_msg)
 
