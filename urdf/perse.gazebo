@@ -36,7 +36,7 @@
             <robotNamespace>/perse</robotNamespace>
         </plugin>
     </gazebo>
-
+    
      <!-- camera -->
     <gazebo reference="cam_link">
         <sensor type="camera" name="camera1">
@@ -86,5 +86,10 @@
             <gaussianNoise>0.0</gaussianNoise>
             <updateRate>200.0</updateRate>
         </plugin>
+    </gazebo>
+
+    <!-- encoder plugin-->
+    <gazebo>
+        <plugin name="encoder" filename="libperse_simulation.so"/>
     </gazebo>
 </robot>

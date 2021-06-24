@@ -19,63 +19,37 @@
 #define resolution 2		//number of encoder updates at each turn of the wheel
 
 namespace gazebo {
-
-	//register the plugin as a world plugin
-	GZ_REGISTER_WORLD_PLUGIN(EncoderPlugin);
-
-	void EncoderPlugin::Load(physics::WorldPtr world, sdf::ElementPtr sdf) {
-
-		// Make sure the ROS node for Gazebo has already been initialized
-		if (!ros::isInitialized()) {
-			ROS_FATAL_STREAM("A ROS node for Gazebo has not been initialized, unable to load plugin. "
-				<< "Load the Gazebo system plugin 'libgazebo_ros_api_plugin.so' in the gazebo_ros package)");
-			return;
-		}
-
+	GZ_REGISTER_MODEL_PLUGIN(EncoderPlugin)
+	void EncoderPlugin::Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/) {
 		ROS_INFO("Encoder plugin: Starting!");
 
-		// Create a ROS node.
-		this->ros_node = new ros::NodeHandle();
-
-		// Create a named topic, and subscribe to it.
-		ros::SubscribeOptions so =
-			ros::SubscribeOptions::create<sensor_msgs::JointState>(
-					"/perse/joint_states",
-						1,
-					boost::bind(&EncoderPlugin::callback, this, _1),
-					ros::VoidPtr(), &this->ros_queue);
-
-		this->ros_sub = this->ros_node->subscribe(so);
-
-		// Spin up the queue helper thread.
-		this->ros_queue_thread = std::thread(std::bind(&EncoderPlugin::QueueThread, this));
-
 		// Create the publishser
+		this->ros_node = new ros::NodeHandle();
 		this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("perse/encoder", 1000);
-	}
 		
-	void EncoderPlugin::callback(const sensor_msgs::JointStateConstPtr& msg) {		
+		this->model = _parent;
 
-		const double right_angle = msg->position[3]; //front_right wheel 
-		const double left_angle = msg->position[2];  //front_left wheel
-		
-		// Value of the increasing noticed by the encoder
-		float angle_division = 2*M_PI/resolution;
+		this->jointR1_ = this->model->GetJoint("wheel_back_left_joint");
+
+		this->updateConnection = event::Events::ConnectWorldUpdateBegin(
+          std::bind(&EncoderPlugin::OnUpdate, this));
+	}
+
+	// Called by the world update start event
+	void EncoderPlugin::OnUpdate() {
+		double right_angle = this->jointR1_->Position(3);
+    	double left_angle = this->jointR1_->Position(2);
+
+    	// Value of the increasing noticed by the encoder
+    	float angle_division = 2*M_PI/resolution;
 
 		// The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
 		// Multiplying by "angle_distance" we can obtain the angle variation noticed by the encoder
 		// Multiplying now by "wheel_radius" the result is the distance traveled 
 		float right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
 		float left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
-		
-		pub_msg.data = {left_distance, right_distance};
-		this->ros_pub.publish(pub_msg);
-	}
 
-	void EncoderPlugin::QueueThread() {
-		static const double timeout = 0.01;
-		while (this->ros_node->ok()) {
-			this->ros_queue.callAvailable(ros::WallDuration(timeout));
-		}
-	}
-};
+    	pub_msg.data = {left_distance, right_distance};
+	  	this->ros_pub.publish(pub_msg);
+  	}  
+}

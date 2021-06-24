@@ -17,43 +17,36 @@
 #include <cmath>
 #include <thread>
 #include <gazebo/common/Plugin.hh>
+#include <gazebo/common/common.hh>
 #include "ros/ros.h"
 #include "ros/callback_queue.h"
 #include "ros/subscribe_options.h"
 #include "std_msgs/Float64MultiArray.h"
 #include "sensor_msgs/JointState.h"
+#include <gazebo/physics/Model.hh>
+#include <gazebo/physics/Joint.hh>
+
 
 namespace gazebo {
-
-	class EncoderPlugin : public WorldPlugin {
+	class EncoderPlugin : public ModelPlugin {
 
 	private: 
-	 
 		ros::NodeHandle* ros_node;           /*!< A node use for ROS transport */
-		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /perse/joint_states */
 		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
-		ros::CallbackQueue ros_queue;        /*!< ROS callbackqueue that helps process messages */
-		std::thread ros_queue_thread;        /*!< A thread the keeps running the rosQueue */
+		event::ConnectionPtr updateConnection;
+		physics::JointPtr jointR1_;
+		physics::ModelPtr model;
 
+	public: 
+		void Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/);
+		
 		/**
 		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
 		*
 		* @param msg pointer to a jointState message 
 		*/
-		void callback(const sensor_msgs::JointStateConstPtr &_msg);
-		
-		/**
-		* @brief ROS helper function that processes messages 
-		*/
-		void QueueThread();
-
-	public:
-
-		/**
-		* @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
-		*/
-		void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
+		void OnUpdate();
 	};
 };
 
