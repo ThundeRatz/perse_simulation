@@ -1,0 +1,127 @@
+{
+  "projectName": "perse_simulation",
+  "projectOwner": "ThundeRatz",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "badgeTemplate": "<img src=\"https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=for-the-badge\" href=\"#-contributors\"/>",
+  "imageSize": 100,
+  "commit": true,
+  "commitConvention": "gitmoji",
+  "types": {
+    "code": {
+      "symbol": "💻",
+      "description": "Code",
+      "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/commits/develop?author=<%= contributor.login %>"
+    },
+    "doc": {
+      "symbol": "📖",
+      "description": "Documentation",
+      "link": "<%= options.repoHost %>/<%= options.projectOwner %>/<%= options.projectName %>/commits/develop?author=<%= contributor.login %>"
+    },
+    "mod": {
+      "symbol": "🎨",
+      "description": "Modeling",
+      "link": "https://github.com/ThundeRatz/perse_simulation/tree/develop/meshes"
+    }
+  },
+  "contributors": [
+    {
+      "login": "DamaralHenrique",
+      "name": "Henrique D`Amaral",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62445591?v=4",
+      "profile": "https://github.com/DamaralHenrique",
+      "contributions": [
+        "code",
+        "doc",
+        "review",
+        "mod"
+      ]
+    },
+    {
+      "login": "mariarezende07",
+      "name": "Maria Fernanda Rezende",
+      "avatar_url": "https://avatars.githubusercontent.com/u/54939351?v=4",
+      "profile": "https://github.com/mariarezende07",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
+    },
+    {
+      "login": "guedeslucas1",
+      "name": "Lucas Guedes",
+      "avatar_url": "https://avatars.githubusercontent.com/u/49926722?v=4",
+      "profile": "https://github.com/guedeslucas1",
+      "contributions": [
+        "code",
+        "doc",
+        "review"
+      ]
+    },
+    {
+      "login": "FelipeGdM",
+      "name": "Felipe Gomes de Melo",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1054087?v=4",
+      "profile": "https://github.com/FelipeGdM",
+      "contributions": [
+        "code",
+        "review",
+        "ideas",
+        "mod"
+      ]
+    },
+    {
+      "login": "febagni",
+      "name": "Felipe Bagni",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39801091?v=4",
+      "profile": "https://github.com/febagni",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "d-nery",
+      "name": "Daniel Nery",
+      "avatar_url": "https://avatars.githubusercontent.com/u/12468184?v=4",
+      "profile": "https://github.com/d-nery",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "Tocoquinho",
+      "name": "Tocoquinho",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37677881?v=4",
+      "profile": "https://github.com/Tocoquinho",
+      "contributions": [
+        "code",
+        "doc",
+        "review",
+        "ideas"
+      ]
+    },
+    {
+      "login": "lucastrschneider",
+      "name": "Lucas Schneider",
+      "avatar_url": "https://avatars.githubusercontent.com/u/50970346?v=4",
+      "profile": "https://github.com/lucastrschneider",
+      "contributions": [
+        "mod"
+      ]
+    },
+    {
+      "login": "LucasHaug",
+      "name": "Lucas Haug",
+      "avatar_url": "https://avatars.githubusercontent.com/u/39196309?v=4",
+      "profile": "https://github.com/LucasHaug",
+      "contributions": [
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 6
+}

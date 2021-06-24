@@ -3,11 +3,11 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <gazebo reference="base_link">
-        <material>Waze/Base</material>
+        <material>Perse/Base</material>
     </gazebo>
 
     <gazebo reference="chasis_link">
-        <material>Waze/Chasis</material>
+        <material>Perse/Chasis</material>
     </gazebo>
 
     <gazebo reference="wheel_front_left_link">
@@ -31,15 +31,15 @@
     </gazebo>
 
     <gazebo reference="bumper_link">
-        <material>Waze/Bumper</material>
+        <material>Perse/Bumper</material>
     </gazebo>
 
     <gazebo reference="cover_link">
-        <material>Waze/Cover</material>
+        <material>Perse/Cover</material>
     </gazebo>
 
     <gazebo reference="batt_holder_link">
-        <material>Waze/BattHolder</material>
+        <material>Perse/BattHolder</material>
     </gazebo>
 
     <gazebo reference="batt_link">

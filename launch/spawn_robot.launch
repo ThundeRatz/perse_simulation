@@ -6,16 +6,16 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
 
   <arg name="robot_number" default="1" />
   <arg name="team_number" default="0" />
-  <arg name="robot_name" default="thunderwaze" />
+  <arg name="robot_name" default="perse" />
   <arg name="x" default="0"/>
   <arg name="y" default="0"/>
   <arg name="z" default="0.4"/>
   <arg name="row" default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw" default="0"/>
-  <arg name="model" default="$(find thunderwaze)/urdf/thunderwaze.xacro"/>
+  <arg name="model" default="$(find perse_simulation)/urdf/perse.xacro"/>
 
-  <group ns="thunderwaze">
+  <group ns="perse">
 
     <param name="robot_description"
       command="$(find xacro)/xacro $(arg model)" />
@@ -29,19 +29,19 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
 
     <!-- Load configs to publish the state of all joints -->
     <rosparam command="load"
-              file="$(find thunderwaze)/config/joints.yaml" />
+              file="$(find perse_simulation)/config/joints.yaml" />
 
     <!-- Load configs to control robot motors -->
     <!-- <rosparam command="load"
-              file="$(find thunderwaze)/config/motor_drive.yaml" /> -->
+              file="$(find perse_simulation)/config/motor_drive.yaml" /> -->
 
     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-      <param name="default_topic" value="/thunderwaze/robot_drive_controller/cmd_vel"/>
+      <param name="default_topic" value="/perse/robot_drive_controller/cmd_vel"/>
     </node>
 
     <!-- Load configs to control robot motors -->
     <rosparam command="load"
-              file="$(find thunderwaze)/config/diff_drive.yaml" />
+              file="$(find perse_simulation)/config/diff_drive.yaml" />
 
     <node name="robot_controller" pkg="controller_manager" type="spawner"
       args="robot_drive_controller
