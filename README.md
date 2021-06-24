@@ -22,7 +22,7 @@
 - [🎈 Getting started](#-getting-started)
   - [🔨 Compiling](#-compiling)
   - [🚀 Running](#-running)
-  - [:memo: Formating](#memo-formating)
+  - [:memo: Before commiting](#memo-before-commiting)
 - [🕹️ Control](#️-control)
   - [🎮 Gazebo controls](#-gazebo-controls)
   - [⌨️ Keyboard](#️-keyboard)
@@ -90,9 +90,9 @@ To start the simulation, run the following command:
 roslaunch perse_simulation gazebo.launch
 ```
 
-### :memo: Formating
+### :memo: Before commiting
 
-This code has [Uncrustify](http://uncrustify.sourceforge.net/) implemented. To run it and format the code, run the following command:
+This code has [Uncrustify](http://uncrustify.sourceforge.net/) implemented. So, before pushing any commits, please, run the following command to format the code:
 
 ```bash
 .\format.sh
