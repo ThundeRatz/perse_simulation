@@ -29,16 +29,15 @@ namespace gazebo {
 		
 		this->model = _parent;
 
-		this->jointR1_ = this->model->GetJoint("wheel_back_left_joint");
+		this->right_wheel = this->model->GetJoint("wheel_front_right_joint");
+		this->left_wheel = this->model->GetJoint("wheel_front_left_joint");
 
-		this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-          std::bind(&EncoderPlugin::OnUpdate, this));
+		this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
 	}
 
-	// Called by the world update start event
 	void EncoderPlugin::OnUpdate() {
-		double right_angle = this->jointR1_->Position(3);
-    	double left_angle = this->jointR1_->Position(2);
+		double right_angle = this->right_wheel->Position();
+    	double left_angle = this->left_wheel->Position();
 
     	// Value of the increasing noticed by the encoder
     	float angle_division = 2*M_PI/resolution;

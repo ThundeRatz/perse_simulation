@@ -35,18 +35,23 @@ namespace gazebo {
 		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
 		event::ConnectionPtr updateConnection;
-		physics::JointPtr jointR1_;
+
+		physics::JointPtr right_wheel, left_wheel;
+
 		physics::ModelPtr model;
 
-	public: 
-		void Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/);
-		
 		/**
 		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
 		*
 		* @param msg pointer to a jointState message 
 		*/
 		void OnUpdate();
+
+	public:
+		/**
+		* @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
+		*/
+		void Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/);
 	};
 };
 
