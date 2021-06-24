@@ -95,7 +95,7 @@ roslaunch perse_simulation gazebo.launch
 This code has [Uncrustify](http://uncrustify.sourceforge.net/) implemented. So, before pushing any commits, please, run the following command to format the code:
 
 ```bash
-.\format.sh
+./format.sh
 ```
 
 ## 🕹️ Control
