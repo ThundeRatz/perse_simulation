@@ -22,6 +22,7 @@
 - [🎈 Getting started](#-getting-started)
   - [🔨 Compiling](#-compiling)
   - [🚀 Running](#-running)
+  - [:memo: Formating](#memo-formating)
 - [🕹️ Control](#️-control)
   - [🎮 Gazebo controls](#-gazebo-controls)
   - [⌨️ Keyboard](#️-keyboard)
@@ -87,6 +88,14 @@ To start the simulation, run the following command:
 
 ```bash
 roslaunch perse_simulation gazebo.launch
+```
+
+### :memo: Formating
+
+This code has [Uncrustify](http://uncrustify.sourceforge.net/) implemented. To run it and format the code, run the following command:
+
+```bash
+.\format.sh
 ```
 
 ## 🕹️ Control
