@@ -5,7 +5,7 @@
  * 
  * @brief Plugin that simulates a Encoder, publishing (in a ROS topic) the travelled distance with a limited resolution  
  *
- * @date 04/2021
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *

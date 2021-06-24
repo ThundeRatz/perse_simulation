@@ -5,7 +5,7 @@
  * 
  * @brief Plugin that simulates a Encoder, publishing (in a ROS topic) the travelled distance with a limited resolution   
  *
- * @date 04/2021
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
@@ -15,17 +15,11 @@
 #define __SENSOR_PLUGIN_H__
 
 #include <cmath>
-#include <thread>
 #include <gazebo/common/Plugin.hh>
-#include <gazebo/common/common.hh>
 #include "ros/ros.h"
-#include "ros/callback_queue.h"
-#include "ros/subscribe_options.h"
 #include "std_msgs/Float64MultiArray.h"
-#include "sensor_msgs/JointState.h"
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
-
 
 namespace gazebo {
 	class EncoderPlugin : public ModelPlugin {
@@ -35,9 +29,7 @@ namespace gazebo {
 		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
 		event::ConnectionPtr updateConnection;
-
 		physics::JointPtr right_wheel, left_wheel;
-
 		physics::ModelPtr model;
 
 		/**
