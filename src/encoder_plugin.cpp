@@ -24,8 +24,8 @@ namespace gazebo {
 		ROS_INFO("Encoder plugin: Starting!");
 
 		// Create the publishser
-		this->ros_node = new ros::NodeHandle();
-		this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("perse/encoder", 1000);
+		this->node_handler = new ros::NodeHandle();
+		this->encoder_pub = this->node_handler->advertise<std_msgs::Float64MultiArray>("perse/encoder", 1000);
 		
 		this->model = _parent;
 
@@ -36,8 +36,8 @@ namespace gazebo {
 	}
 
 	void EncoderPlugin::OnUpdate() {
-		double right_angle = this->right_wheel->Position();
-    	double left_angle = this->left_wheel->Position();
+		this->right_angle = this->right_wheel->Position();
+    	this->left_angle = this->left_wheel->Position();
 
     	// Value of the increasing noticed by the encoder
     	float angle_division = 2*M_PI/resolution;
@@ -49,6 +49,6 @@ namespace gazebo {
 		float left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
 
     	pub_msg.data = {left_distance, right_distance};
-	  	this->ros_pub.publish(pub_msg);
+	  	this->encoder_pub.publish(pub_msg);
   	}  
 }
