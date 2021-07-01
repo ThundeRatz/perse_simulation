@@ -31,7 +31,8 @@ namespace gazebo {
 		physics::JointPtr right_wheel, left_wheel;
 		physics::ModelPtr model;
 		float right_angle, left_angle;
-		
+		float right_distance, left_distance;
+		float angle_division;		/*"< Value of the increasing noticed by the encoder */
 		/**
 		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
 		*/

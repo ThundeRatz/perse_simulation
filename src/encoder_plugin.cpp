@@ -33,20 +33,19 @@ namespace gazebo {
 		this->left_wheel = this->model->GetJoint("wheel_front_left_joint");
 
 		this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
+
+    	this->angle_division = 2*M_PI/resolution;
 	}
 
 	void EncoderPlugin::OnUpdate() {
 		this->right_angle = this->right_wheel->Position();
     	this->left_angle = this->left_wheel->Position();
 
-    	// Value of the increasing noticed by the encoder
-    	float angle_division = 2*M_PI/resolution;
-
 		// The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
 		// Multiplying by "angle_distance" we can obtain the angle variation noticed by the encoder
 		// Multiplying now by "wheel_radius" the result is the distance traveled 
-		float right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
-		float left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
+		right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
+		left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
 
     	pub_msg.data = {left_distance, right_distance};
 	  	this->encoder_pub.publish(pub_msg);
