@@ -44,10 +44,10 @@ namespace gazebo {
 		// The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
 		// Multiplying by "angle_distance" we can obtain the angle variation noticed by the encoder
 		// Multiplying now by "wheel_radius" the result is the distance traveled 
-		right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
-		left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
+		this->right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
+		this->left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
 
-    	pub_msg.data = {left_distance, right_distance};
+    	this->pub_msg.data = {left_distance, right_distance};
 	  	this->encoder_pub.publish(pub_msg);
   	}  
 }
