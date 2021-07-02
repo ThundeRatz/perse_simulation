@@ -11,8 +11,8 @@
  *
  */
 
-#ifndef __SENSOR_PLUGIN_H__
-#define __SENSOR_PLUGIN_H__
+#ifndef __ENCODER_PLUGIN_H__
+#define __ENCODER_PLUGIN_H__
 
 #include <gazebo/common/Plugin.hh>
 #include "ros/ros.h"
@@ -29,11 +29,10 @@ namespace gazebo {
 		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
 		event::ConnectionPtr updateConnection;
 		physics::JointPtr right_wheel, left_wheel;
-		physics::ModelPtr model;
+		float wheel_radius;
 		float right_angle, left_angle;
 		float right_distance, left_distance;
-		float angle_division;		/*"< Value of the increasing noticed by the encoder */
-		
+		float angle_division;		/*!< Value of the increasing noticed by the encoder */
 		/**
 		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
 		*/
@@ -47,4 +46,4 @@ namespace gazebo {
 	};
 };
 
-#endif // __SENSOR_PLUGIN_H__
+#endif // __ENCODER_PLUGIN_H__
