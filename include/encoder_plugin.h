@@ -21,29 +21,30 @@
 #include <gazebo/physics/Joint.hh>
 
 namespace gazebo {
-	class EncoderPlugin : public ModelPlugin {
+class EncoderPlugin :
+    public ModelPlugin {
+    private:
+        ros::NodeHandle* node_handler;       /*!< A node use for ROS transport */
+        ros::Publisher encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
+        std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
+        event::ConnectionPtr updateConnection;
+        physics::JointPtr right_wheel, left_wheel;
+        float wheel_radius;
+        float right_angle, left_angle;
+        float right_distance, left_distance;
+        float angle_division;  /*!< Value of the increasing noticed by the encoder */
 
-	private: 
-		ros::NodeHandle* node_handler;           /*!< A node use for ROS transport */
-		ros::Publisher encoder_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
-		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
-		event::ConnectionPtr updateConnection;
-		physics::JointPtr right_wheel, left_wheel;
-		float wheel_radius;
-		float right_angle, left_angle;
-		float right_distance, left_distance;
-		float angle_division;		/*!< Value of the increasing noticed by the encoder */
-		/**
-		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
-		*/
-		void OnUpdate();
+        /**
+         * @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
+         */
+        void OnUpdate();
 
-	public:
-		/**
-		* @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
-		*/
-		void Load(physics::ModelPtr _model, sdf::ElementPtr /*_sdf*/);
-	};
+    public:
+        /**
+         * @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
+         */
+        void Load(physics::ModelPtr _model, sdf::ElementPtr  /*_sdf*/);
+};
 };
 
 #endif // __ENCODER_PLUGIN_H__
