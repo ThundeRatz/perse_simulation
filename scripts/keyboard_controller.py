@@ -207,7 +207,7 @@ def main(debug=DEFAULT_DEBUG):
         rate.sleep()
 
 if __name__ == "__main__":
-    rospy.loginfo("Começando a brincadeira!")
+    rospy.loginfo("Starting manual controller!")
 
     # Clean ROS parameters from command line
     myargv = rospy.myargv(argv=sys.argv)
