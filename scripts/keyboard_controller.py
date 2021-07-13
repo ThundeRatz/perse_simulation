@@ -30,9 +30,9 @@ DEFAULT_NAMESPACE = "/perse"
 
 DEFAULT_DEBUG = False
 
-# Robot max speed is 2 m/s
+# Robot max speed is 1 m/s
 # Keep it lower so he doesnt capote
-MAX_LIN_VEL = 2.0  # m/s
+MAX_LIN_VEL = 1.0  # m/s
 MAX_ROT_VEL = 3 # rad/s
 
 # Defines the acceleration's ramp when using keyboard
