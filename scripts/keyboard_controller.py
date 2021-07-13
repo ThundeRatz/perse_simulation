@@ -105,7 +105,6 @@ def keyboard_movement(velocities,state):
         vel_ang = 0.0
 
     vel_cmd_twist = Twist()
-    print(vel_lin)
     vel_cmd_twist.linear.x = vel_lin * MAX_LIN_VEL
     vel_cmd_twist.angular.z = vel_ang * MAX_ROT_VEL
 
@@ -145,45 +144,43 @@ def main(debug=DEFAULT_DEBUG):
 
     velocities = [0.0,0.0]
 
-
     running = True
     while running:
-        for e in pygame.event.get():
-            if e.type == pygame.KEYDOWN:
-                if e.key == pygame.K_ESCAPE:
-                    running = False
-                if e.key in KEYS:
-                    state[e.key] = True
-            elif e.type == pygame.KEYUP:
-                if e.key in KEYS:
-                    state[e.key] = False
-
-            # Movimento dos direcionais do joystick
-            if e.type == pygame.JOYAXISMOTION:
-                if e.dict['axis'] in (X_AXIS, Y_AXIS):
-                    if e.dict['axis'] == X_AXIS:
-                        if INVERT_X_AXIS:
-                            axis[0] = -e.value
-                        else:
-                            axis[0] = e.value
-
-                    elif e.dict['axis'] == Y_AXIS:
-                        if INVERT_Y_AXIS:
-                            axis[1] = -e.value
-                        else:
-                            axis[1] = e.value
-
-            # L1 pressionado
-            if e.type == pygame.VIDEORESIZE:
-                win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
-
-            elif e.type == pygame.QUIT:
-                running = False
-
-        vel_cmd_twist = keyboard_movement(velocities,state)
-
         if using_joystick:
+            # Movimento dos direcionais do joystick
+            for e in pygame.event.get():
+                if e.type == pygame.JOYAXISMOTION:
+                    if e.dict['axis'] in (X_AXIS, Y_AXIS):
+                        if e.dict['axis'] == X_AXIS:
+                            if INVERT_X_AXIS:
+                                axis[0] = -e.value
+                            else:
+                                axis[0] = e.value
+
+                        elif e.dict['axis'] == Y_AXIS:
+                            if INVERT_Y_AXIS:
+                                axis[1] = -e.value
+                            else:
+                                axis[1] = e.value
+                # L1 pressionado
+                if e.type == pygame.VIDEORESIZE:
+                    win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
+
+                elif e.type == pygame.QUIT:
+                    running = False
+
             vel_cmd_twist = joystick_movement(axis)
+        else:
+            for e in pygame.event.get():
+                if e.type == pygame.KEYDOWN:
+                    if e.key == pygame.K_ESCAPE:
+                        running = False
+                    if e.key in KEYS:
+                        state[e.key] = True
+                elif e.type == pygame.KEYUP:
+                    if e.key in KEYS:
+                        state[e.key] = False
+            vel_cmd_twist = keyboard_movement(velocities,state)
 
         draw_console(win, font, console)
         pygame.display.flip()
