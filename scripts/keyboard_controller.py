@@ -42,7 +42,7 @@ KEYBOARD_LINEAR_MAX = 1.0
 KEYBOARD_ANGULAR_STEP = 0.35
 KEYBOARD_ANGULAR_MAX = 0.6
 
-# Commands go from -126 to 126 in a way that bytes 0xFE e 0xFF aren't used
+# Commands go from -126 to 126 in a way that bytes 0xFE event 0xFF aren't used
 SCALE = 126
 
 def getNamespace():
@@ -128,10 +128,10 @@ def main(namespace, debug=DEFAULT_DEBUG):
                 if event.key == pygame.K_ESCAPE:
                     running = False
                 if event.key in KEYS:
-                    state[e.key] = True
+                    state[event.key] = True
             elif event.type == pygame.KEYUP:
                 if event.key in KEYS:
-                    state[e.key] = False
+                    state[event.key] = False
 
             # Joystick directional movements
             if event.type == pygame.JOYAXISMOTION:
@@ -161,7 +161,7 @@ def main(namespace, debug=DEFAULT_DEBUG):
 
             # L1 pressed
             if event.type == pygame.VIDEORESIZE:
-                win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
+                win = pygame.display.set_mode(event.size, pygame.RESIZABLE)
 
             elif event.type == pygame.QUIT:
                 running = False
