@@ -64,6 +64,9 @@ def draw_console(win, font, console):
 
 
 def get_joysticks():
+    """
+    Check if there are any joysticks connected
+    """
     using_joystick = False
     for x in range(pygame.joystick.get_count()):
         j = pygame.joystick.Joystick(x)
@@ -73,6 +76,10 @@ def get_joysticks():
     return using_joystick
 
 def joystick_movement(axis):
+    """
+    Controls speed when moving with a joystick
+        :param axis: list List contains the linear and angular axis
+    """
     vel_cmd_twist = Twist()
     vel_cmd_twist.linear.x = axis[1]*MAX_LIN_VEL
     vel_cmd_twist.angular.z = axis[0]*MAX_ROT_VEL
@@ -80,7 +87,11 @@ def joystick_movement(axis):
     return vel_cmd_twist
 
 def keyboard_movement(velocities,state):
-
+    """
+    Controls speed when moving with a keyboard
+        :param axis: list List contains the linear and angular velocities
+        :param state: list List the state of the keys
+    """
     vel_lin = velocities[0]
     vel_ang = velocities[1]
     if state[pygame.K_w] and not state[pygame.K_s]:
@@ -144,8 +155,8 @@ def main(debug=DEFAULT_DEBUG):
     running = True
     while running:
         if using_joystick:
-
             for e in pygame.event.get():
+                # If a joystick button is pressed
                 if e.type == pygame.JOYAXISMOTION:
                     if e.dict['axis'] in (X_AXIS, Y_AXIS):
                         if e.dict['axis'] == X_AXIS:
@@ -159,7 +170,7 @@ def main(debug=DEFAULT_DEBUG):
                                 axis[1] = -e.value
                             else:
                                 axis[1] = e.value
-
+                # L1 pressed
                 if e.type == pygame.VIDEORESIZE:
                     win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
 
@@ -169,6 +180,7 @@ def main(debug=DEFAULT_DEBUG):
             vel_cmd_twist = joystick_movement(axis)
         else:
             for e in pygame.event.get():
+                # Keyboard key movement
                 if e.type == pygame.KEYDOWN:
                     if e.key == pygame.K_ESCAPE:
                         running = False
