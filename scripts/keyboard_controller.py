@@ -6,47 +6,44 @@
 
     Description:
         Simple python routine to watch the keyboard or a joystick
-        to send velocity commands to a Gazebo simulation.
+    to send velocity commands to a Gazebo simulation
+        Adapted from https://github.com/ThundeRatz/travesim/blob/main/scripts/keyboard_node.py
 """
+
 import sys
 import pygame
 
 import rospy
 from geometry_msgs.msg import Twist
 
-# Vamos acompanhar o estado dessas teclas
+# Keep Track of these keyboard Keys (W A S D)
 KEYS = [pygame.K_w, pygame.K_a, pygame.K_s, pygame.K_d]
 
-# Indice dos eixos x e y do joystick
+# Joystick X and Y axis indexes
 X_AXIS = 0
 Y_AXIS = 4
-
 INVERT_X_AXIS = False
 INVERT_Y_AXIS = True
 
-# Namespace dos tópicos que iremos publicar
+# Namespace we are going to publish, used in the simulation
 DEFAULT_NAMESPACE = "/perse"
 
 DEFAULT_DEBUG = False
 
-# A vel máxima do robô é 2 m/s
-MAX_LIN_VEL = 1.0  # m/s
-
-# A vel máxima do robô é 40 rad/s
+# Robot max speed is 2 m/s
+# Keep it lower so he doesnt capote
+MAX_LIN_VEL = 2.0  # m/s
 MAX_ROT_VEL = 3 # rad/s
 
-# Define a rampa de aceleração quando usando o teclado
-# Valores em porcentagem da velocidade máxima
+# Defines the acceleration's ramp when using keyboard
 KEYBOARD_LINEAR_STEP = 0.03
 KEYBOARD_LINEAR_MAX = 1.0
 
 KEYBOARD_ANGULAR_STEP = 0.35
 KEYBOARD_ANGULAR_MAX = 0.6
 
-# Os comandos vão de -126 até 126 de modo que os bytes 0xFE e 0xFF
-# nunca são utilizados
+# Commands go from -126 to 126 in a way that bytes 0xFE e 0xFF aren't used
 SCALE = 126
-
 
 def draw_console(win, font, console):
     """
@@ -58,9 +55,9 @@ def draw_console(win, font, console):
     img = font.render("Event console Area", 1, (155, 155, 155), (0, 0, 0))
     win.blit(img, (2, 132))
     ypos = 450
-    h = list(console)
-    h.reverse()
-    for line in h:
+    text = list(console)
+    text.reverse()
+    for line in text:
         r = win.blit(line, (10, ypos))
         win.fill(0, (r.right, r.top, 620, r.height))
         ypos -= font.get_height()
@@ -115,7 +112,7 @@ def main(debug=DEFAULT_DEBUG):
     vel_pub = []
     rate = None
 
-    # Inicia configs do ROS
+    # Start ROS configs
     rospy.init_node('perse_human_controller')
     vel_pub = rospy.Publisher(
        'perse/robot_drive_controller/cmd_vel',
@@ -125,21 +122,21 @@ def main(debug=DEFAULT_DEBUG):
 
     pygame.init()
 
-    # Cria a janela
+    # Create the window
     win = pygame.display.set_mode((640, 480), pygame.RESIZABLE)
     pygame.display.set_caption("Keyboard Comunication Interface")
 
-    # Lista de frases a serem mostradas no console
+    # List of sentences to be displayed
     console = []
     font = pygame.font.Font(None, 26)
 
-    # Dicionário para guardar o estado de algumas teclas
+    # Dictionarys to hold the current state of some keys
     state = {}
     for key in KEYS:
         state[key] = False
 
-    # Vamos detectar os Joysticks conectados ao computador
     axis = [0.0, 0.0]
+    # Detect Joysticks connected to the computer
     using_joystick = get_joysticks()
 
     velocities = [0.0,0.0]
@@ -147,7 +144,7 @@ def main(debug=DEFAULT_DEBUG):
     running = True
     while running:
         if using_joystick:
-            # Movimento dos direcionais do joystick
+
             for e in pygame.event.get():
                 if e.type == pygame.JOYAXISMOTION:
                     if e.dict['axis'] in (X_AXIS, Y_AXIS):
@@ -162,7 +159,7 @@ def main(debug=DEFAULT_DEBUG):
                                 axis[1] = -e.value
                             else:
                                 axis[1] = e.value
-                # L1 pressionado
+
                 if e.type == pygame.VIDEORESIZE:
                     win = pygame.display.set_mode(e.size, pygame.RESIZABLE)
 
