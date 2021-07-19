@@ -36,7 +36,7 @@
             <robotNamespace>/perse</robotNamespace>
         </plugin>
     </gazebo>
-
+    
      <!-- camera -->
     <gazebo reference="cam_link">
         <sensor type="camera" name="camera1">
@@ -85,6 +85,17 @@
             <serviceName>imu_service</serviceName>
             <gaussianNoise>0.0</gaussianNoise>
             <updateRate>200.0</updateRate>
+        </plugin>
+    </gazebo>
+
+    <!-- encoder plugin-->
+    <gazebo>
+        <plugin name="encoder" filename="libperse_simulation.so">
+            <encoderTopicName>perse/encoder</encoderTopicName>
+            <resolution>2</resolution>
+            <wheelRadius>0.06</wheelRadius>
+            <leftWheelJointName>wheel_front_left_joint</leftWheelJointName>
+            <rightWheelJointName>wheel_front_right_joint</rightWheelJointName>
         </plugin>
     </gazebo>
 </robot>

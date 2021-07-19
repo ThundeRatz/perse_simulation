@@ -5,7 +5,7 @@
  *
  * @brief Plugin that simulates a Encoder, publishing (in a ROS topic) the travelled distance with a limited resolution
  *
- * @date 04/2021
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
@@ -15,65 +15,57 @@
 
 #include "encoder_plugin.h"
 
-#define wheel_radius 0.06 // robot wheel radius
-#define resolution 2      // number of encoder updates at each turn of the wheel
-
 namespace gazebo {
-// register the plugin as a world plugin
-GZ_REGISTER_WORLD_PLUGIN(EncoderPlugin);
+GZ_REGISTER_MODEL_PLUGIN(EncoderPlugin)
 
-void EncoderPlugin::Load(physics::WorldPtr world, sdf::ElementPtr sdf) {
-    // Make sure the ROS node for Gazebo has already been initialized
-    if (!ros::isInitialized()) {
-        ROS_FATAL_STREAM("A ROS node for Gazebo has not been initialized, unable to load plugin. "<<
-                         "Load the Gazebo system plugin 'libgazebo_ros_api_plugin.so' in the gazebo_ros package)");
-        return;
-    }
-
+void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     ROS_INFO("Encoder plugin: Starting!");
 
-    // Create a ROS node.
-    this->ros_node = new ros::NodeHandle();
+    this->node_handler = new ros::NodeHandle();
 
-    // Create a named topic, and subscribe to it.
-    ros::SubscribeOptions so =
-        ros::SubscribeOptions::create<sensor_msgs::JointState>(
-            "/perse/joint_states",
-            1,
-            boost::bind(&EncoderPlugin::callback, this, _1),
-            ros::VoidPtr(), &this->ros_queue);
+    this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
 
-    this->ros_sub = this->ros_node->subscribe(so);
+    // Get encoder resolution and calculate the angle divisions
+    if (_sdf->HasElement("resolution")) {
+        int resolution = _sdf->Get<int>("resolution");
+        this->angle_division = 2*M_PI/resolution;
+    }
 
-    // Spin up the queue helper thread.
-    this->ros_queue_thread = std::thread(std::bind(&EncoderPlugin::QueueThread, this));
+    // Get wheel radius
+    if (_sdf->HasElement("wheelRadius")) {
+        this->wheel_radius = _sdf->Get<float>("wheelRadius");
+    }
 
-    // Create the publishser
-    this->ros_pub = this->ros_node->advertise<std_msgs::Float64MultiArray>("perse/encoder", 1000);
-}
+    // Get name of the topic to be published and create the publiser
+    if (_sdf->HasElement("encoderTopicName")) {
+        std::string topic_name = _sdf->Get<std::string>("encoderTopicName");
+        this->encoder_pub = this->node_handler->advertise<std_msgs::Float64MultiArray>(topic_name, 1000);
+    }
 
-void EncoderPlugin::callback(const sensor_msgs::JointStateConstPtr& msg) {
-    const double right_angle = msg->position[3];     // front_right wheel
-    const double left_angle = msg->position[2];      // front_left wheel
+    // Get front left wheel joint name
+    if (_sdf->HasElement("leftWheelJointName")) {
+        std::string left_wheel_joint_name = _sdf->Get<std::string>("leftWheelJointName");
+        this->left_wheel = _model->GetJoint(left_wheel_joint_name);
+    }
 
-    // Value of the increasing noticed by the encoder
-    float angle_division = 2*M_PI/resolution;
-
-    // The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
-    // Multiplying by "angle_distance" we can obtain the angle variation noticed by the encoder
-    // Multiplying now by "wheel_radius" the result is the distance traveled
-    float right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
-    float left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
-
-    pub_msg.data = {left_distance, right_distance};
-    this->ros_pub.publish(pub_msg);
-}
-
-void EncoderPlugin::QueueThread() {
-    static const double timeout = 0.01;
-
-    while (this->ros_node->ok()) {
-        this->ros_queue.callAvailable(ros::WallDuration(timeout));
+    // Get front right wheel joint name
+    if (_sdf->HasElement("rightWheelJointName")) {
+        std::string right_wheel_joint_name = _sdf->Get<std::string>("rightWheelJointName");
+        this->right_wheel = _model->GetJoint(right_wheel_joint_name);
     }
 }
-};
+
+void EncoderPlugin::OnUpdate() {
+    this->right_angle = this->right_wheel->Position();
+    this->left_angle = this->left_wheel->Position();
+
+    // The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
+    // Multiplying by "angle_division" we can obtain the angle variation noticed by the encoder
+    // Multiplying now by "wheel_radius" the result is the distance traveled
+    this->right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
+    this->left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
+
+    this->pub_msg.data = {left_distance, right_distance};
+    this->encoder_pub.publish(pub_msg);
+}
+}

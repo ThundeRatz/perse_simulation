@@ -289,46 +289,6 @@
           <wrench>0 0 0 0 -0 0</wrench>
         </link>
       </model>
-      <model name='perse'>
-        <pose>-0.25 0 0.4 0 -0 0</pose>
-        <scale>1 1 1</scale>
-        <link name='bumper_link'>
-          <pose>0.11665 0.004575 0.4029 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='corpo'>
-          <pose>-0.25 0 0.4 0 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='wheel_back_left_link'>
-          <pose>-0.25576 0.15579 0.341251 0.099822 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='wheel_back_right_link'>
-          <pose>-0.2565 -0.15522 0.340893 -0.077826 0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='wheel_front_left_link'>
-          <pose>-0.00262 0.14061 0.342717 0.12815 -0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-        <link name='wheel_front_right_link'>
-          <pose>-0.00261 -0.14061 0.342721 -0.12826 0 0</pose>
-          <velocity>0 0 0 0 -0 0</velocity>
-          <acceleration>0 0 0 0 -0 0</acceleration>
-          <wrench>0 0 0 0 -0 0</wrench>
-        </link>
-      </model>
       <light name='sun'>
         <pose>0 0 10 0 -0 0</pose>
       </light>
@@ -390,6 +350,5 @@
       </link>
       <pose>17.1292 8.44986 0 0 -0 0</pose>
     </model>
-    <plugin name="encoder" filename="libperse_simulation.so"/>
   </world>
 </sdf>
