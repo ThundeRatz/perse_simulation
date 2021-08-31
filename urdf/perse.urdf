@@ -75,7 +75,7 @@
     <origin xyz="0.12923 0.14061 -0.073983" rpy="0 0 0" /> <!-- Wheel with no inclination -->
     <parent link="chasis_link" />
     <child link="wheel_front_left_link" />
-    <axis xyz="-0.023287 0.99973 0" />
+    <axis xyz="0 1 0" />
     <limit effort="20" velocity="100" />
     <dynamics damping="0.2" friction="0.01" />
   </joint>
@@ -106,7 +106,7 @@
     <origin xyz="0.12924 -0.14061 -0.073979" rpy="0 0 0" />
     <parent link="chasis_link" />
     <child link="wheel_front_right_link" />
-    <axis xyz="-0.023611 0.99972 0" />
+    <axis xyz="0 1 0" />
     <limit effort="20" velocity="100" />
     <dynamics damping="0.2" friction="0.01" />
   </joint>
