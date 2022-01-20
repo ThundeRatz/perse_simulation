@@ -90,12 +90,19 @@
 
     <!-- encoder plugin-->
     <gazebo>
-        <plugin name="encoder" filename="libperse_simulation.so">
-            <encoderTopicName>perse/encoder</encoderTopicName>
+        <plugin name="right_encoder" filename="libperse_simulation.so">
+            <encoderTopicName>perse/encoder_right</encoderTopicName>
             <resolution>2</resolution>
             <wheelRadius>0.06</wheelRadius>
-            <leftWheelJointName>wheel_front_left_joint</leftWheelJointName>
-            <rightWheelJointName>wheel_front_right_joint</rightWheelJointName>
+            <WheelJointName>wheel_front_right_joint</WheelJointName>
+        </plugin>
+    <gazebo> 
+    </gazebo>
+        <plugin name="left_encoder" filename="libperse_simulation.so">
+            <encoderTopicName>perse/encoder_left</encoderTopicName>
+            <resolution>2</resolution>
+            <wheelRadius>0.06</wheelRadius>
+            <WheelJointName>wheel_front_left_joint</WheelJointName>
         </plugin>
     </gazebo>
 </robot>
