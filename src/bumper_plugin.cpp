@@ -1,11 +1,20 @@
-
+/**
+ * @file bumper_plugin.cpp
+ *
+ * @author Lucas Guedes dos Santos <lucas.guedes@thunderatz.org>
+ *
+ * @brief Plugin that publishes perse's bumper state on a ros topic.
+ *
+ * @date 01/2022
+ *
+ * @copyright MIT License - Copyright (c) 2021 ThundeRatz
+ *
+ */
 
 #include <cmath>
-
 #include "bumper_plugin.h"
 
 namespace gazebo {
-
 
 void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     ROS_INFO("Bumper plugin: Starting!");
@@ -13,7 +22,7 @@ void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     // arguments from .gazebo file
     if (_sdf->HasElement("topicName")) {
         std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->bumper_pub = this->node_handler.advertise<std_msgs::Bool>("perse/bumper", 1);
+        this->bumper_pub = this->node_handler.advertise<std_msgs::Bool>("perse/bumper", MSG_BUFFER);
     }
 
     if (_sdf->HasElement("triggerPosition")) {
@@ -28,9 +37,7 @@ void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
         this->bumper_joint = _model->GetJoint(_sdf->Get<std::string>("jointName"));
     }
 
-
-    this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&BumperPlugin::OnUpdate, this));
-
+    this->update_connection = event::Events::ConnectWorldUpdateBegin(std::bind(&BumperPlugin::OnUpdate, this));
 }
 
 void BumperPlugin::OnUpdate() {

@@ -21,6 +21,8 @@
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
 
+#define MSG_BUFFER 1
+
 namespace gazebo {
 class BumperPlugin :
     public ModelPlugin {
@@ -35,7 +37,7 @@ class BumperPlugin :
         ros::NodeHandle node_handler;       /*!< A node use for ROS transport */
         ros::Publisher bumper_pub;
         std_msgs::Bool pub_msg;
-        event::ConnectionPtr updateConnection;
+        event::ConnectionPtr update_connection;
         physics::JointPtr bumper_joint;
         float joint_force;
         float trigger_position;
