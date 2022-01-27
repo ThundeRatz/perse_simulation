@@ -129,7 +129,7 @@
             <iyz>0</iyz>
             <izz>1</izz>
           </inertia>
-          <mass>5</mass>
+          <mass>3</mass>
         </inertial>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
@@ -178,7 +178,7 @@
             <iyz>0</iyz>
             <izz>1</izz>
           </inertia>
-          <mass>5</mass>
+          <mass>3</mass>
         </inertial>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
@@ -227,7 +227,7 @@
             <iyz>0</iyz>
             <izz>1</izz>
           </inertia>
-          <mass>5</mass>
+          <mass>3</mass>
         </inertial>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
