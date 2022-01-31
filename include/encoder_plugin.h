@@ -20,6 +20,8 @@
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
 
+#define MSG_BUFFER 1000
+
 namespace gazebo {
 class EncoderPlugin :
     public ModelPlugin {
@@ -27,7 +29,7 @@ class EncoderPlugin :
         ros::NodeHandle* node_handler;       /*!< A node use for ROS transport */
         ros::Publisher encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
         std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
-        event::ConnectionPtr updateConnection;
+        event::ConnectionPtr update_connection;
         physics::JointPtr right_wheel, left_wheel;
         float wheel_radius;
         float right_angle, left_angle;

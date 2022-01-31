@@ -23,7 +23,7 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
 
     this->node_handler = new ros::NodeHandle();
 
-    this->updateConnection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
+    this->update_connection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
 
     // Get encoder resolution and calculate the angle divisions
     if (_sdf->HasElement("resolution")) {
@@ -37,9 +37,9 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     }
 
     // Get name of the topic to be published and create the publiser
-    if (_sdf->HasElement("encoderTopicName")) {
-        std::string topic_name = _sdf->Get<std::string>("encoderTopicName");
-        this->encoder_pub = this->node_handler->advertise<std_msgs::Float64MultiArray>(topic_name, 1000);
+    if (_sdf->HasElement("topicName")) {
+        std::string topic_name = _sdf->Get<std::string>("topicName");
+        this->encoder_pub = this->node_handler->advertise<std_msgs::Float64MultiArray>(topic_name, MSG_BUFFER);
     }
 
     // Get front left wheel joint name

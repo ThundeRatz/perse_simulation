@@ -92,7 +92,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <scale>7 7 7</scale>
+              <scale>5 5 5</scale>
               <uri>model://construction_cone/meshes/construction_cone.dae</uri>
             </mesh>
           </geometry>
@@ -113,7 +113,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <scale>7 7 7</scale>
+              <scale>5 5 5</scale>
               <uri>model://construction_cone/meshes/construction_cone.dae</uri>
             </mesh>
           </geometry>
@@ -129,7 +129,7 @@
             <iyz>0</iyz>
             <izz>1</izz>
           </inertia>
-          <mass>1</mass>
+          <mass>3</mass>
         </inertial>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
@@ -141,7 +141,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <scale>7 7 7</scale>
+              <scale>5 5 5</scale>
               <uri>model://construction_cone/meshes/construction_cone.dae</uri>
             </mesh>
           </geometry>
@@ -162,7 +162,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <scale>7 7 7</scale>
+              <scale>5 5 5</scale>
               <uri>model://construction_cone/meshes/construction_cone.dae</uri>
             </mesh>
           </geometry>
@@ -178,7 +178,7 @@
             <iyz>0</iyz>
             <izz>1</izz>
           </inertia>
-          <mass>1</mass>
+          <mass>3</mass>
         </inertial>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
@@ -190,7 +190,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <scale>7 7 7</scale>
+              <scale>5 5 5</scale>
               <uri>model://construction_cone/meshes/construction_cone.dae</uri>
             </mesh>
           </geometry>
@@ -211,7 +211,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <scale>7 7 7</scale>
+              <scale>5 5 5</scale>
               <uri>model://construction_cone/meshes/construction_cone.dae</uri>
             </mesh>
           </geometry>
@@ -227,7 +227,7 @@
             <iyz>0</iyz>
             <izz>1</izz>
           </inertia>
-          <mass>1</mass>
+          <mass>3</mass>
         </inertial>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
