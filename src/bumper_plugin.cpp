@@ -41,8 +41,8 @@ void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
 
 void BumperPlugin::OnUpdate() {
     this->bumper_joint->SetForce(1, -1*this->joint_force);
-    float bumper_joint_postition = this->bumper_joint->Position();
-    this->bool_msg.data = (bumper_joint_postition >= this->trigger_position);
+
+    this->bool_msg.data = (this->bumper_joint->Position() >= this->trigger_position);
     this->bumper_pub.publish(bool_msg);
 }
 }

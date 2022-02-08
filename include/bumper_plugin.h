@@ -44,7 +44,8 @@ class BumperPlugin :
         float trigger_position; /*!< Joint Poisition where the plugin will send True as a message */
 
         /**
-         * @brief Calculates bumper position, compares with trigger_position and publishes in topic "gazebo_client/distance "
+         * @brief Calculates bumper position, compares with trigger_position and publishes in topic "gazebo_client/distance ".
+         * Also applies a constant force to the joint.
          */
         void OnUpdate();
 };
