@@ -15,7 +15,6 @@
 #include "bumper_plugin.h"
 
 namespace gazebo {
-
 void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     ROS_INFO("Bumper plugin: Starting!");
 
@@ -41,9 +40,9 @@ void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
 }
 
 void BumperPlugin::OnUpdate() {
-    this->bumper_joint->SetForce(1,-1*this->joint_force);
+    this->bumper_joint->SetForce(1, -1*this->joint_force);
     float bumper_joint_postition = this->bumper_joint->Position();
-    this->pub_msg.data = (bumper_joint_postition >= this->trigger_position); 
-    this->bumper_pub.publish(pub_msg);
+    this->bool_msg.data = (bumper_joint_postition >= this->trigger_position);
+    this->bumper_pub.publish(bool_msg);
 }
 }

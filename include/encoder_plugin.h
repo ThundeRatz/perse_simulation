@@ -32,9 +32,9 @@ class EncoderPlugin :
         event::ConnectionPtr update_connection;
         physics::JointPtr right_wheel, left_wheel;
         float wheel_radius;
-        float right_angle, left_angle;
-        float right_distance, left_distance;
-        float angle_division;  /*!< Value of the increasing noticed by the encoder */
+        float right_angle, left_angle;       /*!< angular displacement of each wheel */
+        float right_distance, left_distance; /*!< distance alrealty covered by each wheel*/
+        float angle_division;                /*!< Value of the increasing noticed by the encoder */
 
         /**
          * @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
