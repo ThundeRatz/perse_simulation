@@ -1,60 +1,52 @@
 /**
  * @file encoder_plugin.h
- * 
- * @author Lucas Guedes dos Santos <lucas.guedes@thunderatz.org>
- * 
- * @brief Plugin that simulates a Encoder, publishing (in a ROS topic) the travelled distance with a limited resolution   
  *
- * @date 04/2021
+ * @author Lucas Guedes dos Santos <lucas.guedes@thunderatz.org>
+ *
+ * @brief Plugin that simulates a Encoder, publishing (in a ROS topic) the travelled distance with a limited resolution
+ *
+ * @date 06/2021
  *
  * @copyright MIT License - Copyright (c) 2021 ThundeRatz
  *
  */
 
-#ifndef __SENSOR_PLUGIN_H__
-#define __SENSOR_PLUGIN_H__
+#ifndef __ENCODER_PLUGIN_H__
+#define __ENCODER_PLUGIN_H__
 
-#include <cmath>
-#include <thread>
 #include <gazebo/common/Plugin.hh>
 #include "ros/ros.h"
-#include "ros/callback_queue.h"
-#include "ros/subscribe_options.h"
 #include "std_msgs/Float64MultiArray.h"
-#include "sensor_msgs/JointState.h"
+#include <gazebo/physics/Model.hh>
+#include <gazebo/physics/Joint.hh>
+
+#define MSG_BUFFER 1000
 
 namespace gazebo {
+class EncoderPlugin :
+    public ModelPlugin {
+    private:
+        ros::NodeHandle* node_handler;       /*!< A node use for ROS transport */
+        ros::Publisher encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
+        std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
+        event::ConnectionPtr update_connection;
+        physics::JointPtr right_wheel, left_wheel;
+        float wheel_radius;
+        float right_angle, left_angle;       /*!< angular displacement of each wheel */
+        float right_distance, left_distance; /*!< distance alrealty covered by each wheel*/
+        float angle_division;                /*!< Value of the increasing noticed by the encoder */
 
-	class EncoderPlugin : public WorldPlugin {
+        /**
+         * @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
+         */
+        void OnUpdate();
 
-	private: 
-	 
-		ros::NodeHandle* ros_node;           /*!< A node use for ROS transport */
-		ros::Subscriber ros_sub;             /*!< ROS subscriber that gets the wheels angles from topic /perse/joint_states */
-		ros::Publisher ros_pub;              /*!< ROS publisher that publishes the distance measured in the encoder */
-		std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
-		ros::CallbackQueue ros_queue;        /*!< ROS callbackqueue that helps process messages */
-		std::thread ros_queue_thread;        /*!< A thread the keeps running the rosQueue */
-
-		/**
-		* @brief Calculates the distance on each wheel, and publish in the topic "gazebo_client/distance"
-		*
-		* @param msg pointer to a jointState message 
-		*/
-		void callback(const sensor_msgs::JointStateConstPtr &_msg);
-		
-		/**
-		* @brief ROS helper function that processes messages 
-		*/
-		void QueueThread();
-
-	public:
-
-		/**
-		* @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
-		*/
-		void Load(physics::WorldPtr _world, sdf::ElementPtr _sdf);
-	};
+    public:
+        /**
+         * @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
+         */
+        void Load(physics::ModelPtr _model, sdf::ElementPtr  /*_sdf*/);
+};
 };
 
-#endif // __SENSOR_PLUGIN_H__
+#endif // __ENCODER_PLUGIN_H__

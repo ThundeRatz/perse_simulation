@@ -121,6 +121,24 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "sergio-contente",
+      "name": "Sergio Contente",
+      "avatar_url": "https://avatars.githubusercontent.com/u/78960602?v=4",
+      "profile": "https://github.com/sergio-contente",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "PedroDeSanti",
+      "name": "Pedro de Santi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62271285?v=4",
+      "profile": "https://github.com/PedroDeSanti",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 6

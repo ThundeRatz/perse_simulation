@@ -36,21 +36,21 @@
             <robotNamespace>/perse</robotNamespace>
         </plugin>
     </gazebo>
-
+    
      <!-- camera -->
     <gazebo reference="cam_link">
         <sensor type="camera" name="camera1">
         <visualize>true</visualize>
-        <update_rate>60.0</update_rate>
+        <update_rate>120</update_rate>
         <camera name="head">
             <horizontal_fov>1.3962634</horizontal_fov>
             <image>
-                <width>800</width>
-                <height>800</height>
+                <width>480</width>
+                <height>360</height>
                 <format>R8G8B8</format>
             </image>
             <clip>
-                <near>0.02</near>
+                <near>0.08</near>
                 <far>300</far>
             </clip>
             <noise>
@@ -61,7 +61,7 @@
         </camera>
         <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
             <alwaysOn>true</alwaysOn>
-            <updateRate>60.0</updateRate>
+            <updateRate>120</updateRate>
             <cameraName>camera</cameraName>
             <imageTopicName>image_raw</imageTopicName>
             <cameraInfoTopicName>camera_info</cameraInfoTopicName>
@@ -84,7 +84,28 @@
             <topicName>imu</topicName>
             <serviceName>imu_service</serviceName>
             <gaussianNoise>0.0</gaussianNoise>
-            <updateRate>200.0</updateRate>
+            <updateRate>0.0</updateRate>
+        </plugin>
+    </gazebo>
+
+    <!-- encoder plugin-->
+    <gazebo>
+        <plugin name="encoder" filename="libencoder_plugin.so">
+            <topicName>perse/encoder</topicName>
+            <resolution>2</resolution>
+            <wheelRadius>0.06</wheelRadius>
+            <leftWheelJointName>wheel_front_left_joint</leftWheelJointName>
+            <rightWheelJointName>wheel_front_right_joint</rightWheelJointName>
+        </plugin>
+    </gazebo>
+
+    <!-- bumper plugin -->
+    <gazebo>
+        <plugin name="bumper" filename="libbumper_plugin.so">
+            <topicName>perse/bumper</topicName>
+            <triggerPosition>0.02</triggerPosition>
+            <jointName>bumper_joint</jointName>
+            <jointForce>2</jointForce>
         </plugin>
     </gazebo>
 </robot>

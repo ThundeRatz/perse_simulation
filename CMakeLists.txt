@@ -25,5 +25,8 @@ catkin_package(
 
 include_directories(include ${catkin_INCLUDE_DIRS})
 
-add_library(${PROJECT_NAME} src/encoder_plugin.cpp)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+add_library(encoder_plugin src/encoder_plugin.cpp)
+target_link_libraries(encoder_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+
+add_library(bumper_plugin src/bumper_plugin.cpp)
+target_link_libraries(bumper_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
