@@ -81,7 +81,7 @@
         <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
             <alwaysOn>true</alwaysOn>
             <bodyName>base_link</bodyName>
-            <topicName>imu</topicName>
+            <topicName>sensors/imu</topicName>
             <serviceName>imu_service</serviceName>
             <gaussianNoise>0.0</gaussianNoise>
             <updateRate>0.0</updateRate>
@@ -91,7 +91,7 @@
     <!-- encoder plugin-->
     <gazebo>
         <plugin name="encoder" filename="libencoder_plugin.so">
-            <topicName>perse/encoder</topicName>
+            <topicName>perse/sensors/encoder</topicName>
             <resolution>2</resolution>
             <wheelRadius>0.06</wheelRadius>
             <leftWheelJointName>wheel_front_left_joint</leftWheelJointName>
@@ -102,7 +102,7 @@
     <!-- bumper plugin -->
     <gazebo>
         <plugin name="bumper" filename="libbumper_plugin.so">
-            <topicName>perse/bumper</topicName>
+            <topicName>perse/sensors/bumper</topicName>
             <triggerPosition>0.02</triggerPosition>
             <jointName>bumper_joint</jointName>
             <jointForce>2</jointForce>

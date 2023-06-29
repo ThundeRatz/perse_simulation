@@ -36,7 +36,7 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
               file="$(find perse_simulation)/config/motor_drive.yaml" /> -->
 
     <node name="rqt_robot_steering" pkg="rqt_robot_steering" type="rqt_robot_steering">
-      <param name="default_topic" value="/perse/robot_drive_controller/cmd_vel"/>
+      <param name="default_topic" value="/perse/actuator/cmd_vel"/>
     </node>
 
     <!-- Load configs to control robot motors -->
@@ -44,7 +44,7 @@ http://wiki.ros.org/simulator_gazebo/Tutorials/Gazebo_ROS_API-->
               file="$(find perse_simulation)/config/diff_drive.yaml" />
 
     <node name="robot_controller" pkg="controller_manager" type="spawner"
-      args="robot_drive_controller
+      args="actuator
             robot_joint_state_controller"/>
 
   </group>
