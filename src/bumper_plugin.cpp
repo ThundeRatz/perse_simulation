@@ -21,7 +21,7 @@ void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     // arguments from .gazebo file
     if (_sdf->HasElement("topicName")) {
         std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->bumper_pub = this->node_handler.advertise<std_msgs::Bool>("perse/bumper", MSG_BUFFER);
+        this->bumper_pub = this->node_handler.advertise<std_msgs::Bool>(topic_name, MSG_BUFFER);
     }
 
     if (_sdf->HasElement("triggerPosition")) {

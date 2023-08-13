@@ -39,7 +39,7 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     // Get name of the topic to be published and create the publiser
     if (_sdf->HasElement("topicName")) {
         std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->encoder_pub = this->node_handler->advertise<std_msgs::Float64MultiArray>(topic_name, MSG_BUFFER);
+        this->encoder_pub = this->node_handler->advertise<std_msgs::Float64>(topic_name, MSG_BUFFER);
     }
 
     // Get front left wheel joint name
@@ -48,24 +48,24 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
         this->left_wheel = _model->GetJoint(left_wheel_joint_name);
     }
 
-    // Get front right wheel joint name
-    if (_sdf->HasElement("rightWheelJointName")) {
-        std::string right_wheel_joint_name = _sdf->Get<std::string>("rightWheelJointName");
-        this->right_wheel = _model->GetJoint(right_wheel_joint_name);
-    }
+    // // Get front right wheel joint name
+    // if (_sdf->HasElement("rightWheelJointName")) {
+    //     std::string right_wheel_joint_name = _sdf->Get<std::string>("rightWheelJointName");
+    //     this->right_wheel = _model->GetJoint(right_wheel_joint_name);
+    // }
 }
 
 void EncoderPlugin::OnUpdate() {
-    this->right_angle = this->right_wheel->Position();
     this->left_angle = this->left_wheel->Position();
+    //this->right_angle = this->right_wheel->Position();
 
     // The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)
     // Multiplying by "angle_division" we can obtain the angle variation noticed by the encoder
     // Multiplying now by "wheel_radius" the result is the distance traveled
-    this->right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
+    // this->right_distance = floor(right_angle/angle_division)*angle_division*wheel_radius;
     this->left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
 
-    this->pub_msg.data = {left_distance, right_distance};
+    this->pub_msg.data = left_distance;
     this->encoder_pub.publish(pub_msg);
 }
 }

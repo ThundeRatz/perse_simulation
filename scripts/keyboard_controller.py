@@ -126,7 +126,7 @@ def main(debug=DEFAULT_DEBUG):
     # Start ROS configs
     rospy.init_node('perse_human_controller')
     vel_pub = rospy.Publisher(
-       'perse/robot_drive_controller/cmd_vel',
+       'perse/actuator/cmd_vel',
         Twist, queue_size=2)
 
     rate = rospy.Rate(60)  # 60hz

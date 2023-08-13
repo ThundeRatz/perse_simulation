@@ -16,7 +16,7 @@
 
 #include <gazebo/common/Plugin.hh>
 #include "ros/ros.h"
-#include "std_msgs/Float64MultiArray.h"
+#include "std_msgs/Float64.h"
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
 
@@ -28,7 +28,7 @@ class EncoderPlugin :
     private:
         ros::NodeHandle* node_handler;       /*!< A node use for ROS transport */
         ros::Publisher encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
-        std_msgs::Float64MultiArray pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
+        std_msgs::Float64 pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
         event::ConnectionPtr update_connection;
         physics::JointPtr right_wheel, left_wheel;
         float wheel_radius;
