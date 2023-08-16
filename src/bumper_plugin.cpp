@@ -12,16 +12,17 @@
  */
 
 #include <cmath>
-#include "bumper_plugin.h"
+#include "bumper_plugin.hpp"
 
 namespace gazebo {
 void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
-    ROS_INFO("Bumper plugin: Starting!");
-
+    RCLCPP_INFO(rclcpp::get_logger(), "Bumper plugin: Starting!");
+    
     // arguments from .gazebo file
     if (_sdf->HasElement("topicName")) {
         std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->bumper_pub = this->node_handler.advertise<std_msgs::Bool>(topic_name, MSG_BUFFER);
+        this->ros_node = rclcpp::Node::make_shared("bumper_plugin_node");
+        this->bumper_pub = this->ros_node->create_publisher<std_msgs::msg::Bool>(topic_name, MSG_BUFFER);
     }
 
     if (_sdf->HasElement("triggerPosition")) {

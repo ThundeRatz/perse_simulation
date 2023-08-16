@@ -14,10 +14,11 @@
 #ifndef __BUMPER_PLUGIN_H__
 #define __BUMPER_PLUGIN_H__
 
-#include "iostream"
+#include <iostream>
 #include <gazebo/common/Plugin.hh>
-#include "ros/ros.h"
-#include "std_msgs/Bool.h"
+#include <gazebo_ros/node.hpp>
+#include "std_msgs/msg/Bool.hpp"
+#include <rclcpp/rclcpp.hpp>
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
 
@@ -33,9 +34,10 @@ class BumperPlugin :
         void Load(physics::ModelPtr _model, sdf::ElementPtr _sdf);
 
     private:
-        ros::NodeHandle node_handler;  /*!< A node use for ROS transport */
-        ros::Publisher bumper_pub;
-        std_msgs::Bool bool_msg;  /*!< True if bumper_joint position is bigger than trigger_position */
+
+        rclcpp::Node::SharedPtr ros_node  /*!< A node use for ROS transport */
+        rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr bumper_pub;
+        std_msgs::msgs::Bool bool_msg;  /*!< True if bumper_joint position is bigger than trigger_position */
 
         event::ConnectionPtr update_connection;
         physics::JointPtr bumper_joint;  /*!< Bumper joint from Gazebo model  */
