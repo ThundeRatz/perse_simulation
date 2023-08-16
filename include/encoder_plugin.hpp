@@ -14,17 +14,26 @@
 #ifndef __ENCODER_PLUGIN_H__
 #define __ENCODER_PLUGIN_H__
 
+#include <iostream>
 #include <gazebo/common/Plugin.hh>
-#include "ros/ros.h"
-#include "std_msgs/Float64.h"
+#include <gazebo_ros/node.hpp>
+#include "rclcpp/rclcpp.hpp"
+#include "std_msgs/msg/Float64.hpp"
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
+
 
 #define MSG_BUFFER 1000
 
 namespace gazebo {
 class EncoderPlugin :
     public ModelPlugin {
+    public:
+        /**
+         * @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
+         */
+        void Load(physics::ModelPtr _model, sdf::ElementPtr  /*_sdf*/);
+        
     private:
         ros::NodeHandle* node_handler;       /*!< A node use for ROS transport */
         ros::Publisher encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
@@ -41,11 +50,7 @@ class EncoderPlugin :
          */
         void OnUpdate();
 
-    public:
-        /**
-         * @brief Function called when GAZEBO initializes the plugin. Initializes the ROS objects.
-         */
-        void Load(physics::ModelPtr _model, sdf::ElementPtr  /*_sdf*/);
+    
 };
 };
 
