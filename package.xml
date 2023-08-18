@@ -8,9 +8,9 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
   </description>
 
   <author email="felipe.gomes@thunderatz.org">Felipe Gomes de Melo</author>
-  <author email="giovanni.morales@thunderatz.org">Giovanni "Toco" Cabral</author>
+  <author email="giovanni.morales@thunderatz.org">Giovanni Toco Cabral</author>
   <maintainer email="felipe.gomes@thunderatz.org">Felipe Gomes de Melo</maintainer>
-  <maintainer email="giovanni.morales@thunderatz.org">Giovanni "Toco" Cabral</maintainer>
+  <maintainer email="giovanni.morales@thunderatz.org">Giovanni Toco Cabral</maintainer>
 
   <license>MIT</license>
 
@@ -37,7 +37,7 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>rclpy</exec_depend>
   <exec_depend>rclcpp</exec_depend>
-  <exec_depend>python-pygame</exec_depend>
+  <!-- <exec_depend>python-pygame</exec_depend> -->
   <exec_depend>gazebo_ros</exec_depend>
 
   <export>

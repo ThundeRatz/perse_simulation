@@ -17,20 +17,28 @@ find_package(gazebo_ros REQUIRED)
 link_directories(${GAZEBO_LIBRARY_DIRS})
 include_directories(${Boost_INCLUDE_DIR} ${CPP_HEADER_DIR} ${GAZEBO_INCLUDE_DIRS})
 
+link_directories(
+  ${gazebo_dev_LIBRARY_DIRS}
+)
+
+install(DIRECTORY launch/
+  DESTINATION share/${PROJECT_NAME}/
+)
+
 ament_export_include_directories(include)
 
 ament_export_dependencies(rclcpp gazebo_ros)
 
-add_library(encoder_plugin src/encoder_plugin.cpp)
+# add_executable(encoder_plugin src/encoder_plugin.cpp)
   
-ament_target_dependencies(encoder_plugin
-  rclcpp
-  sensor_msgs
-  gazebo_ros
-  gazebo
-)
+# ament_target_dependencies(encoder_plugin
+#   rclcpp
+#   sensor_msgs
+#   gazebo_ros
+#   gazeboexecutable
+# )
 
-add_library(bumper_plugin src/bumper_plugin.cpp)
+add_library(bumper_plugin SHARED src/bumper_plugin.cpp)
 
 ament_target_dependencies(bumper_plugin
   rclcpp
@@ -42,7 +50,9 @@ ament_target_dependencies(bumper_plugin
 
 install(TARGETS
   bumper_plugin
-  encoder_plugin
+  # encoder_plugin
   DESTINATION lib/${PROJECT_NAME})
+
+ament_export_libraries(bumper_plugin)  
 
 ament_package()
