@@ -17,7 +17,7 @@
 #include <iostream>
 #include <gazebo/common/Plugin.hh>
 #include <gazebo_ros/node.hpp>
-#include "std_msgs/msg/Bool.hpp"
+#include "std_msgs/msg/bool.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
@@ -35,9 +35,9 @@ class BumperPlugin :
 
     private:
 
-        rclcpp::Node::SharedPtr ros_node  /*!< A node use for ROS transport */
+        rclcpp::Node::SharedPtr ros_node;  /*!< A node use for ROS transport */
         rclcpp::Publisher<std_msgs::msg::Bool>::SharedPtr bumper_pub;
-        std_msgs::msgs::Bool bool_msg;  /*!< True if bumper_joint position is bigger than trigger_position */
+        std_msgs::msg::Bool bool_msg;  /*!< True if bumper_joint position is bigger than trigger_position */
 
         event::ConnectionPtr update_connection;
         physics::JointPtr bumper_joint;  /*!< Bumper joint from Gazebo model  */

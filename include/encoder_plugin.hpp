@@ -18,7 +18,7 @@
 #include <gazebo/common/Plugin.hh>
 #include <gazebo_ros/node.hpp>
 #include "rclcpp/rclcpp.hpp"
-#include "std_msgs/msg/Float64.hpp"
+#include "std_msgs/msg/float64.hpp"
 #include <gazebo/physics/Model.hh>
 #include <gazebo/physics/Joint.hh>
 
@@ -35,9 +35,9 @@ class EncoderPlugin :
         void Load(physics::ModelPtr _model, sdf::ElementPtr  /*_sdf*/);
         
     private:
-        ros::NodeHandle* node_handler;       /*!< A node use for ROS transport */
-        ros::Publisher encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
-        std_msgs::Float64 pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
+        rclcpp::Node::SharedPtr ros_node;       /*!< A node use for ROS transport */
+        rclcpp::Publisher<std_msgs::msg::Float64>::SharedPtr encoder_pub;          /*!< ROS publisher that publishes the distance measured in the encoder */
+        std_msgs::msg::Float64 pub_msg; /*!< ROS message made of an array of floats, to carry values of both wheels movements */
         event::ConnectionPtr update_connection;
         physics::JointPtr right_wheel, left_wheel;
         float wheel_radius;

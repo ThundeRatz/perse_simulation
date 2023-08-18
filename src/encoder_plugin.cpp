@@ -13,15 +13,15 @@
 
 #include <cmath>
 
-#include "encoder_plugin.h"
+#include "encoder_plugin.hpp"
 
 namespace gazebo {
 GZ_REGISTER_MODEL_PLUGIN(EncoderPlugin)
 
 void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
-    ROS_INFO("Encoder plugin: Starting!");
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Encoder plugin: Starting!");
 
-    this->node_handler = new ros::NodeHandle();
+    this->ros_node = rclcpp::Node::make_shared("encoder_plugin_node");
 
     this->update_connection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
 
@@ -39,7 +39,7 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     // Get name of the topic to be published and create the publiser
     if (_sdf->HasElement("topicName")) {
         std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->encoder_pub = this->node_handler->advertise<std_msgs::Float64>(topic_name, MSG_BUFFER);
+        this->encoder_pub = this->ros_node->create_publisher<std_msgs::msg::Float64>(topic_name, MSG_BUFFER);
     }
 
     // Get front left wheel joint name
@@ -66,6 +66,6 @@ void EncoderPlugin::OnUpdate() {
     this->left_distance = floor(left_angle/angle_division)*angle_division*wheel_radius;
 
     this->pub_msg.data = left_distance;
-    this->encoder_pub.publish(pub_msg);
+    this->encoder_pub->publish(pub_msg);
 }
 }

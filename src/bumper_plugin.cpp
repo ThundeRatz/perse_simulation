@@ -16,7 +16,7 @@
 
 namespace gazebo {
 void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
-    RCLCPP_INFO(rclcpp::get_logger(), "Bumper plugin: Starting!");
+    RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Bumper plugin: Starting!");
     
     // arguments from .gazebo file
     if (_sdf->HasElement("topicName")) {
@@ -44,6 +44,6 @@ void BumperPlugin::OnUpdate() {
     this->bumper_joint->SetForce(1, -1*this->joint_force);
 
     this->bool_msg.data = (this->bumper_joint->Position() >= this->trigger_position);
-    this->bumper_pub.publish(bool_msg);
+    this->bumper_pub->publish(bool_msg);
 }
 }
