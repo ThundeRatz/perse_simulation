@@ -3,7 +3,7 @@ project(perse_simulation)
 
 set(CPP_HEADER_DIR include)
 
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++17)
 
 # Depend on system install of Gazebo
 find_package(gazebo REQUIRED)
