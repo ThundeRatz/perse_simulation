@@ -3,30 +3,31 @@ https://github.com/ros/urdf_sim_tutorial -->
 
 <launch>
 
-  <!-- <arg name="debug" default="false"/> -->
-  <!-- <arg name="gui" default="true"/> -->
-  <!-- <arg name="paused" default="true"/> -->
-  <!-- <arg name="use_sim_time" default="true"/> -->
-  <!-- <arg name="recording" default="false"/> -->
-  <!-- <arg name="single" default="false"/> -->
-  <!-- <arg name="match" default="false"/> -->
-  <!-- <arg name="model" default="$(find-pkg-share perse_simulation)/urdf/perse.xacro"/> -->
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="true"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="recording" default="false"/>
+  <arg name="single" default="false"/>
+  <arg name="match" default="false"/>
+  <arg name="model" default="$(find-pkg-share perse_simulation)/models/Perse/urdf/perse.xacro"/>
 
   <!-- Initial position on Z axis -->
 
-  <!-- <arg name="z" default="0.12"/>  -->
-  <!-- <arg name="x" default="-0.25" /> -->
-  <!-- <arg name="y" default="0" /> -->
-  <!-- <arg name="yaw" default="0" /> -->
+  <arg name="z" default="0.12"/> 
+  <arg name="x" default="-0.25" />
+  <arg name="y" default="0" />
+  <arg name="yaw" default="0" />
 
   <!---->
 
   <!-- Add our project workspace to Gazebo index to load custom models -->
-  <set_env name="GAZEBO_RESOURCE_PATH" value="$(find-pkg-share perse_simulation)"/>
+  <set_env name="GAZEBO_RESOURCE_PATH" value="$(find-pkg-share perse_simulation)/models"/>
   <set_env name="GAZEBO_MODEL_PATH" value="$(find-pkg-share perse_simulation)/models"/>
   <set_env name="IGN_GAZEBO_MODEL_PATH" value="$(find-pkg-share perse_simulation)/models"/>
 
 
+  <!-- Add Gazebo environment variables (fetched from /usr/share/gazebo/setup.bash) -->
   <set_env name="GAZEBO_RESOURCE_PATH" value="/usr/share/gazebo-11:$(env GAZEBO_RESOURCE_PATH)"/>
   <set_env name="GAZEBO_PLUGIN_PATH" value="/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:$(env GAZEBO_PLUGIN_PATH)"/>
   <set_env name="GAZEBO_MODEL_PATH" value="/usr/share/gazebo-11/models:$(env GAZEBO_MODEL_PATH)"/>
@@ -39,7 +40,6 @@ https://github.com/ros/urdf_sim_tutorial -->
     <arg name="world" default="$(find-pkg-share perse_simulation)/worlds/trekking_map.world"/>
     <!-- <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py" /> -->
     <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py" />
-      <!-- <arg name="world_name" default="$(find-pkg-share perse_simulation)/worlds/trekking_map.world"/> -->
       <!-- <arg name="debug" value="$(var debug)" /> -->
       <!-- <arg name="gui" value="$(var gui)" /> -->
       <!-- <arg name="paused" value="$(var paused)"/> -->
@@ -49,12 +49,12 @@ https://github.com/ros/urdf_sim_tutorial -->
   </group>
 
   <!-- Load robot file -->
-  <!-- <include file="$(find-pkg-share perse_simulation)/launch/spawn_robot.launch"> -->
-  <!--   <arg name="model" value="$(var model)" /> -->
-  <!--   <arg name="x" value="$(var x)" /> -->
-  <!--   <arg name="y" value="$(var y)" /> -->
-  <!--   <arg name="z" value="$(var z)" /> -->
-  <!--   <arg name="yaw" value="$(var yaw)" /> -->
-  <!-- </include> -->
+  <include file="$(find-pkg-share perse_simulation)/launch/spawn_robot.launch.py">
+    <arg name="model" value="$(var model)" />
+    <arg name="x" value="$(var x)" />
+    <arg name="y" value="$(var y)" />
+    <arg name="z" value="$(var z)" />
+    <arg name="yaw" value="$(var yaw)" />
+  </include>
 
 </launch>

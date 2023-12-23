@@ -22,7 +22,7 @@ link_directories(
 )
 
 
-foreach(DIR launch urdf models worlds launch)
+foreach(DIR launch models worlds launch config)
   install(DIRECTORY ${DIR}
   DESTINATION share/${PROJECT_NAME}/
   )  
