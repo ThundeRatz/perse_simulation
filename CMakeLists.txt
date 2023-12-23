@@ -6,7 +6,7 @@ set(CPP_HEADER_DIR include)
 add_compile_options(-std=c++17)
 
 # Depend on system install of Gazebo
-find_package(gazebo REQUIRED)
+find_package(gazebo_dev REQUIRED)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
@@ -21,9 +21,12 @@ link_directories(
   ${gazebo_dev_LIBRARY_DIRS}
 )
 
-install(DIRECTORY launch/
+
+foreach(DIR launch urdf models worlds launch)
+  install(DIRECTORY ${DIR}
   DESTINATION share/${PROJECT_NAME}/
-)
+  )  
+endforeach()
 
 ament_export_include_directories(include)
 
