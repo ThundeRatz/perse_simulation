@@ -22,9 +22,10 @@ https://github.com/ros/urdf_sim_tutorial -->
   <!---->
 
   <!-- Add our project workspace to Gazebo index to load custom models -->
-  <set_env name="GAZEBO_RESOURCE_PATH" value="$(find-pkg-share perse_simulation)/models"/>
+  <set_env name="GAZEBO_RESOURCE_PATH" value="$(find-pkg-share perse_simulation)"/>
   <set_env name="GAZEBO_MODEL_PATH" value="$(find-pkg-share perse_simulation)/models"/>
   <set_env name="IGN_GAZEBO_MODEL_PATH" value="$(find-pkg-share perse_simulation)/models"/>
+  <set_env name="GAZEBO_PLUGIN_PATH" value="$(find-pkg-prefix perse_simulation)/lib/perse_simulation"/>
 
 
   <!-- Add Gazebo environment variables (fetched from /usr/share/gazebo/setup.bash) -->

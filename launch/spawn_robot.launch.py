@@ -1,12 +1,10 @@
 from ament_index_python import get_package_share_directory
 from os import path
 
-import launch
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction, RegisterEventHandler
-from launch.event_handlers import OnProcessExit
+from launch.actions import DeclareLaunchArgument, GroupAction
 from launch_ros.actions import Node, PushRosNamespace
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import Command, LaunchConfiguration
 
 def generate_launch_description():
     perse_simulation_share = get_package_share_directory('perse_simulation')
@@ -24,30 +22,39 @@ def generate_launch_description():
 
     ns = 'perse'
 
-    xacro_file = model
-    urdf_file = path.join(perse_simulation_share, 'models/Perse/model.urdf')
+    xacro_command = Command(['xacro ', model])
 
-
-    # Convert xacro to URDF
-    xacro_to_urdf = launch.actions.ExecuteProcess(
-        cmd=['xacro', xacro_file, '-o', urdf_file],
-        output='screen'
-    )
 
     robot_state_publisher = Node(
-        namespace=ns,
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'use_sim_time': True}],
-        arguments=[urdf_file]
+        parameters=[{'use_sim_time': False, 'robot_description': xacro_command}],
+        # arguments=[urdf_file]
     )
 
-    synchronous_robot_state_publisher = RegisterEventHandler(
-        OnProcessExit(
-            target_action=xacro_to_urdf,
-            on_exit=[robot_state_publisher]
-        )
+    joint_state_publisher_gui_node = Node(
+        package='joint_state_publisher_gui',
+        executable='joint_state_publisher_gui',
+        name='joint_state_publisher_gui',
+        parameters=[{'robot_description': xacro_command}],
     )
+
+
+    # joint_state_publisher = Node(
+    #     package='joint_state_publisher',
+    #     executable='joint_state_publisher',
+    #     parameters=[{'use_sim_time': True, 'robot_description': xacro_command}],
+    #     # arguments=[urdf_file]
+    # )
+
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', path.join(perse_simulation_share, 'models/Perse/perse.rviz')],
+    )
+
 
     urdf_spawner = Node(
         package='gazebo_ros',
@@ -60,29 +67,16 @@ def generate_launch_description():
             '-P', pitch,
             '-Y', yaw,
             '-entity', robot_name,
-            # '-file', urdf_file
             '-topic', 'robot_description'
         ],
         output='screen'
     )
 
-    # joints_yaml = launch.actions.IncludeLaunchDescription(
-    #     launch.launch_description_sources.PythonLaunchDescriptionSource([
-    #         path.join(perse_simulation_share, 'config/joints.yaml')
-    #     ])
-    # )
-
-    # rqt_robot_steering = Node(
-    #     package='rqt_robot_steering',
-    #     executable='rqt_robot_steering',
-    #     parameters=[{'default_topic': '/perse/actuator/cmd_vel'}]
-    # )
-
-    # diff_drive_yaml = launch.actions.IncludeLaunchDescription(
-    #     launch.launch_description_sources.PythonLaunchDescriptionSource([
-    #         path.join(perse_simulation_share, 'config/diff_drive.yaml')
-    #     ])
-    # )
+    rqt_robot_steering = Node(
+        package='rqt_robot_steering',
+        executable='rqt_robot_steering',
+        parameters=[{'default_topic': '/perse/actuator/cmd_vel'}]
+    )
 
     # robot_controller = Node(
     #     package='controller_manager',
@@ -109,13 +103,14 @@ def generate_launch_description():
         GroupAction(
             actions=[
                 PushRosNamespace(ns),
-                xacro_to_urdf,
-                synchronous_robot_state_publisher,
-                urdf_spawner
-                # joints_yaml,
+                robot_state_publisher,
+                joint_state_publisher_gui_node,
+                # joint_state_publisher,
+
+                urdf_spawner,
+                rviz_node,
+                # robot_controller,
                 # rqt_robot_steering,
-                # diff_drive_yaml,
-                # robot_controller
             ]
         )
     ])
