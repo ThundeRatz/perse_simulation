@@ -2,9 +2,10 @@ from ament_index_python import get_package_share_directory
 from os import path
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction
-from launch_ros.actions import Node, PushRosNamespace
+from launch.actions import DeclareLaunchArgument, GroupAction, ExecuteProcess, RegisterEventHandler
+from launch_ros.actions import Node, PushRosNamespace, SetRemap
 from launch.substitutions import Command, LaunchConfiguration
+from launch.event_handlers import OnProcessExit
 
 def generate_launch_description():
     perse_simulation_share = get_package_share_directory('perse_simulation')
@@ -32,21 +33,27 @@ def generate_launch_description():
         # arguments=[urdf_file]
     )
 
-    joint_state_publisher_gui_node = Node(
-        package='joint_state_publisher_gui',
-        executable='joint_state_publisher_gui',
-        name='joint_state_publisher_gui',
-        parameters=[{'robot_description': xacro_command}],
+    joint_state_publisher = Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        parameters=[{'use_sim_time': True, 'robot_description': xacro_command}],
+        # arguments=[urdf_file]
     )
 
+    load_joint_state_broadcaster = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
+             'joint_state_broadcaster'],
+        output='screen'
+    )
 
-    # joint_state_publisher = Node(
-    #     package='joint_state_publisher',
-    #     executable='joint_state_publisher',
-    #     parameters=[{'use_sim_time': True, 'robot_description': xacro_command}],
-    #     # arguments=[urdf_file]
-    # )
-
+    load_diff_drive_base_controller = GroupAction(actions=[
+        ExecuteProcess(
+            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
+                 'diff_drive_base_controller'],
+            output='screen'
+        ),
+        SetRemap(src='/perse/actuator/cmd_vel', dst='/perse/diff_drive_base_controller/cmd_vel_unstamped'),
+    ])
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -75,18 +82,8 @@ def generate_launch_description():
     rqt_robot_steering = Node(
         package='rqt_robot_steering',
         executable='rqt_robot_steering',
-        parameters=[{'default_topic': '/perse/actuator/cmd_vel'}]
+        parameters=[{'default_topic': '/perse/diff_drive_base_controller/cmd_vel_unstamped'}]
     )
-
-    # robot_controller = Node(
-    #     package='controller_manager',
-    #     executable='spawner',
-    #     arguments=['actuator', 'robot_joint_state_controller'],
-    #     parameters=[
-    #         path.join(perse_simulation_share, 'config/joints.yaml'),
-    #         path.join(perse_simulation_share, 'config/diff_drive.yaml'),
-    #     ]
-    # )
 
     return LaunchDescription([
         DeclareLaunchArgument('robot_number', default_value='1'),
@@ -104,13 +101,26 @@ def generate_launch_description():
             actions=[
                 PushRosNamespace(ns),
                 robot_state_publisher,
-                joint_state_publisher_gui_node,
-                # joint_state_publisher,
+                joint_state_publisher,
+
+                RegisterEventHandler(
+                    event_handler=OnProcessExit(
+                        target_action=urdf_spawner,
+                        on_exit=[load_joint_state_broadcaster],
+                    )
+                ),
+                RegisterEventHandler(
+                    event_handler=OnProcessExit(
+                        target_action=load_joint_state_broadcaster,
+                        on_exit=[load_diff_drive_base_controller],
+                    )
+                ),
+
 
                 urdf_spawner,
                 rviz_node,
-                # robot_controller,
-                # rqt_robot_steering,
+                
+                rqt_robot_steering,
             ]
         )
     ])

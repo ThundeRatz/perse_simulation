@@ -31,11 +31,36 @@
     <xacro:wheel link_name="wheel_back_left"/>
 
     <!-- Load gazebo plugin to control the robot -->
-    <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/perse</robotNamespace>
-        </plugin>
+    <ros2_control name="GazeboSystem" type="system">
+      <hardware>
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      </hardware>
+      <joint name="wheel_front_left_joint">
+        <command_interface name="velocity">
+          <param name="min">-1</param>
+          <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      <joint name="wheel_front_right_joint">
+        <command_interface name="velocity">
+          <param name="min">-1</param>
+          <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+    </ros2_control>
 
+    <gazebo>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <!-- Push perse namespace -->
+           <ros>
+               <namespace>perse</namespace>
+           </ros> 
+            <parameters>$(find perse_simulation)/config/diff_drive.yaml</parameters>
+        </plugin>
 
     </gazebo>
     
@@ -93,7 +118,7 @@
     <!-- encoder plugin-->
     <gazebo>
         <plugin name="encoder" filename="libencoder_plugin.so">
-            <topicName>perse/sensors/encoder</topicName>
+            <topicName>sensors/encoder</topicName>
             <resolution>2</resolution>
             <wheelRadius>0.06</wheelRadius>
             <leftWheelJointName>wheel_front_left_joint</leftWheelJointName>
@@ -104,7 +129,7 @@
     <!-- bumper plugin -->
     <gazebo>
         <plugin name="bumper" filename="libbumper_plugin.so">
-            <topicName>perse/sensors/bumper</topicName>
+            <topicName>sensors/bumper</topicName>
             <triggerPosition>0.02</triggerPosition>
             <jointName>bumper_joint</jointName>
             <jointForce>2</jointForce>

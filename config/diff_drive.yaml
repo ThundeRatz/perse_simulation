@@ -1,36 +1,53 @@
 # Ref: http://wiki.ros.org/urdf/Tutorials/Using%20a%20URDF%20in%20Gazebo
-
-controller_manager:
+perse/controller_manager:
   ros__parameters:
-    actuator:
-      type: "diff_drive_controller/DiffDriveController"
-      publish_rate: 50
+    update_rate: 1000  # Hz
+    use_sim_time: true
 
-      left_wheel: [wheel_front_left_joint, wheel_back_left_joint]
-      right_wheel: [wheel_front_right_joint, wheel_back_right_joint]
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
 
-      wheel_separation: 0.28122
-      wheel_radius: 0.06
+    diff_drive_base_controller:
+      type: diff_drive_controller/DiffDriveController
 
-        # Odometry covariances for the encoder output of the robot. These values should
-        # be tuned to your robot's sample odometry data, but these values are a good place
-        # to start
-      pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
-      twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+perse/diff_drive_base_controller:
+  ros__parameters:
+    # type: "diff_drive_controller/DiffDriveController"
 
-        # Top level frame (link) of the robot description
-      base_frame_id: base_link
+    left_wheel_names: ["wheel_front_left_joint"]
+    right_wheel_names: ["wheel_front_right_joint"]
 
-        # Velocity and acceleration limits for the robot
-      linear:
-        x:
+    wheel_separation: 0.28122
+    wheel_radius: 0.06
+
+    publish_rate: 50.0
+
+    open_loop: true
+    enable_odom_tf: true
+
+    use_stamped_vel: false
+
+
+
+    # Odometry covariances for the encoder output of the robot. These values should
+    # be tuned to your robot's sample odometry data, but these values are a good place
+    # to start
+    pose_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+    twist_covariance_diagonal: [0.001, 0.001, 0.001, 0.001, 0.001, 0.03]
+
+    # Top level frame (link) of the robot description
+    base_frame_id: base_link
+
+      # Velocity and acceleration limits for the robot
+    linear:
+      x:
+        has_velocity_limits    : true
+        max_velocity           : 100.0   # m/s
+        has_acceleration_limits: true
+        max_acceleration       : 5.0   # m/s^2
+      angular:
+        z:
           has_velocity_limits    : true
-          max_velocity           : 100.0   # m/s
+          max_velocity           : 200.0   # rad/s
           has_acceleration_limits: true
-          max_acceleration       : 5.0   # m/s^2
-        angular:
-          z:
-            has_velocity_limits    : true
-            max_velocity           : 200.0   # rad/s
-            has_acceleration_limits: true
-            max_acceleration       : 3.0   # rad/s^2
+          max_acceleration       : 3.0   # rad/s^2
