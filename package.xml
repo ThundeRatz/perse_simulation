@@ -27,6 +27,7 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
   <depend>ros2_control</depend>
   <depend>joint_state_broadcaster</depend>
   <depend>robot_controllers</depend>
+  <depend>gazebo_plugins</depend>
   <!-- <depend>gazebo_ros2_control</depend> -->
 
 

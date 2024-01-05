@@ -14,20 +14,17 @@ perse/diff_drive_base_controller:
   ros__parameters:
     # type: "diff_drive_controller/DiffDriveController"
 
-    left_wheel_names: ["wheel_front_left_joint"]
-    right_wheel_names: ["wheel_front_right_joint"]
+    left_wheel_names: ["wheel_front_left_joint", "wheel_back_left_joint"]
+    right_wheel_names: ["wheel_front_right_joint", "wheel_back_right_joint"]
 
     wheel_separation: 0.28122
     wheel_radius: 0.06
 
     publish_rate: 50.0
 
-    open_loop: true
-    enable_odom_tf: true
+    # open_loop: false
 
     use_stamped_vel: false
-
-
 
     # Odometry covariances for the encoder output of the robot. These values should
     # be tuned to your robot's sample odometry data, but these values are a good place
@@ -37,6 +34,9 @@ perse/diff_drive_base_controller:
 
     # Top level frame (link) of the robot description
     base_frame_id: base_link
+
+    odom_frame_id: corpo
+    enable_odom_tf: true
 
       # Velocity and acceleration limits for the robot
     linear:

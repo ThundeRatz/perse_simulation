@@ -35,6 +35,7 @@
       <hardware>
         <plugin>gazebo_ros2_control/GazeboSystem</plugin>
       </hardware>
+      <!-- front wheels -->
       <joint name="wheel_front_left_joint">
         <command_interface name="velocity">
           <param name="min">-1</param>
@@ -51,6 +52,30 @@
         <state_interface name="position"/>
         <state_interface name="velocity"/>
       </joint>
+
+      <!-- back wheels -->
+      <joint name="wheel_back_left_joint">
+        <command_interface name="velocity">
+          <param name="min">-1</param>
+          <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      <joint name="wheel_back_right_joint">
+        <command_interface name="velocity">
+          <param name="min">-1</param>
+          <param name="max">1</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+
+      <!-- bumper -->
+      <joint name="bumper_joint">
+        <state_interface name="position"/>
+        <!-- <state_interface name="velocity"/> -->
+      </joint>
     </ros2_control>
 
     <gazebo>
@@ -58,6 +83,9 @@
             <!-- Push perse namespace -->
            <ros>
                <namespace>perse</namespace>
+               <remapping>/tf:=/perse/tf</remapping>
+               <remapping>/perse/diff_drive_base_controller/cmd_vel_unstamped:=/perse/actuator/cmd_vel</remapping>
+               <remapping>/perse/diff_drive_base_controller/odom:=/perse/odom</remapping>
            </ros> 
             <parameters>$(find perse_simulation)/config/diff_drive.yaml</parameters>
         </plugin>

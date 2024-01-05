@@ -29,31 +29,21 @@ def generate_launch_description():
     robot_state_publisher = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        parameters=[{'use_sim_time': False, 'robot_description': xacro_command}],
-        # arguments=[urdf_file]
-    )
-
-    joint_state_publisher = Node(
-        package='joint_state_publisher',
-        executable='joint_state_publisher',
         parameters=[{'use_sim_time': True, 'robot_description': xacro_command}],
-        # arguments=[urdf_file]
     )
 
-    load_joint_state_broadcaster = ExecuteProcess(
+    joint_state_broadcaster = ExecuteProcess(
         cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
              'joint_state_broadcaster'],
         output='screen'
     )
 
-    load_diff_drive_base_controller = GroupAction(actions=[
-        ExecuteProcess(
-            cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
-                 'diff_drive_base_controller'],
-            output='screen'
-        ),
-        SetRemap(src='/perse/actuator/cmd_vel', dst='/perse/diff_drive_base_controller/cmd_vel_unstamped'),
-    ])
+    diff_drive_base_controller = ExecuteProcess(
+        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
+             'diff_drive_base_controller'],
+        output='screen'
+    )
+
     rviz_node = Node(
         package='rviz2',
         executable='rviz2',
@@ -61,7 +51,6 @@ def generate_launch_description():
         output='screen',
         arguments=['-d', path.join(perse_simulation_share, 'models/Perse/perse.rviz')],
     )
-
 
     urdf_spawner = Node(
         package='gazebo_ros',
@@ -82,7 +71,7 @@ def generate_launch_description():
     rqt_robot_steering = Node(
         package='rqt_robot_steering',
         executable='rqt_robot_steering',
-        parameters=[{'default_topic': '/perse/diff_drive_base_controller/cmd_vel_unstamped'}]
+        parameters=[{'default_topic': '/perse/actuator/cmd_vel'}]
     )
 
     return LaunchDescription([
@@ -101,24 +90,29 @@ def generate_launch_description():
             actions=[
                 PushRosNamespace(ns),
                 robot_state_publisher,
-                joint_state_publisher,
 
                 RegisterEventHandler(
                     event_handler=OnProcessExit(
                         target_action=urdf_spawner,
-                        on_exit=[load_joint_state_broadcaster],
+                        on_exit=[joint_state_broadcaster],
                     )
                 ),
                 RegisterEventHandler(
                     event_handler=OnProcessExit(
-                        target_action=load_joint_state_broadcaster,
-                        on_exit=[load_diff_drive_base_controller],
+                        target_action=joint_state_broadcaster,
+                        on_exit=[diff_drive_base_controller],
                     )
                 ),
 
-
                 urdf_spawner,
-                rviz_node,
+
+                RegisterEventHandler(
+                    event_handler=OnProcessExit(
+                        target_action=diff_drive_base_controller,
+                        on_exit=[rviz_node],
+                    )
+                ),
+                
                 
                 rqt_robot_steering,
             ]

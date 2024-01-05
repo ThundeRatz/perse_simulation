@@ -2,8 +2,10 @@ cmake_minimum_required(VERSION 3.5)
 project(perse_simulation)
 
 set(CPP_HEADER_DIR include)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_compile_options(-std=c++17)
+
 
 # Depend on system install of Gazebo
 find_package(gazebo_dev REQUIRED)
@@ -32,14 +34,15 @@ ament_export_include_directories(include)
 
 ament_export_dependencies(rclcpp gazebo_ros)
 
-# add_executable(encoder_plugin src/encoder_plugin.cpp)
+add_library(encoder_plugin SHARED src/encoder_plugin.cpp)
   
-# ament_target_dependencies(encoder_plugin
-#   rclcpp
-#   sensor_msgs
-#   gazebo_ros
-#   gazeboexecutable
-# )
+ament_target_dependencies(encoder_plugin
+  rclcpp
+  std_msgs
+  sensor_msgs
+  gazebo_ros
+  gazebo
+)
 
 add_library(bumper_plugin SHARED src/bumper_plugin.cpp)
 
@@ -53,9 +56,10 @@ ament_target_dependencies(bumper_plugin
 
 install(TARGETS
   bumper_plugin
-  # encoder_plugin
+  encoder_plugin
   DESTINATION lib/${PROJECT_NAME})
 
 ament_export_libraries(bumper_plugin)  
+ament_export_libraries(encoder_plugin)  
 
 ament_package()
