@@ -80,12 +80,14 @@
 
     <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <!-- <robot_param>/perse/robot_description</robot_param> -->
+            <!-- <robot_param_node>/perse/robot_state_publisher</robot_param_node> -->
             <!-- Push perse namespace -->
            <ros>
-               <namespace>perse</namespace>
-               <remapping>/tf:=/perse/tf</remapping>
-               <remapping>/perse/diff_drive_base_controller/cmd_vel_unstamped:=/perse/actuator/cmd_vel</remapping>
-               <remapping>/perse/diff_drive_base_controller/odom:=/perse/odom</remapping>
+               <!-- <namespace>perse</namespace> -->
+               <!-- <remapping>/tf:=/perse/tf</remapping> -->
+               <remapping>/diff_drive_base_controller/cmd_vel_unstamped:=/perse/actuator/cmd_vel</remapping>
+               <remapping>/diff_drive_base_controller/odom:=/perse/odom</remapping>
            </ros> 
             <parameters>$(find perse_simulation)/config/diff_drive.yaml</parameters>
         </plugin>
@@ -132,21 +134,27 @@
     </gazebo>
 
     <!-- IMU  -->
-    <gazebo>
-        <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
-            <alwaysOn>true</alwaysOn>
-            <bodyName>base_link</bodyName>
-            <topicName>sensors/imu</topicName>
-            <serviceName>imu_service</serviceName>
-            <gaussianNoise>0.0</gaussianNoise>
-            <updateRate>0.0</updateRate>
-        </plugin>
+    <gazebo reference="imu_link">
+        <gravity>true</gravity>
+        <sensor name="my_imu" type="imu">
+            <!-- ensure the sensor is active (required) -->
+            <always_on>true</always_on>
+            <update_rate>30</update_rate>
+            <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+                <ros>
+                    <!-- publish to /perse/sensors/imu -->
+                    <namespace>/perse/sensors</namespace>
+                    <remapping>~/out:=imu</remapping>
+                </ros>
+            </plugin>
+        </sensor>
     </gazebo>
+
 
     <!-- encoder plugin-->
     <gazebo>
         <plugin name="encoder" filename="libencoder_plugin.so">
-            <topicName>sensors/encoder</topicName>
+            <topicName>perse/sensors/encoder</topicName>
             <resolution>2</resolution>
             <wheelRadius>0.06</wheelRadius>
             <leftWheelJointName>wheel_front_left_joint</leftWheelJointName>
@@ -157,7 +165,7 @@
     <!-- bumper plugin -->
     <gazebo>
         <plugin name="bumper" filename="libbumper_plugin.so">
-            <topicName>sensors/bumper</topicName>
+            <topicName>perse/sensors/bumper</topicName>
             <triggerPosition>0.02</triggerPosition>
             <jointName>bumper_joint</jointName>
             <jointForce>2</jointForce>

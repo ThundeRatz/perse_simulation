@@ -339,4 +339,13 @@
     <child link="cam_link" />
     <axis xyz="0 0 0" />
   </joint>
+
+  <link name="imu_link"></link>
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.0673562763621052 0 0.0709889192905058" rpy="0 0 0" />
+    <parent link="cam_holder_link" />
+    <child link="imu_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
 </robot>

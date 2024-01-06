@@ -2,12 +2,12 @@
 
 <robot name="perse" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-  <link name="corpo"/>
-
-  <joint name="base_joint" type="fixed">
-    <parent link="corpo"/>
-    <child link="base_link"/>
-  </joint>
+  <!-- <link name="corpo"/> -->
+  <!---->
+  <!-- <joint name="base_joint" type="fixed"> -->
+  <!--   <parent link="corpo"/> -->
+  <!--   <child link="base_link"/> -->
+  <!-- </joint> -->
 
   <!-- Import all Gazebo-customization elements, including Gazebo colors -->
   <xacro:include filename="$(find perse_simulation)/models/Perse/urdf/perse.gazebo" />

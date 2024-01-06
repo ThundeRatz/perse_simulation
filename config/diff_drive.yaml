@@ -1,5 +1,5 @@
 # Ref: http://wiki.ros.org/urdf/Tutorials/Using%20a%20URDF%20in%20Gazebo
-perse/controller_manager:
+controller_manager:
   ros__parameters:
     update_rate: 1000  # Hz
     use_sim_time: true
@@ -10,10 +10,8 @@ perse/controller_manager:
     diff_drive_base_controller:
       type: diff_drive_controller/DiffDriveController
 
-perse/diff_drive_base_controller:
+diff_drive_base_controller:
   ros__parameters:
-    # type: "diff_drive_controller/DiffDriveController"
-
     left_wheel_names: ["wheel_front_left_joint", "wheel_back_left_joint"]
     right_wheel_names: ["wheel_front_right_joint", "wheel_back_right_joint"]
 
@@ -34,9 +32,6 @@ perse/diff_drive_base_controller:
 
     # Top level frame (link) of the robot description
     base_frame_id: base_link
-
-    odom_frame_id: corpo
-    enable_odom_tf: true
 
       # Velocity and acceleration limits for the robot
     linear:

@@ -2,8 +2,8 @@ from ament_index_python import get_package_share_directory
 from os import path
 
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction, ExecuteProcess, RegisterEventHandler
-from launch_ros.actions import Node, PushRosNamespace, SetRemap
+from launch.actions import DeclareLaunchArgument, GroupAction, RegisterEventHandler
+from launch_ros.actions import Node
 from launch.substitutions import Command, LaunchConfiguration
 from launch.event_handlers import OnProcessExit
 
@@ -32,16 +32,16 @@ def generate_launch_description():
         parameters=[{'use_sim_time': True, 'robot_description': xacro_command}],
     )
 
-    joint_state_broadcaster = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
-             'joint_state_broadcaster'],
-        output='screen'
+    diff_drive_base_controller = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["diff_drive_base_controller"],
     )
 
-    diff_drive_base_controller = ExecuteProcess(
-        cmd=['ros2', 'control', 'load_controller', '--set-state', 'active', '--controller-manager', 'perse/controller_manager',
-             'diff_drive_base_controller'],
-        output='screen'
+    joint_state_broadcaster = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster"],
     )
 
     rviz_node = Node(
@@ -65,7 +65,7 @@ def generate_launch_description():
             '-entity', robot_name,
             '-topic', 'robot_description'
         ],
-        output='screen'
+        output='screen',
     )
 
     rqt_robot_steering = Node(
@@ -88,8 +88,8 @@ def generate_launch_description():
 
         GroupAction(
             actions=[
-                PushRosNamespace(ns),
                 robot_state_publisher,
+                urdf_spawner,
 
                 RegisterEventHandler(
                     event_handler=OnProcessExit(
@@ -104,17 +104,13 @@ def generate_launch_description():
                     )
                 ),
 
-                urdf_spawner,
 
                 RegisterEventHandler(
                     event_handler=OnProcessExit(
                         target_action=diff_drive_base_controller,
-                        on_exit=[rviz_node],
+                        on_exit=[rviz_node, rqt_robot_steering],
                     )
                 ),
-                
-                
-                rqt_robot_steering,
             ]
         )
     ])
