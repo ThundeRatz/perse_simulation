@@ -11,6 +11,7 @@ https://github.com/ros/urdf_sim_tutorial -->
   <arg name="single" default="false"/>
   <arg name="match" default="false"/>
   <arg name="model" default="$(find-pkg-share perse_simulation)/models/Perse/urdf/perse.xacro"/>
+  <arg name="run_rqt" default="false"/>
 
   <!-- Initial position on Z axis -->
 
@@ -56,6 +57,7 @@ https://github.com/ros/urdf_sim_tutorial -->
     <arg name="y" value="$(var y)" />
     <arg name="z" value="$(var z)" />
     <arg name="yaw" value="$(var yaw)" />
+    <arg name="run_rqt" value="$(var run_rqt)" />
   </include>
 
 </launch>

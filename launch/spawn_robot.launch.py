@@ -3,8 +3,9 @@ from os import path
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, GroupAction, RegisterEventHandler
+from launch.conditions import IfCondition
 from launch_ros.actions import Node
-from launch.substitutions import Command, LaunchConfiguration
+from launch.substitutions import Command, LaunchConfiguration, TextSubstitution
 from launch.event_handlers import OnProcessExit
 
 def generate_launch_description():
@@ -20,6 +21,7 @@ def generate_launch_description():
     pitch = LaunchConfiguration('pitch', default='0')
     yaw = LaunchConfiguration('yaw', default='0')
     model = LaunchConfiguration('model', default=path.join(perse_simulation_share, 'models/Perse/urdf/perse.xacro'))
+    run_rqt = LaunchConfiguration('run_rqt', default=TextSubstitution(text='false'))
 
     ns = 'perse'
 
@@ -71,7 +73,8 @@ def generate_launch_description():
     rqt_robot_steering = Node(
         package='rqt_robot_steering',
         executable='rqt_robot_steering',
-        parameters=[{'default_topic': '/perse/actuator/cmd_vel'}]
+        parameters=[{'default_topic': '/perse/actuator/cmd_vel'}],
+        condition=IfCondition(run_rqt),
     )
 
     return LaunchDescription([
@@ -85,6 +88,7 @@ def generate_launch_description():
         DeclareLaunchArgument('pitch', default_value='0'),
         DeclareLaunchArgument('yaw', default_value='0'),
         DeclareLaunchArgument('model', default_value=path.join(perse_simulation_share, 'models/Perse/urdf/perse.xacro')),
+        DeclareLaunchArgument('run_rqt', default_value=TextSubstitution(text='false')),
 
         GroupAction(
             actions=[
