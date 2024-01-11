@@ -3,22 +3,10 @@ https://github.com/ros/urdf_sim_tutorial -->
 
 <launch>
 
-  <arg name="debug" default="false"/>
   <arg name="gui" default="true"/>
-  <arg name="paused" default="true"/>
-  <arg name="use_sim_time" default="true"/>
-  <arg name="recording" default="false"/>
-  <arg name="single" default="false"/>
-  <arg name="match" default="false"/>
-  <arg name="model" default="$(find-pkg-share perse_simulation)/models/Perse/urdf/perse.xacro"/>
-  <arg name="run_rqt" default="false"/>
-
-  <!-- Initial position on Z axis -->
-
-  <arg name="z" default="0.12"/> 
-  <arg name="x" default="-0.25" />
-  <arg name="y" default="0" />
-  <arg name="yaw" default="0" />
+  <arg name="server" default="true"/>
+  <arg name="pause" default="false"/>
+  <arg name="record" default="false"/>
 
   <!---->
 
@@ -36,28 +24,15 @@ https://github.com/ros/urdf_sim_tutorial -->
   <set_env name="LD_LIBRARY_PATH" value="$(env LD_LIBRARY_PATH):$(env GAZEBO_PLUGIN_PATH)"/>
   <set_env name="OGRE_RESOURCE_PATH" value="/usr/lib/x86_64-linux-gnu/OGRE-1.9.0"/>
 
-  <!-- Load world model -->
-
+  <!-- launch gazebo -->
   <group>
     <arg name="world" default="$(find-pkg-share perse_simulation)/worlds/trekking_map.world"/>
-    <!-- <include file="$(find-pkg-share ros_gz_sim)/launch/gz_sim.launch.py" /> -->
-    <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py" />
-      <!-- <arg name="debug" value="$(var debug)" /> -->
-      <!-- <arg name="gui" value="$(var gui)" /> -->
-      <!-- <arg name="paused" value="$(var paused)"/> -->
-      <!-- <arg name="use_sim_time" value="$(var use_sim_time)"/> -->
-      <!-- <arg name="recording" value="$(var recording)"/> -->
-    <!-- </include> -->
-  </group>
+    <arg name="gui" default="$(var gui)" />
+    <arg name="server" default="$(var gui)" />
+    <arg name="pause" default="$(var pause)"/>
+    <arg name="record" default="$(var record)"/>
 
-  <!-- Load robot file -->
-  <include file="$(find-pkg-share perse_simulation)/launch/spawn_robot.launch.py">
-    <arg name="model" value="$(var model)" />
-    <arg name="x" value="$(var x)" />
-    <arg name="y" value="$(var y)" />
-    <arg name="z" value="$(var z)" />
-    <arg name="yaw" value="$(var yaw)" />
-    <arg name="run_rqt" value="$(var run_rqt)" />
-  </include>
+    <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py" />
+  </group>
 
 </launch>
