@@ -99,9 +99,10 @@ def generate_launch_description():
         DeclareLaunchArgument('yaw', default_value='0'),
         DeclareLaunchArgument('robot_name', default_value='perse'),
         DeclareLaunchArgument('model', default_value=path.join(perse_simulation_share, 'models/Perse/urdf/perse.xacro')),
-        DeclareLaunchArgument('rqt', default_value=TextSubstitution(text='false')),
+        DeclareLaunchArgument('robot_steering', default_value=TextSubstitution(text='false')),
         DeclareLaunchArgument('rviz', default_value=TextSubstitution(text='false')),
         DeclareLaunchArgument('perse', default_value=TextSubstitution(text='true')),
+        DeclareLaunchArgument('darknet', default_value=TextSubstitution(text='true')),
 
         GroupAction(
             actions=[
