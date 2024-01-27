@@ -51,7 +51,7 @@ def generate_launch_description():
         executable='rviz2',
         name='rviz2',
         output='screen',
-        arguments=['-d', path.join(perse_simulation_share, 'models/Perse/perse.rviz')],
+        arguments=['-d', path.join(perse_simulation_share, 'rviz/simulation.rviz')],
         condition=IfCondition(should_run_rviz),
     )
 
