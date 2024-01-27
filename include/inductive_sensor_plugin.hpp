@@ -1,18 +1,18 @@
 /**
- * @file inductive_sensor_plugin.h
+ * @file inductive_sensor_plugin.hpp
  *
- * @author Lucas Guedes dos Santos <lucas.guedes@thunderatz.org>
+ * @author Alan José dos Santos <alan.jose@thunderatz.org>
  *
- * @brief Plugin that simulates a InductiveSensor, publishing (in a ROS topic) the travelled distance with a limited resolution
+ * @brief Plugin that simulates a Inductive Sensor, simulating an inductive sensor reading of an 1mx1m square metalic plate around each cone by publishing true when close to a set of positions defined by ros parameters. 
  *
- * @date 06/2021
+ * @date 01/2024
  *
- * @copyright MIT License - Copyright (c) 2021 ThundeRatz
+ * @copyright MIT License - Copyright (c) 2024 ThundeRatz
  *
  */
 
-#ifndef __ENCODER_PLUGIN_H__
-#define __ENCODER_PLUGIN_H__
+#ifndef __INDUCTIVE_SENSOR_PLUGIN_H__
+#define __INDUCTIVE_SENSOR_PLUGIN_H__
 
 #include <iostream>
 #include <gazebo/common/Plugin.hh>
@@ -53,4 +53,4 @@ class InductiveSensorPlugin :
 };
 };
 
-#endif // __ENCODER_PLUGIN_H__
+#endif // __INDUCTIVE_SENSOR_PLUGIN_H__
