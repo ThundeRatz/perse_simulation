@@ -1,0 +1,33 @@
+decision_node:
+  ros__parameters:
+    number_of_points: 3
+
+    p1:
+      x: 27.0
+      y: -1.0  
+      has_cone: true
+      margin: 4.0
+      near_cone_area_percentage: 0.095
+      dodge: false
+
+    p2: 
+      x: 37.0
+      y: 17.0
+      has_cone: true
+      margin: 2.0
+      near_cone_area_percentage: 0.15
+      dodge: false
+
+    p3:
+      x: 3.0
+      y: 15.0
+      has_cone: true
+      margin: 0.6
+      near_cone_area_percentage: 0.15
+      dodge: false
+
+    camera_enable: true
+    vision_speed: 1.2
+    vision_brake_speed: 0.9 
+    odom_speed: 1.8
+    kp: 15.0

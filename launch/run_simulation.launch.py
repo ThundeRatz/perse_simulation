@@ -21,7 +21,7 @@ def generate_launch_description():
     robot_name = LaunchConfiguration('robot_name', default='perse')
     model = LaunchConfiguration('model', default=path.join(perse_simulation_share, 'models/Perse/urdf/perse.xacro'))
     should_run_robot_steering = LaunchConfiguration('robot_steering', default=TextSubstitution(text='false'))
-    should_run_rviz = LaunchConfiguration('rviz', default=TextSubstitution(text='true'))
+    should_run_rviz = LaunchConfiguration('rviz', default=TextSubstitution(text='false'))
     should_run_perse = LaunchConfiguration('perse', default=TextSubstitution(text='true'))
     should_run_darknet = LaunchConfiguration('darknet', default=TextSubstitution(text='true'))
 
@@ -103,6 +103,7 @@ def generate_launch_description():
         DeclareLaunchArgument('rviz', default_value=TextSubstitution(text='false')),
         DeclareLaunchArgument('perse', default_value=TextSubstitution(text='true')),
         DeclareLaunchArgument('darknet', default_value=TextSubstitution(text='true')),
+        DeclareLaunchArgument('odometry_variables', default_value=path.join(perse_simulation_share, 'config/odometry_variables.yaml')),
 
         GroupAction(
             actions=[

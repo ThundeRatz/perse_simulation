@@ -151,6 +151,46 @@
     </gazebo>
 
 
+    <!-- inductive sensor plugin-->
+
+    <!-- Load odometry_variables.yaml at perse_simulation -->
+    <xacro:property name="yaml_file" value="$(find perse_simulation)/config/odometry_variables.yaml" />
+    <xacro:property name="yaml_props" value="${xacro.load_yaml(yaml_file)}" />
+    <!-- Extract the actual parameters-->
+    <xacro:property name="odometry_variables" value="${yaml_props['decision_node']['ros__parameters']}" />
+
+    <!-- This macro receives a list as parameter and calls itself recursively, removing the first element and using it as index to each point -->
+    <!-- Example of expanded macro -->
+    <!-- <parameter name="p1.x" type="double">1.0</parameter> -->
+    <!-- <parameter name="p1.y" type="double">2.0</parameter> -->
+    <xacro:macro name="point_parameters" params="points:=^">
+            <xacro:if value="${points}">
+                    <!-- pop first item from list -->
+                    <xacro:property name="index" value="${points.pop(0)}"/>
+
+                    <parameter name="p${index}.x" type="double">${odometry_variables['p'+str(index)]['x']}</parameter>
+                    <parameter name="p${index}.y" type="double">${odometry_variables['p'+str(index)]['y']}</parameter>
+
+                    <!-- recursively call myself -->
+                    <xacro:point_parameters/>
+            </xacro:if>
+    </xacro:macro>
+
+
+    <gazebo>
+        <plugin name="inductive_sensor" filename="libinductive_sensor_plugin.so">
+            <topicName>perse/sensors/inductive_sensor</topicName>
+            <ros>
+
+                <!-- declare the number_of_points -->
+                <parameter name="number_of_points" type="int">${odometry_variables['number_of_points']}</parameter>
+
+                <!-- call recursive macro to generate each point parameter -->
+                <xacro:point_parameters points="${list(python.range(1, odometry_variables['number_of_points']+1))}" />
+            </ros>
+        </plugin>
+    </gazebo>
+
     <!-- encoder plugin-->
     <gazebo>
         <plugin name="encoder" filename="libencoder_plugin.so">

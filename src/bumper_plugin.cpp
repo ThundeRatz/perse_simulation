@@ -45,5 +45,7 @@ void BumperPlugin::OnUpdate() {
 
     this->bool_msg.data = (this->bumper_joint->Position() >= this->trigger_position);
     this->bumper_pub->publish(bool_msg);
+
+    rclcpp::spin_some(this->ros_node);
 }
 }

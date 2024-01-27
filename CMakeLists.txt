@@ -54,12 +54,24 @@ ament_target_dependencies(bumper_plugin
   gazebo
 )
 
+add_library(inductive_sensor_plugin SHARED src/inductive_sensor_plugin.cpp)
+
+ament_target_dependencies(inductive_sensor_plugin
+  rclcpp
+  std_msgs
+  sensor_msgs
+  gazebo_ros
+  gazebo
+)
+
 install(TARGETS
   bumper_plugin
   encoder_plugin
+  inductive_sensor_plugin
   DESTINATION lib/${PROJECT_NAME})
 
 ament_export_libraries(bumper_plugin)  
 ament_export_libraries(encoder_plugin)  
+ament_export_libraries(inductive_sensor_plugin)  
 
 ament_package()

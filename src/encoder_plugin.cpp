@@ -68,5 +68,7 @@ void EncoderPlugin::OnUpdate() {
 
     this->pub_msg.data = left_distance;
     this->encoder_pub->publish(pub_msg);
+
+    rclcpp::spin_some(this->ros_node);
 }
 }
