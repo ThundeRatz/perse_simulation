@@ -23,6 +23,7 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
   <depend>gazebo</depend>
   <depend>robot_state_publisher</depend>
   <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
   <depend>ros2_control</depend>
   <depend>gazebo_ros2_control</depend>
   <depend>joint_state_broadcaster</depend>
@@ -49,6 +50,7 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>ros_gz_sim</exec_depend>
   <exec_depend>rqt_robot_steering</exec_depend>
+  <exec_depend>xacro</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
