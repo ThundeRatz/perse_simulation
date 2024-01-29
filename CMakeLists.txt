@@ -24,7 +24,7 @@ link_directories(
 )
 
 
-foreach(DIR launch models worlds launch config)
+foreach(DIR launch models worlds launch config rviz)
   install(DIRECTORY ${DIR}
   DESTINATION share/${PROJECT_NAME}/
   )  
