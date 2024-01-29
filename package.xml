@@ -16,19 +16,28 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
-  <depend>robot_state_publisher</depend>
   <depend>position_controllers</depend>
   <depend>velocity_controllers</depend>
   <depend>diff_drive_controller</depend>
   <depend>rviz2</depend>
-  <depend>joint_state_publisher</depend>
   <depend>gazebo</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>joint_state_publisher</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>ros2_control</depend>
+  <depend>gazebo_ros2_control</depend>
+  <depend>joint_state_broadcaster</depend>
+  <depend>robot_controllers</depend>
+  <depend>gazebo_ros_pkgs</depend>
+  <!-- <depend>gazebo_ros2_control</depend> -->
+
 
   <build_depend>rclcpp</build_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>std_msgs</build_depend>
   <build_depend>rclpy</build_depend>
   <build_depend>gazebo_ros</build_depend>
+  <build_depend>ros_gz_sim</build_depend>
 
   <build_export_depend>geometry_msgs</build_export_depend>
   <build_export_depend>rclpy</build_export_depend>
@@ -39,6 +48,9 @@ for Perse robot. The difference between 2.0.0 and 1.0.0 is mainly the migraition
   <exec_depend>rclcpp</exec_depend>
   <!-- <exec_depend>python-pygame</exec_depend> -->
   <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>rqt_robot_steering</exec_depend>
+  <exec_depend>xacro</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

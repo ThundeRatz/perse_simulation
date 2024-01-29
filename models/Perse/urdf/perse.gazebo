@@ -31,10 +31,67 @@
     <xacro:wheel link_name="wheel_back_left"/>
 
     <!-- Load gazebo plugin to control the robot -->
+    <ros2_control name="GazeboSystem" type="system">
+      <hardware>
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      </hardware>
+      <!-- front wheels -->
+      <joint name="wheel_front_left_joint">
+        <command_interface name="velocity">
+          <param name="min">-100</param>
+          <param name="max">100</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      <joint name="wheel_front_right_joint">
+        <command_interface name="velocity">
+          <param name="min">-100</param>
+          <param name="max">100</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+
+      <!-- back wheels -->
+      <joint name="wheel_back_left_joint">
+        <command_interface name="velocity">
+          <param name="min">-100</param>
+          <param name="max">100</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+      <joint name="wheel_back_right_joint">
+        <command_interface name="velocity">
+          <param name="min">-100</param>
+          <param name="max">100</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint>
+
+      <!-- bumper -->
+      <joint name="bumper_joint">
+        <!-- <state_interface name="position"/> -->
+        <!-- <state_interface name="velocity"/> -->
+      </joint>
+    </ros2_control>
+
     <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-            <robotNamespace>/perse</robotNamespace>
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+            <!-- <robot_param>/perse/robot_description</robot_param> -->
+            <!-- <robot_param_node>/perse/robot_state_publisher</robot_param_node> -->
+            <!-- Push perse namespace -->
+           <ros>
+               <!-- <namespace>perse</namespace> -->
+               <!-- <remapping>/tf:=/perse/tf</remapping> -->
+               <remapping>/diff_drive_base_controller/cmd_vel_unstamped:=/perse/actuator/cmd_vel</remapping>
+               <remapping>/diff_drive_base_controller/odom:=/perse/odom</remapping>
+           </ros> 
+            <parameters>$(find perse_simulation)/config/diff_drive.yaml</parameters>
         </plugin>
+
     </gazebo>
     
      <!-- camera -->
@@ -77,16 +134,22 @@
     </gazebo>
 
     <!-- IMU  -->
-    <gazebo>
-        <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
-            <alwaysOn>true</alwaysOn>
-            <bodyName>base_link</bodyName>
-            <topicName>sensors/imu</topicName>
-            <serviceName>imu_service</serviceName>
-            <gaussianNoise>0.0</gaussianNoise>
-            <updateRate>0.0</updateRate>
-        </plugin>
+    <gazebo reference="imu_link">
+        <gravity>true</gravity>
+        <sensor name="my_imu" type="imu">
+            <!-- ensure the sensor is active (required) -->
+            <always_on>true</always_on>
+            <update_rate>30</update_rate>
+            <plugin name="imu_plugin" filename="libgazebo_ros_imu_sensor.so">
+                <ros>
+                    <!-- publish to /perse/sensors/imu -->
+                    <namespace>/perse/sensors</namespace>
+                    <remapping>~/out:=imu</remapping>
+                </ros>
+            </plugin>
+        </sensor>
     </gazebo>
+
 
     <!-- encoder plugin-->
     <gazebo>

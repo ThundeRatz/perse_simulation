@@ -3,11 +3,21 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <gazebo reference="base_link">
-        <material>Perse/Base</material>
+        <material>
+            <script>
+                <uri>model://Perse/materials/scripts/</uri>
+                <name>Perse/Base</name>
+            </script>
+        </material>
     </gazebo>
 
     <gazebo reference="chasis_link">
-        <material>Perse/Chasis</material>
+        <material>
+            <script>
+                <uri>model://Perse/materials/scripts/</uri>
+                <name>Perse/Chasis</name>
+            </script>
+        </material>
     </gazebo>
 
     <gazebo reference="wheel_front_left_link">
@@ -18,28 +28,39 @@
         <material>Gazebo/FlatBlack</material>
     </gazebo>
 
-    <gazebo reference="wheel_back_right_link">
-        <material>Gazebo/FlatBlack</material>
-    </gazebo>
-
-    <gazebo reference="wheel_back_right_link">
-        <material>Gazebo/FlatBlack</material>
-    </gazebo>
-
     <gazebo reference="wheel_back_left_link">
         <material>Gazebo/FlatBlack</material>
     </gazebo>
 
+    <gazebo reference="wheel_back_right_link">
+        <material>Gazebo/FlatBlack</material>
+    </gazebo>
+
     <gazebo reference="bumper_link">
-        <material>Perse/Bumper</material>
+        <material>
+            <script>
+                <uri>model://Perse/materials/scripts/</uri>
+                <name>Perse/Bumper</name>
+            </script>
+        </material>
     </gazebo>
 
     <gazebo reference="cover_link">
-        <material>Perse/Cover</material>
+        <material>
+            <script>
+                <uri>model://Perse/materials/scripts/</uri>
+                <name>Perse/Cover</name>
+            </script>
+        </material>
     </gazebo>
 
     <gazebo reference="batt_holder_link">
-        <material>Perse/BattHolder</material>
+        <material>
+            <script>
+                <uri>model://Perse/materials/scripts/</uri>
+                <name>Perse/BattHolder</name>
+            </script>
+        </material>
     </gazebo>
 
     <gazebo reference="batt_link">

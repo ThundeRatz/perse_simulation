@@ -25,6 +25,12 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
 
     this->update_connection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
 
+    // Get name of the topic to be published and create the publiser
+    if (_sdf->HasElement("topicName")) {
+        std::string topic_name = _sdf->Get<std::string>("topicName");
+        this->encoder_pub = this->ros_node->create_publisher<std_msgs::msg::Float64>(topic_name, MSG_BUFFER);
+    }
+
     // Get encoder resolution and calculate the angle divisions
     if (_sdf->HasElement("resolution")) {
         int resolution = _sdf->Get<int>("resolution");
@@ -34,12 +40,6 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     // Get wheel radius
     if (_sdf->HasElement("wheelRadius")) {
         this->wheel_radius = _sdf->Get<float>("wheelRadius");
-    }
-
-    // Get name of the topic to be published and create the publiser
-    if (_sdf->HasElement("topicName")) {
-        std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->encoder_pub = this->ros_node->create_publisher<std_msgs::msg::Float64>(topic_name, MSG_BUFFER);
     }
 
     // Get front left wheel joint name
@@ -57,6 +57,7 @@ void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
 
 void EncoderPlugin::OnUpdate() {
     this->left_angle = this->left_wheel->Position();
+
     //this->right_angle = this->right_wheel->Position();
 
     // The integer number of "angle_divisions" traveled is  floor(right_angle/angle_division)

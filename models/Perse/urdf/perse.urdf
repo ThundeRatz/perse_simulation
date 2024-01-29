@@ -6,13 +6,13 @@
   <link name="base_link">
     <inertial>
       <origin xyz="0.168983151004299 0.00691298433678258 0.000423190257476187" rpy="0 0 0" />
-      <mass value="0.441656288542662" />
+      <mass value="65.441656288542662" />
       <inertia ixx="0.00072640876800129" ixy="1.24858920002717E-05" ixz="-2.11765672186669E-08" iyy="0.0049473583439408" iyz="-9.42360683636948E-13" izz="0.00423864047015624" />
     </inertial>
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/base_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/base_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -34,7 +34,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/chasis_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/chasis_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -58,7 +58,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://perse_simulation/meshes/wheel_front_left_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/wheel_front_left_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
@@ -89,7 +89,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://perse_simulation/meshes/wheel_front_right_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/wheel_front_right_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -120,7 +120,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://perse_simulation/meshes/wheel_back_right_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/wheel_back_right_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -151,7 +151,7 @@
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
         <!-- <sphere radius="0.06"/> -->
-        <mesh filename="package://perse_simulation/meshes/wheel_back_left_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/wheel_back_left_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
@@ -181,7 +181,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/bumper_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/bumper_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
@@ -210,7 +210,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/cover_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/cover_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.909803921568627 0.443137254901961 0.0313725490196078 0.1" />
@@ -219,7 +219,7 @@
     <collision>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/cover_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/cover_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -238,7 +238,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/cover_support_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/cover_support_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
@@ -260,7 +260,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/batt_holder_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/batt_holder_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 0 1 0.1" />
@@ -282,7 +282,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/batt_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/batt_link.STL" />
       </geometry>
       <material name="">
         <color rgba="1 1 1 1" />
@@ -304,7 +304,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/cam_holder_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/cam_holder_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.898039215686275 0.917647058823529 0.929411764705882 1" />
@@ -326,7 +326,7 @@
     <visual>
       <origin xyz="0 0 0" rpy="0 0 0" />
       <geometry>
-        <mesh filename="package://perse_simulation/meshes/cam_link.STL" />
+        <mesh filename="file://$(find perse_simulation)/models/Perse/meshes/cam_link.STL" />
       </geometry>
       <material name="">
         <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
@@ -339,4 +339,13 @@
     <child link="cam_link" />
     <axis xyz="0 0 0" />
   </joint>
+
+  <link name="imu_link"></link>
+  <joint name="imu_joint" type="fixed">
+    <origin xyz="0.0673562763621052 0 0.0709889192905058" rpy="0 0 0" />
+    <parent link="cam_holder_link" />
+    <child link="imu_link" />
+    <axis xyz="0 0 0" />
+  </joint>
+
 </robot>
