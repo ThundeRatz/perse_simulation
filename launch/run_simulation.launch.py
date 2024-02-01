@@ -91,19 +91,22 @@ def generate_launch_description():
     )
 
     return LaunchDescription([
-        DeclareLaunchArgument('x', default_value='0'),
-        DeclareLaunchArgument('y', default_value='0'),
-        DeclareLaunchArgument('z', default_value='0.4'),
-        DeclareLaunchArgument('row', default_value='0'),
-        DeclareLaunchArgument('pitch', default_value='0'),
-        DeclareLaunchArgument('yaw', default_value='0'),
-        DeclareLaunchArgument('robot_name', default_value='perse'),
-        DeclareLaunchArgument('model', default_value=path.join(perse_simulation_share, 'models/Perse/urdf/perse.xacro')),
-        DeclareLaunchArgument('robot_steering', default_value=TextSubstitution(text='false')),
-        DeclareLaunchArgument('rviz', default_value=TextSubstitution(text='false')),
-        DeclareLaunchArgument('perse', default_value=TextSubstitution(text='true')),
-        DeclareLaunchArgument('darknet', default_value=TextSubstitution(text='true')),
+        # local launch arguments
+        DeclareLaunchArgument('x', default_value=x, description="robot's x position"),
+        DeclareLaunchArgument('y', default_value=y, description="robot's y position"),
+        DeclareLaunchArgument('z', default_value=z, description="robot's z position"),
+        DeclareLaunchArgument('row', default_value=row, description="robot's row orientation"),
+        DeclareLaunchArgument('pitch', default_value=pitch, description="robot's pitch orientation"),
+        DeclareLaunchArgument('yaw', default_value=yaw, description="robot's yaw orientation"),
+        DeclareLaunchArgument('robot_name', default_value=robot_name, description="robot name to be spawned"),
+        DeclareLaunchArgument('model', default_value=model, description="path to robot's xacro file"),
+        DeclareLaunchArgument('robot_steering', default_value=should_run_robot_steering, description="launch rqt_robot_steering"),
+        DeclareLaunchArgument('rviz', default_value=should_run_rviz, description="launch rviz2"),
+        DeclareLaunchArgument('perse', default_value=should_run_perse, description="launch perse"),
+        DeclareLaunchArgument('darknet', default_value=should_run_darknet, description="launch darknet_ros"),
+        # external launch arguments
         DeclareLaunchArgument('odometry_variables', default_value=path.join(perse_simulation_share, 'config/odometry_variables.yaml')),
+        DeclareLaunchArgument('network_param_file', default_value=path.join(get_package_share_directory('darknet_ros'), 'config/perse.yaml')),
 
         GroupAction(
             actions=[
