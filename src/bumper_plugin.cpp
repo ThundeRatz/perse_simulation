@@ -11,7 +11,6 @@
  *
  */
 
-#include <cmath>
 #include "bumper_plugin.hpp"
 
 namespace gazebo {

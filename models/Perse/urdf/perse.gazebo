@@ -17,8 +17,8 @@
     <!-- Wheels -->
     <xacro:macro name="wheel" params="link_name">
         <gazebo reference="${link_name}_link">
-            <mu1 value="2.0"/> <!-- Coulomb friction coefficient -->
-            <mu2 value="2.0"/> <!-- Coulomb friction coefficient -->
+            <mu1 value="20.0"/> <!-- Coulomb friction coefficient -->
+            <mu2 value="20.0"/> <!-- Coulomb friction coefficient -->
             <kp value="1e12" /> <!-- Contact stiffness  -->
             <kd value="1.0" /> <!-- Contact damping  -->
             <minDepth value="1e-1" /> <!-- Minimum allowable depth before contact correction -->
@@ -80,12 +80,7 @@
 
     <gazebo>
         <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
-            <!-- <robot_param>/perse/robot_description</robot_param> -->
-            <!-- <robot_param_node>/perse/robot_state_publisher</robot_param_node> -->
-            <!-- Push perse namespace -->
            <ros>
-               <!-- <namespace>perse</namespace> -->
-               <!-- <remapping>/tf:=/perse/tf</remapping> -->
                <remapping>/diff_drive_base_controller/cmd_vel_unstamped:=/perse/actuator/cmd_vel</remapping>
                <remapping>/diff_drive_base_controller/odom:=/perse/odom</remapping>
            </ros> 
@@ -208,7 +203,7 @@
             <topicName>perse/sensors/bumper</topicName>
             <triggerPosition>0.02</triggerPosition>
             <jointName>bumper_joint</jointName>
-            <jointForce>2</jointForce>
+            <jointForce>60</jointForce>
         </plugin>
     </gazebo>
 </robot>

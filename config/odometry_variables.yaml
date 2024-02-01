@@ -27,7 +27,7 @@ decision_node:
       dodge: false
 
     camera_enable: true
-    vision_speed: 1.2
-    vision_brake_speed: 0.9 
-    odom_speed: 1.8
+    vision_speed: 0.5
+    vision_brake_speed: 0.4 
+    odom_speed: 0.8
     kp: 15.0
