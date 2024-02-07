@@ -21,7 +21,7 @@ GZ_REGISTER_MODEL_PLUGIN(EncoderPlugin)
 void EncoderPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "Encoder plugin: Starting!");
 
-    this->ros_node = rclcpp::Node::make_shared("encoder_plugin_node");
+    this->ros_node = gazebo_ros::Node::Get(_sdf, "encoder_plugin_node");
 
     this->update_connection = event::Events::ConnectWorldUpdateBegin(std::bind(&EncoderPlugin::OnUpdate, this));
 

@@ -11,7 +11,6 @@
  *
  */
 
-#include <cmath>
 #include "bumper_plugin.hpp"
 
 namespace gazebo {
@@ -21,7 +20,7 @@ void BumperPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
     // arguments from .gazebo file
     if (_sdf->HasElement("topicName")) {
         std::string topic_name = _sdf->Get<std::string>("topicName");
-        this->ros_node = rclcpp::Node::make_shared("bumper_plugin_node");
+        this->ros_node = gazebo_ros::Node::Get(_sdf, "bumper_plugin_node");
         this->bumper_pub = this->ros_node->create_publisher<std_msgs::msg::Bool>(topic_name, MSG_BUFFER);
     }
 
