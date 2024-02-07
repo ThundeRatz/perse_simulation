@@ -3,7 +3,7 @@
  *
  * @author Alan José dos Santos <alan.jose@thunderatz.org>
  *
- * @brief Plugin that simulates a Inductive Sensor, simulating an inductive sensor reading of an 1mx1m square metalic plate around each cone by publishing true when close to a set of positions defined by ros parameters. 
+ * @brief Plugin that replicates the behaviour of an inductive sensor and a square metalic plate around each cone. this behaviour is acomplished by publishing true when the robot is inside of an square area of PLATE_SIDExPLATE_SIDE around each point defined by ros parameters. 
  *
  * @date 01/2024
  *
